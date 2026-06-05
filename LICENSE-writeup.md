@@ -12,8 +12,7 @@ were made.
 - License summary: https://creativecommons.org/licenses/by/4.0/
 - Full legal code: https://creativecommons.org/licenses/by/4.0/legalcode
 
-**Attribution:** "alchemical-lich, *Whales, Zines, and the Ghosts of Failed Campaigns:
-What the Data Actually Says About RPGs on Kickstarter* (2026)."
+**Attribution:** "alchemical-lich, *What the Data Says About RPGs on Kickstarter* (2026)."
 
 The underlying **code** is licensed separately under the MIT License (see `LICENSE`).
 
