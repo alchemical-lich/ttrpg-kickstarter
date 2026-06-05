@@ -10,7 +10,11 @@ tidytext 0.4.3
 SnowballC 0.7.1
 Matrix 1.5.1
 scales 1.4.0
+rdrobust 3.0.0
+rddensity 2.6
+pROC 1.19.0.1
 
 # Install with:
 #   install.packages(c("tidyverse","fixest","glmnet","ranger","quantreg",
-#                      "clubSandwich","tidytext","SnowballC","Matrix","scales"))
+#                      "clubSandwich","tidytext","SnowballC","Matrix","scales",
+#                      "rdrobust","rddensity","pROC"))

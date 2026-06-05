@@ -34,6 +34,9 @@ $PY code/01_ingest/03_build_kaggle_tabletop.py          # needs data/raw/kaggle_
 $R  code/01_ingest/04_export_icpsr_tabletop.R           # needs data/raw/ICPSR_38050/
 $PY code/03_features/02_classify_icpsr_tabletop.py      # PID label transfer
 
+echo "== [4b] FEATURES: sub-categorize RPG books (system / product type / genre) =="
+$PY code/03_features/03_subcategorize_books.py          # needs tabletop_classified + kaggle_tabletop
+
 echo "== [5] CLEAN: coverage diagnostics =="
 $R  code/02_clean/02_coverage_map.R
 
@@ -51,5 +54,9 @@ $R  code/04_analysis/10_success_by_class_kaggle.R
 $R  code/04_analysis/11_did_zinequest.R
 $R  code/04_analysis/12_did_5e.R
 $R  code/04_analysis/13_zinequest_robust.R
+$R  code/04_analysis/14_book_composition.R              # composition shares over time
+$R  code/04_analysis/15_funding_threshold_rd.R          # all-or-nothing RD + McCrary test
+$R  code/04_analysis/16_composition_5e_split.R          # product mix: 5e vs other systems
+$R  code/04_analysis/17_subcat_drivers.R                # sub-tags in magnitude + success models
 
 echo "== DONE. Outputs in tables/ and figures/. =="

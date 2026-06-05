@@ -26,9 +26,18 @@ This repository is the reproducible code, data pipeline, and results behind it.
 - **Product type shapes *how much*, not *whether*.** Drivers of magnitude differ for
   rulebooks vs. accessories (a "5E" label helps books, not commodity minis); drivers
   of funding do not.
+- **The hobby tilted toward D&D — and *naming a system* pays.** Books naming D&D 5e
+  went from ~7% of funded RPG books (2014–15) to ~40% (2023–26); 5e is mostly
+  *content for* the engine (adventures/supplements) while other systems are new
+  rulebooks and zines. Naming a recognized system (5e, OSR, a known indie line)
+  travels with a **~25–40% larger raise** and better funding odds — though the tags
+  add only modestly to predictive power overall.
 - **Causal honesty:** **ZineQuest** (Kickstarter's Feb RPG-zine program) demonstrably
   ~doubled funded RPG February launches — a clean natural experiment. **D&D 5e did
-  *not*** produce an identifiable break — the RPG advantage predates it.
+  *not*** produce an identifiable break — the RPG advantage predates it. And the
+  tempting **all-or-nothing funding-threshold RD fails its manipulation test** —
+  projects bunch hard just above 100% of goal (McCrary p ≈ 4e-86), a cautionary
+  example of why a sharp cutoff isn't automatically a clean experiment.
 
 All claims are evidence-based; correlations are labeled as such; the one
 quasi-experimental result (ZineQuest) is flagged as the only causal claim.

@@ -32,6 +32,7 @@ populated). Dependencies: `requirements.txt` (Python) and `code/r_dependencies.t
 | Ingest | `01_ingest/03_build_kaggle_tabletop.py` | `data/processed/kaggle_tabletop.csv.gz` |
 | Ingest | `01_ingest/04_export_icpsr_tabletop.R` | `data/interim/icpsr_tabletop_clean.csv.gz` |
 | Features | `03_features/02_classify_icpsr_tabletop.py` | `data/processed/icpsr_tabletop.csv.gz` (PID label transfer) |
+| Features | `03_features/03_subcategorize_books.py` | `data/processed/{ttrpg,kaggle}_book_subcats.csv.gz` (system / product-type / genre tags) |
 | Clean | `02_clean/02_coverage_map.R` | `tables/crawl_coverage.csv`, coverage figure |
 | Analysis | `04_analysis/01_descriptive_landscape.R` | descriptive tables/figures |
 | Analysis | `04_analysis/02,03_success_rates_*.R` | true success rates (Kaggle, ICPSR) |
@@ -42,6 +43,10 @@ populated). Dependencies: `requirements.txt` (Python) and `code/r_dependencies.t
 | Analysis | `04_analysis/09,10_*_by_class*.R` | books-vs-accessories interactions |
 | Analysis | `04_analysis/11,13_zinequest*.R` | ZineQuest DiD + robust inference |
 | Analysis | `04_analysis/12_did_5e.R` | 5e event study |
+| Analysis | `04_analysis/14_book_composition.R` | composition shares by year (system / product type / genre) |
+| Analysis | `04_analysis/15_funding_threshold_rd.R` | all-or-nothing RD at 100%-of-goal + McCrary manipulation test |
+| Analysis | `04_analysis/16_composition_5e_split.R` | product-type mix, D&D 5e vs other systems |
+| Analysis | `04_analysis/17_subcat_drivers.R` | system/product-type tags in the magnitude & success models |
 
 ## Notes & conventions
 - Seeds (`set.seed(42)`) are set in every script with a stochastic step.
