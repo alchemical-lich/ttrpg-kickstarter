@@ -1,0 +1,16 @@
+# R dependencies for the analysis pipeline (code/02_clean, code/04_analysis).
+# Pinned to versions used 2026-06-05. R 4.2.2.
+tidyverse 2.0.0
+fixest 0.13.2
+glmnet 4.1.10
+ranger 0.18.0
+quantreg 6.1
+clubSandwich 0.6.1
+tidytext 0.4.3
+SnowballC 0.7.1
+Matrix 1.5.1
+scales 1.4.0
+
+# Install with:
+#   install.packages(c("tidyverse","fixest","glmnet","ranger","quantreg",
+#                      "clubSandwich","tidytext","SnowballC","Matrix","scales"))

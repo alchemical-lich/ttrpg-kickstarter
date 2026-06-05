@@ -1,0 +1,31 @@
+# Raw / intermediate / processed data are NOT redistributed (see data/README.md).
+# Exception: the crawl-URL list is just public URLs and is needed to run the ingest.
+data/raw/*
+!data/raw/_crawl_urls.tsv
+data/interim/
+data/processed/
+data/*.gz
+data/*.rda
+
+# transient downloads
+/tmp/
+*.tmp
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.Rhistory
+.RData
+.Rproj.user/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# LaTeX aux files
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc

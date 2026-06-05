@@ -1,0 +1,9 @@
+# Python dependencies for the ingest + classification pipeline (code/01_ingest, code/03_features)
+# and the referee replication (code/replication). Pinned to the versions used 2026-06-05.
+# Python 3.9.6
+pandas==2.3.3
+numpy==2.0.2
+statsmodels==0.14.6
+scikit-learn==1.6.1
+matplotlib==3.9.4
+patsy==0.5.6
