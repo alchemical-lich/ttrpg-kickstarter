@@ -375,21 +375,31 @@ is mostly <strong>mechanical</strong>: if you raised enough to succeed,
 you by definition cleared your goal, so a bigger goal mechanically sets
 a higher floor.<a href="#fn15" class="footnote-ref" id="fnref15"
 role="doc-noteref"><sup>15</sup></a></p>
-<p>Two further points. First, I fed the campaign <em>text</em> — titles
-and blurbs — into the model to see whether the wording adds anything
-beyond the obvious numbers. It does, modestly, along a
-<strong>premium-versus-commodity axis</strong>: words like “diorama,”
-“scenery,” “miniatures,” “softcover,” and “collectors” predict raising
-<em>more</em>, while “pay what you want,” generic “dnd dice,” and
-“quality resin” predict raising <em>less</em>.<a href="#fn16"
+<p>Two further points. First, I fed each campaign’s <em>text</em> —
+titles and blurbs — into the model, restricting to <em>books</em> (in
+the pooled book-plus-accessory sample, physical-product words like
+“miniatures” and “scenery” mostly flag the accessory class rather than a
+wording effect). The text adds modestly to predictive power, but the
+strongest individual terms are largely a caution about the method: they
+are <strong>brand and series names</strong> — <em>Mothership</em>,
+<em>Forbidden Lands</em>, <em>Root</em>, <em>DCC</em>, <em>Dimgaard</em>
+— which a bag-of-words model can memorize as “these named lines did
+well” without the lesson generalizing to a new project.<a href="#fn16"
 class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>
-Presentation as a deluxe object is associated with larger raises;
-presentation as a cheap commodity is not.</p>
+Setting brand names aside, the generalizable pattern is a
+<strong>premium-versus-commodity axis</strong>: “softcover,” “official,”
+“award,” and “supplement” predict raising <em>more</em>, while “pay what
+you want,” “one-shot,” “online,” and “ttrpg inspired” predict raising
+<em>less</em>. Presentation as a complete, premium object is associated
+with larger raises; cheap or pay-what-you-want framing is not.</p>
 <p><img src="images/text_top_terms.png"
 alt="Words that predict raising more vs less" /></p>
-<p><em>The words that move money, after controlling for everything else.
-Premium/deluxe language (blue) predicts bigger raises; commodity and
-pay-what-you-want language (red) predicts smaller ones.</em></p>
+<p><em>Title/blurb terms predicting how much a funded RPG
+<strong>book</strong> raises (LASSO, controlling for the structured
+features). Note the caveat: several of the strongest “raises more” terms
+(blue) are specific brand and series names the model has memorized; the
+generalizable signal is premium, complete-product language versus
+pay-what-you-want and one-shot framing (red).</em></p>
 <p>Second, the staff-pick and video effects get <em>stronger</em> the
 further up the distribution you go. For a median project a staff pick is
 worth maybe 1.5×; for the runaway hits near the top it’s associated with
@@ -730,14 +740,20 @@ projects is largely an accounting identity, not behavior. I keep the
 goal in the model only to hold project scale constant while reading the
 other coefficients.<a href="#fnref15" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
-<li id="fn16"><p>Method, briefly: I turned titles and blurbs into a bag
-of words and bigrams and let a LASSO pick which ones predict
-log-dollars, with the vocabulary chosen separately inside each
-cross-validation fold so the test data couldn’t leak in. Adding text
-lifted out-of-sample R² from about 0.66 to 0.70 — real but modest. One
-caveat: a bag-of-words model also memorizes specific series and brand
-names, which don’t generalize; the premium-vs-commodity pattern is the
-part worth keeping.<a href="#fnref16" class="footnote-back"
+<li id="fn16"><p>Method, briefly: among funded RPG books, I turned
+titles and blurbs into a bag of words and bigrams and let a LASSO pick
+which ones predict log-dollars, with the vocabulary chosen separately
+inside each cross-validation fold so the test data couldn’t leak in.
+Adding text lifted out-of-sample R² from about <strong>0.68 to
+0.70</strong> — real but modest. The leading caveat: a bag-of-words
+model memorizes specific successful <em>series and brand names</em>
+(here Mothership, Forbidden Lands, Root, DCC, and Dimgaard load most
+strongly), which does not generalize to new campaigns; the part worth
+keeping is the premium/complete-product-versus-commodity pattern. I
+restrict this to books because in the pooled book-and-accessory version
+the strong terms were physical-product words (diorama, scenery, minis)
+that mostly identify the accessory class rather than a wording
+strategy.<a href="#fnref16" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
 <li id="fn17"><p>Same funded-books regression as the magnitude model
 above, now with the system-family and product-type tags added (premiums

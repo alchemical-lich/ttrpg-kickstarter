@@ -14,7 +14,10 @@
 # the feature set. The interpretive coefficient figure (question 1) still uses the
 # full-corpus vocabulary, which is fine because it is description, not a CV estimate.
 #
-# Sample: funded ttrpg + ttrpg_accessory, 2015+ (same as the magnitude model).
+# Sample: funded core ttrpg BOOKS only (class_accessory == 0), 2015+. Restricting to
+# books keeps the text interpretation coherent: in the pooled book+accessory sample,
+# physical-product words (diorama/scenery/minis) mostly flag the accessory CLASS
+# rather than a wording effect, so we drop accessories here.
 # Associational; blurb wording is itself a choice correlated with project quality.
 #
 # Out: tables/text_*.csv, figures/text_top_terms.png
@@ -33,6 +36,7 @@ theme_set(theme_minimal(base_size = 12))
 
 feat <- read_csv(file.path(proj, "data", "processed", "ttrpg_model_features.csv.gz"),
                  show_col_types = FALSE) %>%
+  filter(class_accessory == 0) %>%             # BOOKS ONLY (see header)
   mutate(launch_year = factor(launch_year), launch_month = factor(launch_month),
          launch_dow = factor(launch_dow))
 txt <- read_csv(file.path(proj, "data", "processed", "tabletop_classified.csv.gz"),
@@ -58,7 +62,7 @@ ndoc <- nrow(txt)
 ord <- feat$id
 y <- setNames(feat$log10_pledged, feat$id)[as.character(ord)]
 xvars <- c("log10_goal", "duration_days", "has_video", "staff_pick",
-           "blurb_words", "title_words", "country_us", "class_accessory",
+           "blurb_words", "title_words", "country_us",   # class_accessory dropped (books only)
            "creator_prior_funded", "creator_is_repeat",
            "is_dnd5e", "is_osr", "is_pbta", "is_zine")
 Xs_full <- sparse.model.matrix(as.formula(paste("~", paste(c(xvars, "launch_year",
@@ -111,8 +115,8 @@ top <- bind_rows(slice_max(coef_tbl, coef, n = 15), slice_min(coef_tbl, coef, n 
   mutate(dir = if_else(coef > 0, "raises more", "raises less"), term = fct_reorder(term, coef))
 p <- ggplot(top, aes(coef, term, fill = dir)) + geom_col() +
   scale_fill_manual(values = c("raises more" = "#2c7fb8", "raises less" = "#d7191c"), name = NULL) +
-  labs(title = "Title/blurb terms predicting pledged $ (LASSO, controlling for structured features)",
-       subtitle = "coefficient on log10 pledged; full-corpus interpretation model",
+  labs(title = "Title/blurb terms predicting pledged $ for funded RPG books (LASSO)",
+       subtitle = "coefficient on log10 pledged, controlling for structured features; note many strong terms are brand/series names",
        x = "LASSO coefficient (log10 pledged)", y = NULL)
 ggsave(file.path(figd, "text_top_terms.png"), p, width = 10, height = 7, dpi = 130)
 

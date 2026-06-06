@@ -1,4 +1,4 @@
 features,cv_r2,note
-structured only,0.6552721531830608,vocabulary selected within each training fold (no leakage)
-text only,0.26775691845417204,vocabulary selected within each training fold (no leakage)
-structured + text,0.6928256657706308,vocabulary selected within each training fold (no leakage)
+structured only,0.6806005085188145,vocabulary selected within each training fold (no leakage)
+text only,0.20462493454818131,vocabulary selected within each training fold (no leakage)
+structured + text,0.701590045374606,vocabulary selected within each training fold (no leakage)
