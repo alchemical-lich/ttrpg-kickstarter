@@ -222,13 +222,33 @@ This is **manipulation at the threshold**, and it is benign: as a campaign nears
 
 I would also have liked to study the **2023 OGL crisis** — Wizards of the Coast's botched attempt to revise the Open Game License, which alarmed many RPG creators — as a shock to the system. I cannot: the Web Robots crawl has a gap in its coverage that sits *exactly* on top of January 2023, and the only failure-inclusive source that reaches that far masks project names, so I cannot identify the RPGs.[^ogl]
 
+## Back to the whale tiers
+
+The whale post's question — how the money splits across a campaign's reward tiers — is the one I began without the data to answer, since tier-level prices and backer counts live only on individual campaign pages, not in any of the bulk datasets. So I went back and recovered them, reading the *archived* campaign pages from the Internet Archive's Wayback Machine rather than scraping Kickstarter directly.[^tiers] About half of the top-decile RPG books had an archived page complete enough to use — 325 books, roughly 3,300 tiers — so this is a tail of a tail, and approximate: per-tier price × backers recovers about three-quarters of each project's total, the rest being over-pledges, add-ons, and shipping.
+
+The first finding echoes the whale post on a much larger sample. The cheap tiers attract the crowd, but the premium tiers hold the money: sorting every tier by price, entry tiers under $25 draw about a seventh of all backers but under **3% of the dollars**, while the $100–500 band holds roughly a quarter of the backers and **over half the dollars**.
+
+![Backers vs. dollars by reward-tier price](images/tier_backers_vs_dollars_by_price.png)
+
+*Every reward tier sorted into price bands: share of all backers (grey) vs. approximate share of all pledged dollars (blue). Backers cluster at $50–100; the dollars shift right to the $100–500 premium tiers.*
+
+The RPG-book "whale," though, is a more modest creature than the one in the original post. There, across million-dollar megaprojects, the sweet-spot whale tier sat near $478. Among ordinary funded RPG books, the **top-grossing tier of the median project is about $99** — the price of a deluxe hardcover, not a collector's box.
+
+![Price of each project's top-grossing tier](images/tier_sweetspot_hist.png)
+
+*The price of the single highest-revenue tier in each project, which clusters near $100 (median, dashed) — the deluxe-book price point, well below the megaproject whale tiers.*
+
+Nor is the money concentrated in one ceiling tier. The median book offers nine tiers, and its single highest-priced tier accounts for only about 4% of its money — the top tiers are expensive but thinly subscribed. The dollars come from the mid-premium tiers in the middle of the menu, not the top of it.
+
+One cautious note on whether tier *design* tracks raising more: projects that earn a larger share of their revenue from the high-end tiers do raise much more overall, but that is largely mechanical — a big campaign has whales because it is big — so it is not a lever. The *number* of tiers barely matters, and a high ceiling price on its own, holding the whale share fixed, is if anything slightly negative: a top tier few people buy does not help.
+
 ## What the evidence supports
 
-If you're running an RPG Kickstarter, the evidence-backed takeaways are: your **track record is your biggest asset** (and your past failures follow you); a **modest goal** correlates with funding, though that mostly reflects which creators set small goals in the first place; a **staff pick and a video** travel with much bigger raises; **naming a recognized system** — 5e, OSR, a known indie line — is associated with both clearing the funding bar a little more easily and a somewhat larger raise; and **how you frame the product** — premium object versus cheap commodity — shows up in the dollars.
+If you're running an RPG Kickstarter, the evidence-backed takeaways are: your **track record is your biggest asset** (and your past failures follow you); a **modest goal** correlates with funding, though that mostly reflects which creators set small goals in the first place; a **staff pick and a video** travel with much bigger raises; **naming a recognized system** — 5e, OSR, a known indie line — is associated with both clearing the funding bar a little more easily and a somewhat larger raise; **how you frame the product** — premium object versus cheap commodity — shows up in the dollars; and within a campaign, the money comes from the **mid-premium reward tiers** ($100–500), not the entry PDFs or a single high-priced ceiling tier.
 
 What I *wouldn't* tell you is that any of these are guaranteed levers. Almost everything here is a correlation drawn from observational data, with all the usual hazards: creators choose their goals strategically, Kickstarter chooses who gets staff-picked, my RPG classifier is right only about three-quarters of the time,[^classifier] and the one result that is in the neighborhood of a causal effect is about a niche February program for zines.
 
-The whale post asked how the giants price their tiers. I can't see reward tiers in my data at all — that detail only exists on individual campaign pages and would take a careful scrape to recover, which is a possible next step.[^tiers] But moving from the fifty-three giants to the full forty-five thousand, the RPG corner of Kickstarter is one in which a handful of projects attract most of the money, most projects are small and increasingly likely to succeed, reputation compounds, and a modest February intervention by the platform raises the number of small zines. 
+The whale post asked how the giants price their tiers; recovering the tiers for ordinary books gave a smaller-scale version of the same answer — the money sits in the mid-premium tiers, and the book whale is a ~$100 hardcover. Moving from the fifty-three giants to the full forty-five thousand, the RPG corner of Kickstarter is one in which a handful of projects attract most of the money, most projects are small and increasingly likely to succeed, reputation compounds, and a modest February intervention by the platform raises the number of small zines. 
 
 ---
 
@@ -262,7 +282,7 @@ The whale post asked how the giants price their tiers. I can't see reward tiers 
 
 [^ogl]: Two independent problems collide on the OGL window: a source-side hole in the monthly crawl from mid-2022 to mid-2023 (which I verified is real, not a mistake on my end), and the name-masking in the only failure-aware source that reaches 2023. With neither entry, success, nor dollars observable for RPGs around January 2023, an honest event study isn't possible. A targeted re-scrape of that window is the way to revive it.
 
-[^tiers]: Reward-tier data — the entry-vs-whale breakdown the original post studied — simply isn't in any of these datasets; they only carry campaign-level totals. The closest I can get is average pledge (dollars ÷ backers), which is why the whale-tier question stays open here. Recovering it would mean scraping individual campaign pages, carefully and within Kickstarter's terms.
+[^tiers]: Kickstarter's bulk datasets carry only campaign-level totals, so I recovered tier prices and per-tier backer counts from *archived* copies of the campaign pages on the Internet Archive's Wayback Machine — never hitting Kickstarter directly — by parsing the project data embedded in each snapshot. Coverage is partial: of the top decile of funded RPG books, about half (325) had an archived page near the campaign's end with parseable tiers. I used the snapshot closest to but not after the deadline, since Kickstarter hides ended tiers once a campaign closes. As a check, the per-tier backer counts sum to the project's own total to within a few percent; treating tier revenue as price × backers recovers about 76% of pledged (the remainder is over-pledging, add-ons, and shipping, which the page total includes but the per-tier figures do not).
 
 [^composition]: System and product-type tags come from keyword rules on each book's title and blurb, assigning one label per axis by a priority order. They're fuzzy — PbtA and other indie systems are *undercounted* because those books rarely say "PbtA" on the tin, and a chunk of books name no system at all — so read the trends and the broad shares, not the second decimal. The composition charts are funded books only (the rich crawl can't see failures), and the 2022–23 coverage gap thins those years.
 
