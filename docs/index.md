@@ -6,7 +6,7 @@
 
 A while back I read [a great guest post on Patchwork Paladin](https://patchworkpaladin.com/2026/05/18/kickstarter-whales-guest-post/) about Kickstarter "whales" — the analysis where Scipio202 went through ENWorld's list of fifty-three tabletop RPG campaigns that raised a million dollars or more and pulled apart their reward tiers.[^whales] The headline finding stuck with me: across those mega-projects, the high-end "whale" tiers brought in roughly 23% of all the money, vastly more than the cheap entry tiers (under 4%), and the sweet-spot whale tier clustered around a sizable but more sensible ~$478, nowhere near the $5,000 dragon-hoard you might picture.
 
-It's a nice piece of detective work. But fifty-three projects is fifty-three projects, and all of them are extreme success stories. I kept wondering about the rest of the ttrpg Kickstarter projects out there. So I went looking for more data to learn about what makes rpg projects work on Kickstarter. 
+It's a great piece of detective work. But fifty-three projects is fifty-three projects, and all of them are extreme success stories. I kept wondering about the rest of the ttrpg Kickstarter projects out there. So I went looking for more data to learn about what makes ttrpg projects work on Kickstarter. 
 
 ## Getting the data — and its survivorship problem
 
@@ -16,9 +16,9 @@ There's a wonderful free resource called Web Robots that has been crawling Kicks
 
 *All tabletop launches by month (board games included, not just RPGs), from the stitched-together monthly crawls. The red bands mark months where the **crawl** captured no Games category at all — note these are crawl months, not launch months, so the few projects still showing there were salvaged from much later crawls and badly undercount the real total. One such stretch lands, frustratingly, right on the 2023 OGL crisis.*
 
-Then I did the first thing anyone does: I checked the success rate. The data said tabletop RPGs succeed about **98% of the time**.
+First thing I checked: the success rate. The data said tabletop RPGs succeed about **98% of the time**.
 
-That number seems wildly inaccurate, and recognizing *why* it's garbage is a good example of why figuring out where your data come from is so important. Web Robots builds its snapshots from Kickstarter's public "discover" pages — and those pages overwhelmingly surface projects that are live or that succeeded. Campaigns that flopped quietly fall out of view and never make it into the crawl. So what the crawl really captures is the *survivors* — the live and the victorious — with the quiet failures missing almost entirely.[^survivorship] Asking it for a success rate is like surveying lottery winners about the odds of winning the lottery.
+That number seems wildly inaccurate, and recognizing *why* it's wrong is a good example of why figuring out where your data come from is so important. Web Robots builds its snapshots from Kickstarter's public "discover" pages — and those pages overwhelmingly surface projects that are live or that succeeded. Campaigns that flopped quietly fall out of view and never make it into the crawl. So what the crawl really captures is the *survivors* with the failures missing almost entirely.[^survivorship] Asking it for a success rate is like surveying lottery winners about the odds of winning the lottery.
 
 This is survivorship bias, and it required a bit of additional thinking. It means there are two separate questions hiding inside "what makes a campaign succeed," and they need different data:
 
@@ -41,7 +41,7 @@ First, a sense of scale — how big is this corner of Kickstarter, and is it gro
 
 *Funded pledged dollars on Kickstarter's Games category, stacked by subcategory. Tabletop dominates — non-RPG tabletop (green, mostly board games) plus the RPG bands (blue core, orange accessories) at the bottom — towering over video games, playing cards, and the rest. The red band is the 2022–23 coverage gap; the dip there is the missing crawls, not a real downturn.*
 
-Pull out just the RPG slice and the rise is real — but worth stating carefully. On *cleaned* labels (after removing the board games, dice, and card games a keyword classifier had mistakenly filed under "RPG"[^cleanlabels]), core RPGs go from about **7% of Kickstarter-Games dollars** in the mid-2010s to the **mid-to-high teens** by the 2020s — **roughly a doubling**, not a tripling. The raw line touches ~24% in 2024, but lean on that peak and it buckles: that single year rides almost entirely on one $15M campaign (the Cosmere RPG), and trimming the top 1% of projects pulls even 2024 down near 14%.[^market] The rising tide the whale post was surfing is genuinely there — just smaller than the headline number suggests.
+Let’s take a closer look at ttrpgs only. On *cleaned* labels (after removing the board games, dice, and card games a keyword classifier had mistakenly filed under "RPG"[^cleanlabels]), core RPGs go from about **7% of Kickstarter-Games dollars** in the mid-2010s to the **mid-to-high teens** by the 2020s. The raw line touches ~24% in 2024, but that single year is strongly affected by the $15M Comer RPG campaign. Trimming the top 1% of projects pulls even 2024 down near 14%.[^market] 
 
 ![Core RPG share of Kickstarter-Games funded dollars over time](images/desc_ttrpg_share_of_games.png)
 
@@ -67,11 +67,11 @@ The typical project is far humbler. A median *funded* RPG book raises around **$
 
 *What funded projects raise (log scale). RPG books sit to the right of accessories — they raise more — but both distributions have a long tail reaching toward the millions.*
 
-Accessories, meanwhile, play a different game. Their median funding goal is **about $400** — basically a formality — and they blow past it: 86% of funded accessories raise at least double their goal, versus 76% for books. "Set a tiny goal and overfund" is a common strategy, especially for accessories.
+Accessories, meanwhile, are different. Their median funding goal is **about $400** and they blow past it: 86% of funded accessories raise at least double their goal, versus 76% for books. "Set a tiny goal and overfund” seems to be a common strategy, especially for accessories.
 
 ## What creators ask for
 
-Two numbers a creator picks before anything else are the **goal** and the **clock** — how much to ask for, and how long to run. Both turn out to be remarkably conventional. RPG goals cluster in the low thousands (accessories a notch lower, in the hundreds), with the telltale spikes at round numbers like $1,000 and $5,000.
+Two numbers a creator picks before anything else are the **goal** (how much to ask for) and the **clock** (how long to run). RPG goals cluster in the low thousands (accessories a notch lower, in the hundreds), with the telltale spikes at round numbers like $1,000 and $5,000.
 
 ![Distribution of funding goals, RPG books vs accessories](images/desc_goal_hist_log.png)
 
@@ -83,7 +83,7 @@ What's striking is how goals have *fallen* over the decade. The median funded RP
 
 *Median goal by launch year (funded only). Goals more than halved over the decade, with the post-2019 slide tracking the influx of small-goal zines.*
 
-The clock is even more uniform. The overwhelming majority run the platform's **30-day default**, with smaller clusters at two and three weeks and almost nobody past 60 days — campaign length is the one dial creators barely touch.
+The clock is even more uniform. The overwhelming majority run the platform's **30-day default**, with smaller clusters at two and three weeks and almost nobody past 60 days. Campaign length is a variable creators barely change.
 
 ![Distribution of campaign lengths](images/desc_duration_hist.png)
 
@@ -91,27 +91,27 @@ The clock is even more uniform. The overwhelming majority run the platform's **3
 
 ## The shift toward D&D 5e
 
-Before asking what *succeeds*, it's worth looking at what people even make — and how that's changed. Over the decade the *mix* of funded RPG books shifted hard. Books that name **D&D's fifth edition** went from about **7%** of funded RPG books in 2014–15 to nearly **40%** by 2023–26. The old-school renaissance (OSR) more than doubled its share, the long tail of titles that don't name any system steadily receded as more creators hitched their book to a recognizable engine, and — a detail I'll come back to in the causal section — Pathfinder *shrank* in relative terms as 5e ate the center of the hobby.[^composition]
+Before asking what *succeeds*, it's worth looking at what people even make and how that's changed. Over the decade the *mix* of funded RPG books shifted substantially. Books that name **D&D's fifth edition** went from about **7%** of funded RPG books in 2014–15 to nearly **40%** by 2023–26. The old-school renaissance (OSR) more than doubled its share, the long tail of titles that don't name any system steadily receded as more creators hitched their book to a recognizable engine, and Pathfinder *shrank* in relative terms as 5e ate the center of the hobby.[^composition]
 
 ![Composition of funded RPG books by system family over time](images/comp_system_family.png)
 
 *The shifting mix of funded RPG books by system. The D&D 5e band (top) swells from a sliver to ~40%; OSR grows; the "agnostic / unnamed" base shrinks as books increasingly name a system. The grey band is the 2022–23 coverage gap.*
 
-But "a 5e book" and "an indie-system book" are usually different *kinds* of object, and splitting the same books by what they physically *are* makes the contrast almost cartoonish:
+But "a 5e book" and "an indie-system book" are usually different *kinds* of objects:
 
 ![Product-type mix, D&D 5e books vs other-system books](images/comp_producttype_5e_split.png)
 
 *What kind of book is it? D&D 5e books (left) versus everything else (right). 5e is mostly adventures and supplements; other systems are where new rulebooks and zines live.*
 
-D&D 5e is something people publish *for*: about **40% of 5e books are adventures**, another quarter are bestiaries and supplements, and only ~6% are new core rulebooks. Other systems are where new *games* live — about a third are rulebooks — and they're also where the zines cluster (**12%** of other-system books, versus ~4% of 5e ones). One ecosystem extends a giant; the other invents. That split will matter when we ask, later, whether 5e's arrival "caused" the boom — because 5e didn't grow the hobby so much as become the substrate everyone else builds on.
+D&D 5e is something people publish *for*: about **40% of 5e books are adventures**, another quarter are bestiaries and supplements, and only ~6% are new core rulebooks. Other systems are where new *games* live — about a third are rulebooks — and they're also where the zines cluster (**12%** of other-system books, versus ~4% of 5e ones). One ecosystem extends a giant; the other invents. 
 
 ## Getting funded depends more on who than what
 
-Now the question the survivor data couldn't speak to. Using the failure-inclusive datasets, I built models to predict funding success and — importantly — checked how well they did out-of-sample, not just how nicely they fit.[^auc] One scope caveat to keep in the back of your mind for this whole section: the failure-inclusive data is either name-identified only through 2018 or not RPG-specific, so the funding-side story leans on tabletop crowdfunding in the 2010s and may not perfectly describe the ZineQuest-era RPG market of the 2020s.[^fundingera]
+Now the question the survivor data couldn't speak to. Using the failure-inclusive datasets, I asked Claude to build models to predict funding success and checked how well they did out-of-sample, not just how nicely they fit.[^auc] One to keep in mind for this whole section: the failure-inclusive data is either name-identified only through 2018 or not RPG-specific, so the funding-side story leans on tabletop crowdfunding in the 2010s and may not perfectly describe the ZineQuest-era RPG market of the 2020s.[^fundingera]
 
 I started with two models with different kinds of information. One knew only about the **creator**: how many projects they'd run before, how many succeeded, how many failed. The other knew only about the **project**: its genre, its goal, its country, its title.
 
-The creator model came out ahead — AUC about **0.83** against the project model's **0.72**.[^whovwhat] I'd stop short of calling it a clean knockout, though, and the distinction matters: the two models are built on *different* datasets (only one source pairs creator IDs with failures; only the other carries project names), and the creator-history model isn't even RPG-specific — so this is a decomposition *across sources*, not a head-to-head on the same projects. Read with that caveat, the signal is consistent and one-directional: *who is asking* looks at least as predictive as *what they're asking for*. A creator's prior track record is the strongest single predictor I found: each past success multiplies the odds of funding, a strong prior success *rate* multiplies them a lot, and — symmetrically — **past failures predict future failure**. Reputation compounds in both directions.
+The creator model came out ahead — AUC about **0.83** against the project model's **0.72**[^whovwhat] but the two models are built on *different* datasets (only one source pairs creator IDs with failures; only the other carries project names), and the creator-history model isn't even RPG-specific — so this is a decomposition *across sources*, not a head-to-head on the same projects. Read with that caveat, the core finding is consistent and one-directional: *who is asking* looks at least as predictive as *what they're asking for*. A creator's prior track record is the strongest single predictor I found: each past success multiplies the odds of funding, a strong prior success *rate* multiplies them a lot, and — symmetrically — **past failures predict future failure**. Reputation compounds in both directions.
 
 ![Odds-ratio plot of funding predictors from the creator-history model](images/success_or_plot.png)
 
@@ -119,7 +119,7 @@ The creator model came out ahead — AUC about **0.83** against the project mode
 
 This also explains the rising success rate. As the platform ages, a bigger and bigger share of launches come from people who've done it before and succeeded. The market didn't necessarily get easier; apparently the *launchers* got more experienced.
 
-You can watch that happen. Splitting each year's RPG launches into first-timers and creators we've already seen, the returning share climbs from almost nothing in the early years to roughly half by the 2020s — the scene increasingly runs on people who've been through it before.
+You can see it in the descriptive data as well. Splitting each year's RPG launches into first-timers and creators we've already seen, the returning share climbs from almost nothing in the early years to roughly half by the 2020s.
 
 ![Core RPG launches split into new vs returning creators by year](images/desc_creators_new_vs_returning.png)
 
@@ -154,7 +154,7 @@ Two richer wrinkles. First, I fed the campaign *text* — titles and blurbs — 
 
 *The words that move money, after controlling for everything else. Premium/deluxe language (blue) predicts bigger raises; commodity and pay-what-you-want language (red) predicts smaller ones.*
 
-Second — and this is the kind of thing only a big dataset lets you ask — the staff-pick and video effects get *stronger* the further up the distribution you go. For a median project a staff pick is worth maybe 1.5×; for the runaway hits near the top it's associated with more like 3.5×. Social proof and polish are amplified in exactly the tail where the whales live. (Correlation again — Kickstarter may hand out staff picks to projects it can already tell will be big — but it's a suggestive pattern.)
+Second, the staff-pick and video effects get *stronger* the further up the distribution you go. For a median project a staff pick is worth maybe 1.5×; for the runaway hits near the top it's associated with more like 3.5×. Social proof and polish are amplified in exactly the tail where the whales live. (Correlation again — Kickstarter may hand out staff picks to projects it can already tell will be big — but it's a suggestive pattern.)
 
 ### Naming a recognized system raises more
 
@@ -164,11 +164,11 @@ Since I'd tagged every book by its system, I could ask a sharper version of the 
 
 *Multiply-the-dollars premiums for funded RPG books, versus a system-agnostic rulebook. Naming a recognized system (blue) pays; product type (orange) matters less, except that zines raise less.*
 
-And the same "name a system" effect turns up on the *other* question, the one the survivor data can't answer. In the failure-inclusive data, books that name a recognizable system are also meaningfully more likely to **get funded at all** — naming a system seems to reassure backers that an audience already exists for the thing. That said, all of this is second-order: adding the system and product tags barely nudges how well the model predicts dollars, and goal-setting, reputation, and the staff pick still do the heavy lifting.[^sysprem]
+In the failure-inclusive data, books that name a recognizable system are also meaningfully more likely to **get funded at all**. Naming a system seems to reassure backers that an audience already exists for the thing. That said, all of this is second-order: adding the system and product tags barely nudges how well the model predicts dollars, and goal-setting, reputation, and the staff pick still do the heavy lifting.[^sysprem]
 
 ## Where books and accessories diverge
 
-Because I'd split RPG books from RPG accessories, I could ask whether they respond to the same things. The answer is a tidy little asymmetry.
+Because I'd split RPG books from RPG accessories, I could ask whether they respond to the same things. The answer reveals a small asymmetry.
 
 For **how much you raise**, the drivers genuinely differ. The starkest example: a "5E-compatible" label *raises* money for a rulebook but is slightly *negative* for an accessory.[^bookacc] That makes intuitive sense — a branded D&D *book* is a selling point, but generic "D&D dice" or "D&D minis" are a commodity in a crowded field. Being US-based flips sign too.
 
@@ -176,13 +176,13 @@ For **how much you raise**, the drivers genuinely differ. The starkest example: 
 
 *Same drivers, different products. The book effect (blue) and accessory effect (orange) pull apart — most strikingly for the 5E label, which lifts books but not commodity minis.*
 
-For **whether you get funded**, though, the drivers *don't* meaningfully differ between books and accessories. The things that get you across the funding line — a modest goal, a reasonable campaign length, an established creator — seem to work about the same regardless of what you're selling.
+For **whether you get funded**, though, the drivers *don't* meaningfully differ between books and accessories. The things that get you across the funding line (a modest goal, a reasonable campaign length, an established creator) seem to work about the same regardless of what you're selling.
 
-So: **product type shapes how much you raise, but not whether you raise it.** The recipe for crossing the line is general; the recipe for getting big is product-specific.
+So: **product type shapes how much you raise, but not whether you raise it.** 
 
 ## Testing whether 5e caused the boom
 
-Now for the fun part: causation. It's tempting to look at the rising RPG fortunes of the last decade and credit obvious cultural events — 5th edition in 2014, *Stranger Things*, *Critical Role*. Tempting, but mostly unprovable, and in one case likely wrong.
+It's tempting to look at the rising RPG fortunes of the last decade and credit obvious cultural events — 5th edition in 2014, *Stranger Things*, *Critical Role*. This is hard thing to show in the data. 
 
 The honest way to test "did event X cause the RPG surge" is a difference-in-differences: compare RPGs (which event X should affect) against board and card games (which it shouldn't) before and after, so the platform-wide trend cancels out. When I do this for **5th edition's mid-2014 release**, the result is a clean *null*. The RPG advantage over other tabletop games was **already there in 2012**, two years before 5e shipped, and it just... continued. There's no break at the release.[^did5e]
 
@@ -190,15 +190,15 @@ The honest way to test "did event X cause the RPG surge" is a difference-in-diff
 
 *The 5e "effect" that wasn't. The RPG-vs-control success gap is already positive in 2012 and flat across the mid-2014 release (dashed line) — no jump, no clean causal story.*
 
-The boom is real, but pinning it on 5e specifically doesn't survive contact with the data — the treatment was too gradual and too anticipated, and 5e probably lifted D&D *board games* too, contaminating the comparison. *Stranger Things* and *Critical Role* are even harder to test cleanly, so I won't.
+The ttrpg boom is real, but pinning it on 5e specifically doesn't seem to be supported in the data. The treatment was too gradual and too anticipated, and 5e probably lifted D&D *board games* too, contaminating the comparison. *Stranger Things* and *Critical Role* are even harder to test cleanly, so I won't.
 
-The 5e test came up empty, but there's one place a real fingerprint *does* show up in the raw data — and you can see it before running any model. Sort core RPG launches by calendar month and one month breaks the pattern, but only recently. Through 2018, February was unremarkable; from 2019 on it swells to more than **a fifth of the whole year's launches**.
+The 5e test came up empty, but there's one place a real fingerprint *does* show up in the raw data. Sort core RPG launches by calendar month and one month breaks the pattern, but only recently. Through 2018, February was unremarkable; from 2019 on it swells to more than **a fifth of the whole year's launches**.
 
 ![Share of core RPG launches by calendar month, pre- vs post-2019](images/desc_seasonality_month.png)
 
 *Share of core RPG launches by calendar month, split into 2014–18 (grey) and 2019+ (blue). February jumps from an ordinary ~7–8% to ~21% once the later era begins — a seasonal fingerprint hiding in plain sight.*
 
-That February bump is the work of **ZineQuest**, Kickstarter's annual February push for RPG zines, launched in 2019 — and unlike the diffuse 5e rollout, it's sharp enough to actually test. This one is closer to a natural experiment, precisely because it's *RPG-specific* — Kickstarter promotes RPG zines, not board games, so board games make a useful control group. And the effect is unmistakable: funded RPG launches **roughly double every February** in the ZineQuest era, relative to what the season and the trend would predict, with no such jump beforehand.[^zinequest] But the *mechanism* is a nice twist. ZineQuest worked through sheer volume: it summoned a flood of *small* zines that would never otherwise have launched, while leaving the size of the typical project untouched. The February cohort is 41% zines (versus 3% the rest of the year), and its median pledge is less than half the usual. The program lowered the barrier to small-format publishing and a lot of people walked through the door, exactly as intended. One threat I can't fully dismiss, in fairness: my data captures the projects Kickstarter *promotes*, and ZineQuest is itself a promotion push — so some of the February jump could be promoted zines becoming more *visible* to the crawl rather than purely more *numerous*. The board-game control soaks up platform-wide visibility shifts, but not one aimed specifically at RPG zines, so I'd treat the exact size of the effect as suggestive even though its existence is hard to explain away.
+That February bump is the work of **ZineQuest**, Kickstarter's annual February push for RPG zines, launched in 2019 — and unlike the diffuse 5e rollout, it's sharp enough to actually test. This one is closer to a natural experiment, precisely because it's *RPG-specific*. Kickstarter promotes RPG zines, not board games, so board games make a useful control group. And the effect is unmistakable: funded RPG launches **roughly double every February** in the ZineQuest era, relative to what the season and the trend would predict, with no such jump beforehand.[^zinequest] But the *mechanism* is a a bit nuanced. ZineQuest worked through sheer volume: it summoned a great number of *small* zines that would never otherwise have launched, while leaving the size of the typical project untouched. The February cohort is 41% zines (versus 3% the rest of the year), and its median pledge is less than half the usual. The program lowered the barrier to small-format publishing and a lot of people walked through the door, exactly as intended. One threat I can't fully dismiss: the data captures the projects Kickstarter *promotes*, and ZineQuest is itself a promotion push — so some of the February jump could be promoted zines becoming more *visible* to the Web Robots crawl rather than purely more *numerous*. The board-game control soaks up platform-wide visibility shifts, but not one aimed specifically at RPG zines, so I'd treat the exact size of the effect as suggestive even though its existence is hard to explain away.
 
 ![ZineQuest February launch premium by year](images/zq_feb_premium.png)
 
@@ -210,7 +210,7 @@ That February bump is the work of **ZineQuest**, Kickstarter's annual February p
 
 ### The funding threshold isn't a clean experiment
 
-Here's one more causal idea: can we do a regression discontinuity design? Kickstarter is **all-or-nothing**: reach 100% of your goal and you collect the money; finish at 99% and you get nothing. Two campaigns that end at 99% and 101% are, in terms of underlying demand, nearly identical — yet one is "funded" and one is not. That sharp line looks like a natural experiment: line up the just-funded against the just-missed and ask what *getting funded* does to a creator's future — do they come back and launch again?
+Here's one more causal idea: can we do a regression discontinuity design on making your funding goal? Kickstarter is **all-or-nothing**: reach 100% of your goal and you collect the money; finish at 99% and you get nothing. Two campaigns that end at 99% and 101% are, in terms of underlying demand, nearly identical — yet one is "funded" and one is not. That sharp line looks like a natural experiment: line up the just-funded against the just-missed and ask what *getting funded* does to a creator's future — do they come back and launch again?
 
 In the case of Kickstarter projects, this sadly does not work. When I plot where projects actually land relative to their goal, there's a gaping hole just below the line and a pile-up just above it: in the failure-inclusive data only **94 projects** finished in the 90–100% band, against **1,373** in 100–110%.
 
@@ -236,7 +236,7 @@ The whale post asked how the giants price their tiers. I can't see reward tiers 
 
 [^whales]: The original analysis ("Kickstarter Whales," guest post by Scipio202 on Patchwork Paladin) used ENWorld's list of 53 tabletop RPG campaigns that raised ≥ $1,000,000 and tracked four price points per campaign (cheapest digital, cheapest physical, most-common, and the top "whale" tier). It's a tier-level study of mega-successes; this post is a population-level study of the whole category.
 
-[^classifier]: Sorting RPGs out of "tabletop" is genuinely fuzzy, because the clues that mark something as an RPG often live in the blurb, not the title. I validated the classifier on a *fresh* hand-labeled sample it had never seen: about **77% precision and 71% recall** for the core-RPG class. That's good but imperfect, and the imperfection mostly behaves like random noise in the labels — which *understates* differences between categories rather than inventing them. So the contrasts I report are, if anything, conservative.
+[^classifier]: I validated the classifier on a fresh 165-project Claude hand-labeled sample it had never seen: about 87% precision and high recall (no missed RPGs among 75 sampled non-RPG items) for the core-RPG class — up from ~77%/71% before I tightened it (see [^cleanlabels]). The residual errors are mostly RPG accessories (map packs, dice, card decks) filed as core books rather than wholly unrelated products. For the regressions this label noise mostly behaves like random error that understates category differences (so those contrasts are conservative); for the dollar-share aggregates it's handled by the cleanup in [^cleanlabels].
 
 [^survivorship]: Concretely: in the Web Robots data only about **2% of finished tabletop projects are marked "failed,"** versus a real-world failure rate somewhere around a third to a half. The crawl is essentially "the successful subset." A reassuring cross-check: where the survivor data and the failure-aware data overlap, the funded projects' dollar amounts and backer counts match almost exactly — so the bias is in *which projects appear*, not in the numbers attached to them.
 

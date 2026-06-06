@@ -54,6 +54,9 @@ populated). Dependencies: `requirements.txt` (Python) and `code/r_dependencies.t
 - Money: Web Robots magnitude models use **nominal** USD with year fixed effects;
   Kaggle uses **real** (CPI-adjusted) USD; ICPSR uses **nominal**. Cross-source
   dollar comparisons are labeled accordingly.
-- The TTRPG class label is measured with error (held-out precision ~77%, recall
-  ~71%; `tables/ttrpg_heldout_audit_labeled.csv`); treat it as such — class
-  contrasts are attenuated toward null.
+- The TTRPG class label is measured with error. A fresh 165-project hand-labeled
+  held-out audit after the 2026-06 classifier overhaul (`tables/ttrpg_heldout_audit_v2.csv`)
+  puts core-RPG **precision ≈ 87%** (was ~77%) and **recall high** (0 false negatives
+  among 75 sampled non-RPG items; was ~71%). Residual precision errors are mostly RPG
+  *accessories* — map packs, token/dice goods, card decks — filed as core books, not
+  unrelated products. Treat class contrasts as attenuated toward null.
