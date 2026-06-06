@@ -224,21 +224,21 @@ I would also have liked to study the **2023 OGL crisis** — Wizards of the Coas
 
 ## Back to the whale tiers
 
-The whale post's question — how the money splits across a campaign's reward tiers — is the one I began without the data to answer, since tier-level prices and backer counts live only on individual campaign pages, not in any of the bulk datasets. So I went back and recovered them, reading the *archived* campaign pages from the Internet Archive's Wayback Machine rather than scraping Kickstarter directly.[^tiers] About half of the top-decile RPG books had an archived page complete enough to use — 325 books, roughly 3,300 tiers — so this is a tail of a tail, and approximate: per-tier price × backers recovers about three-quarters of each project's total, the rest being over-pledges, add-ons, and shipping.
+The whale post's question — how the money splits across a campaign's reward tiers — is the one I began without the data to answer, since tier-level prices and backer counts live only on individual campaign pages, not in any of the bulk datasets. So I went back and recovered them, reading the *archived* campaign pages from the Internet Archive's Wayback Machine rather than scraping Kickstarter directly.[^tiers] About half of the top-decile RPG books had an archived page complete enough to use — 325 books, roughly 3,300 tiers — so this is a doubly selected sample, and approximate: per-tier price × backers recovers about three-quarters of each project's total, the rest being over-pledges, add-ons, and shipping.
 
-The first finding echoes the whale post on a much larger sample. The cheap tiers attract the crowd, but the premium tiers hold the money: sorting every tier by price, entry tiers under $25 draw about a seventh of all backers but under **3% of the dollars**, while the $100–500 band holds roughly a quarter of the backers and **over half the dollars**.
+The first finding matches the whale post on a much larger sample. The cheap tiers draw most of the backers; the premium tiers hold most of the money. Sorting every tier by price, entry tiers under $25 account for about a seventh of all backers but under **3% of the dollars**, while the $100–500 band holds roughly a quarter of the backers and **over half the dollars**.
 
 ![Backers vs. dollars by reward-tier price](images/tier_backers_vs_dollars_by_price.png)
 
 *Every reward tier sorted into price bands: share of all backers (grey) vs. approximate share of all pledged dollars (blue). Backers cluster at $50–100; the dollars shift right to the $100–500 premium tiers.*
 
-The RPG-book "whale," though, is a more modest creature than the one in the original post. There, across million-dollar megaprojects, the sweet-spot whale tier sat near $478. Among ordinary funded RPG books, the **top-grossing tier of the median project is about $99** — the price of a deluxe hardcover, not a collector's box.
+The RPG-book "whale," though, sits at a far lower price than in the original post. There, across million-dollar megaprojects, the sweet-spot whale tier sat near $478. Among these top-decile RPG books, the **top-grossing tier of the median project is about $99** — roughly the price of a deluxe hardcover.
 
 ![Price of each project's top-grossing tier](images/tier_sweetspot_hist.png)
 
 *The price of the single highest-revenue tier in each project, which clusters near $100 (median, dashed) — the deluxe-book price point, well below the megaproject whale tiers.*
 
-Nor is the money concentrated in one ceiling tier. The median book offers nine tiers, and its single highest-priced tier accounts for only about 4% of its money — the top tiers are expensive but thinly subscribed. The dollars come from the mid-premium tiers in the middle of the menu, not the top of it.
+Nor is the money concentrated in one ceiling tier. The median book offers nine tiers, and its single highest-priced tier accounts for only about 4% of its money — the top tiers are expensive but thinly subscribed. The dollars come from the mid-priced premium tiers, not the most expensive ones.
 
 One cautious note on whether tier *design* tracks raising more: projects that earn a larger share of their revenue from the high-end tiers do raise much more overall, but that is largely mechanical — a big campaign has whales because it is big — so it is not a lever. The *number* of tiers barely matters, and a high ceiling price on its own, holding the whale share fixed, is if anything slightly negative: a top tier few people buy does not help.
 
@@ -248,7 +248,7 @@ If you're running an RPG Kickstarter, the evidence-backed takeaways are: your **
 
 What I *wouldn't* tell you is that any of these are guaranteed levers. Almost everything here is a correlation drawn from observational data, with all the usual hazards: creators choose their goals strategically, Kickstarter chooses who gets staff-picked, my RPG classifier is right only about three-quarters of the time,[^classifier] and the one result that is in the neighborhood of a causal effect is about a niche February program for zines.
 
-The whale post asked how the giants price their tiers; recovering the tiers for ordinary books gave a smaller-scale version of the same answer — the money sits in the mid-premium tiers, and the book whale is a ~$100 hardcover. Moving from the fifty-three giants to the full forty-five thousand, the RPG corner of Kickstarter is one in which a handful of projects attract most of the money, most projects are small and increasingly likely to succeed, reputation compounds, and a modest February intervention by the platform raises the number of small zines. 
+The whale post asked how the giants price their tiers; recovering the tiers for the top decile of funded books gave a broader, smaller-scale version of the same answer — the money sits in the mid-premium tiers, and the book whale is a ~$100 hardcover. Moving from the fifty-three giants to the full forty-five thousand, the RPG corner of Kickstarter is one in which a handful of projects attract most of the money, most projects are small and increasingly likely to succeed, reputation compounds, and a modest February intervention by the platform raises the number of small zines. 
 
 ---
 
