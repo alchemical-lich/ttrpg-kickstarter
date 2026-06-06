@@ -18,7 +18,7 @@ There's a wonderful free resource called Web Robots that has been crawling Kicks
 
 Then I did the first thing anyone does: I checked the success rate. The data said tabletop RPGs succeed about **98% of the time**.
 
-That number seems wildly inaccurate, and recognizing *why* it's garbage is a good example why figuring our where your data come from is so important. Web Robots builds its snapshots from Kickstarter's public "discover" pages — and those pages overwhelmingly surface projects that are live or that succeeded. Campaigns that flopped quietly fall out of view and never make it into the crawl. So what the crawl really captures is the *survivors* — the live and the victorious — with the quiet failures missing almost entirely.[^survivorship] Asking it for a success rate is like surveying lottery winners about the odds of winning the lottery.
+That number seems wildly inaccurate, and recognizing *why* it's garbage is a good example of why figuring out where your data come from is so important. Web Robots builds its snapshots from Kickstarter's public "discover" pages — and those pages overwhelmingly surface projects that are live or that succeeded. Campaigns that flopped quietly fall out of view and never make it into the crawl. So what the crawl really captures is the *survivors* — the live and the victorious — with the quiet failures missing almost entirely.[^survivorship] Asking it for a success rate is like surveying lottery winners about the odds of winning the lottery.
 
 This is survivorship bias, and it required a bit of additional thinking. It means there are two separate questions hiding inside "what makes a campaign succeed," and they need different data:
 
@@ -47,7 +47,7 @@ The typical project is far humbler. A median *funded* RPG book raises around **$
 
 *What funded projects raise (log scale). RPG books sit to the right of accessories — they raise more — but both distributions have a long tail reaching toward the millions.*
 
-Accessories, meanwhile, play a different game. Their median funding goal is **$300** — basically a formality — and they blow past it: 88% of funded accessories raise at least double their goal, versus 75% for books. "Set a tiny goal and overfund” is a common strategy, especially for accessories.
+Accessories, meanwhile, play a different game. Their median funding goal is **$300** — basically a formality — and they blow past it: 88% of funded accessories raise at least double their goal, versus 75% for books. "Set a tiny goal and overfund" is a common strategy, especially for accessories.
 
 ## The shift toward D&D 5e
 
@@ -146,7 +146,7 @@ The honest way to test "did event X cause the RPG surge" is a difference-in-diff
 
 The boom is real, but pinning it on 5e specifically doesn't survive contact with the data — the treatment was too gradual and too anticipated, and 5e probably lifted D&D *board games* too, contaminating the comparison. *Stranger Things* and *Critical Role* are even harder to test cleanly, so I won't.
 
-One event *does* leave a fingerprint, and tellingly it comes from the platform itself: **ZineQuest**, Kickstarter's annual February push for RPG zines, launched in 2019. This one is closer to a natural experiment, precisely because it's *RPG-specific* — Kickstarter promotes RPG zines, not board games, so board games make an useful control group. And the effect is unmistakable: funded RPG launches **roughly double every February** in the ZineQuest era, relative to what the season and the trend would predict, with no such jump beforehand.[^zinequest] But the *mechanism* is a nice twist. ZineQuest worked through sheer volume: it summoned a flood of *small* zines that would never otherwise have launched, while leaving the size of the typical project untouched. The February cohort is 41% zines (versus 3% the rest of the year), and its median pledge is less than half the usual. The program lowered the barrier to small-format publishing and a lot of people walked through the door, exactly as intended.
+One event *does* leave a fingerprint, and tellingly it comes from the platform itself: **ZineQuest**, Kickstarter's annual February push for RPG zines, launched in 2019. This one is closer to a natural experiment, precisely because it's *RPG-specific* — Kickstarter promotes RPG zines, not board games, so board games make a useful control group. And the effect is unmistakable: funded RPG launches **roughly double every February** in the ZineQuest era, relative to what the season and the trend would predict, with no such jump beforehand.[^zinequest] But the *mechanism* is a nice twist. ZineQuest worked through sheer volume: it summoned a flood of *small* zines that would never otherwise have launched, while leaving the size of the typical project untouched. The February cohort is 41% zines (versus 3% the rest of the year), and its median pledge is less than half the usual. The program lowered the barrier to small-format publishing and a lot of people walked through the door, exactly as intended.
 
 ![ZineQuest February launch premium by year](images/zq_feb_premium.png)
 
