@@ -47,6 +47,7 @@ populated). Dependencies: `requirements.txt` (Python) and `code/r_dependencies.t
 | Analysis | `04_analysis/15_funding_threshold_rd.R` | all-or-nothing RD at 100%-of-goal + McCrary manipulation test |
 | Analysis | `04_analysis/16_composition_5e_split.R` | product-type mix, D&D 5e vs other systems |
 | Analysis | `04_analysis/17_subcat_drivers.R` | system/product-type tags in the magnitude & success models |
+| Analysis | `04_analysis/18_market_landscape.R` | baseline landscape: category dollar-share over time, goal/duration distributions, seasonality, creator maturation (`figures/desc_*`, `tables/desc_*`) |
 
 ## Notes & conventions
 - Seeds (`set.seed(42)`) are set in every script with a stochastic step.

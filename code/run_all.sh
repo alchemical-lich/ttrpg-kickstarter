@@ -58,5 +58,6 @@ $R  code/04_analysis/14_book_composition.R              # composition shares ove
 $R  code/04_analysis/15_funding_threshold_rd.R          # all-or-nothing RD + McCrary test
 $R  code/04_analysis/16_composition_5e_split.R          # product mix: 5e vs other systems
 $R  code/04_analysis/17_subcat_drivers.R                # sub-tags in magnitude + success models
+$R  code/04_analysis/18_market_landscape.R             # baseline market-size / goal / seasonality figures
 
 echo "== DONE. Outputs in tables/ and figures/. =="
