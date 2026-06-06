@@ -59,45 +59,62 @@ SYSTEM = [
     r"\bcairn\b", r"dragonbane", r"daggerheart", r"\bswade\b", r"starfinder",
     r"numenera", r"\bfate\b rpg", r"\bose\b", r"old[\s-]?school essentials",
 ]
-# STRONG accessories: physical products (minis/STL/terrain/dice goods). Their
-# presence makes the campaign an accessory product even if it is themed around an
-# RPG ("minis for D&D") — a distinct, lucrative product class we keep separate.
-ACCESSORY_STRONG = [
-    r"\bstl\b", r"3d[\s-]?print", r"\bminis?\b", r"miniature", r"\bfigurine",
-    r"\bterrain\b", r"dice tower", r"dice set", r"dice tray", r"dice vault",
-    r"dice goblin", r"\d{2}\s?mm",  # "28mm", "30 mm" scale = minis
-]
-# WEAK accessories: count as accessory ONLY when no core/system RPG language is
-# present (a rulebook that bundles a GM screen stays a TTRPG).
-ACCESSORY_WEAK = [
-    r"\bplaymat\b", r"battle ?map", r"\btokens?\b", r"enamel pin",
-    r"\bbinder\b", r"card sleeves", r"map pack", r"\bdice\b",
-]
 # Strong RPG-content nouns: a rulebook/module/etc. is core TTRPG even if the
-# campaign also bundles miniatures/STL (book is the product). Protects against
-# over-demotion to "accessory".
+# campaign also bundles miniatures/STL (the book is the product).
 CONTENT_CORE = [
     r"rule[\s-]?book", r"source[\s-]?book", r"\bsupplement", r"\bmodule\b",
     r"compendium", r"\bcodex\b", r"bestiary", r"monster manual", r"rpg book",
     r"rpg zine", r"\bruleset\b", r"new classes", r"class expansion",
-    r"adventure module", r"adventure anthology", r"\bsplatbook\b",
+    r"adventure module", r"adventure anthology", r"\bsplatbook\b", r"campaign setting",
+    r"adventure path", r"player'?s guide", r"gm(?:'s)? guide",
 ]
-# RPG play-aids / props / software / media — reference RPGs but are not a game
-# system; demote to "accessory" even when RPG words are present.
-PLAY_AID = [
-    r"battle ?map", r"map pack", r"maps for", r"\bvtt\b", r"spell scrolls?",
-    r"prop scrolls?", r"initiative board", r"initiative cards?",
-    r"companion app", r"\bmobile\b", r"digital cartographer", r"soundtrack",
-    r"\balbum\b", r"game table", r"storage box", r"storage with", r"drink coaster",
-    r"playing card deck",
+# STRONG physical accessory PRODUCTS — the campaign IS the object, not a book.
+# These win over a mere RPG mention ("dice for D&D" is an accessory, not a rulebook).
+ACCESSORY_PRODUCT = [
+    r"\bstl\b", r"3d[\s-]?print", r"\bminis?\b", r"miniature", r"\bfigurine",
+    r"action figure", r"\bterrain\b", r"\bdiorama\b", r"\d{2}\s?mm",
+    r"electronic dice", r"\bdice\b", r"dice (?:set|tower|tray|vault|goblin)",
+    r"metal dice", r"gemstone dice", r"enamel pin", r"jewell?ry", r"\bnotebook\b",
+    r"battle ?map", r"battle ?mat", r"map tiles?", r"dungeon tiles", r"\bplaymat\b",
+    r"gm screen", r"game master screen", r"\btarot\b", r"card deck", r"deck of many",
+    r"spell cards?", r"storage (?:box|vault|case)", r"\bcoaster", r"playing card deck",
 ]
-# Board/card/war games — non-RPG game products.
-BOARDCARD = [
-    r"board game", r"card game", r"deck[\s-]?build", r"trading card",
-    r"\btcg\b", r"\bccg\b", r"tile[\s-]?(laying|game)", r"\bwargame\b",
-    r"war game", r"miniatures? game", r"skirmish", r"party game",
-    r"legacy game", r"push[\s-]?your[\s-]?luck", r"worker placement",
-    r"euro[\s-]?game", r"\bboardgame\b",
+# WEAK accessories: count only when no RPG content/cue (a rulebook bundling tokens stays a book).
+ACCESSORY_WEAK = [r"\btokens?\b", r"\bbinder\b", r"card sleeves", r"map pack",
+                  r"initiative (?:board|cards?)", r"\bvtt\b", r"companion app", r"soundtrack"]
+# Non-RPG GAME forms — board/card/war/video games. NOT books even when wearing RPG
+# flavour, UNLESS the TITLE literally says "roleplaying game"/"ttrpg" or there is real
+# rulebook CONTENT. (This is the key fix: a mere "RPG"/"D&D" mention no longer rescues
+# a board game.) Title-evocative board games with no form word are caught by overrides.
+GAME_FORM = [
+    r"board ?game", r"\bboardgame\b", r"card game", r"deck[\s-]?build(?:er|ing)?",
+    r"trading card", r"\btcg\b", r"\bccg\b", r"miniatures? game", r"\bwargame\b",
+    r"war game", r"\bskirmish\b", r"strategy (?:battle|game)", r"\bbattle game\b",
+    r"legacy game", r"euro[\s-]?game", r"worker placement", r"push[\s-]?your[\s-]?luck",
+    r"tile[\s-]?laying", r"party game", r"co-?op(?:erative)? game",
+    r"no (?:game ?master|gm) (?:required|needed)", r"gamemaster-?less",
+    r"video ?game", r"roguelike", r"\bsteam\b", r"playstation", r"nintendo", r"pc game",
+]
+# Curated overrides (hand-verified) — by lowercase TITLE substring.
+CURATED_NONTT = [
+    "darkest dungeon: the board game","sorcery: contested realm","pixels - the electronic",
+    "realm brew","horror on the orient express","trudvang legends","robotech",
+    "the deck of many","super dungeon explore","dragonstone dice","tidal blades",
+    "obojima tales from yatamon","too many bones","elder dice","ascendice","elixir dice",
+    "time of legends","folklore: the affliction","wyrmwood tabletop tiles",
+    "wyrmwood magnetic game master screen","return to planet apocalypse","euthia","godice",
+    "valor & villainy","apocrypha adventure card game","arcadia quest","rpg inspired jewelry",
+    "bisoulovely","infinidungeon","bardsung","npc rivals","d6: dungeons, dudes","damage dice",
+    "the adventurer's tarot","elements of inspiration","one last fight","oracle rpg app","ember",
+    "animal adventures: tales of dungeons and dog","animal adventures: tales of cats",
+    "vampire: the masquerade - heritage","the wyrmwood hero vault","gametee","unspeakable words",
+    "cyberpunk red: combat zone","fatum, dark myths","darklands: a world of war",
+    "forgotten world: fantasy figures","stonespine architects","realm: the soul searchers",
+    "munchkin starfinder","stones dungeon tiles",
+]
+CURATED_TTRPG = [
+    "avatar legends","root: the","lairs & legends","ariadne's book of legends","shadowrun",
+    "dc heroes","corvus belli","infinity roleplaying","mythic legions: the roleplaying",
 ]
 
 
@@ -106,8 +123,9 @@ def compile_lex(terms):
 
 
 RE = {k: compile_lex(v) for k, v in dict(
-    core=CORE, system=SYSTEM, content=CONTENT_CORE, play_aid=PLAY_AID,
-    acc_strong=ACCESSORY_STRONG, acc_weak=ACCESSORY_WEAK, boardcard=BOARDCARD).items()}
+    core=CORE, system=SYSTEM, content=CONTENT_CORE,
+    acc_prod=ACCESSORY_PRODUCT, acc_weak=ACCESSORY_WEAK, game_form=GAME_FORM).items()}
+TITLE_RPG = re.compile(r"role[\s-]?playing game|\bttrpg\b", re.I)
 
 
 def matches(text, rx):
@@ -115,33 +133,33 @@ def matches(text, rx):
 
 
 def classify_row(name, blurb):
-    text = f"{name or ''}  {blurb or ''}"
+    name = name or ""; blurb = blurb or ""
+    nl = name.lower()
+    for s in CURATED_NONTT:
+        if s in nl:
+            return "nontt", "override:nontt"
+    for s in CURATED_TTRPG:
+        if s in nl:
+            return "ttrpg", "override:ttrpg"
+    text = f"{name}  {blurb}"
     hits = {k: matches(text, rx) for k, rx in RE.items()}
-    core, sysm, content, aid, accs, accw, bc = (
-        bool(hits[k]) for k in
-        ("core", "system", "content", "play_aid", "acc_strong", "acc_weak", "boardcard"))
-    rpg = core or sysm  # explicit RPG cue (rpg/d&d/pathfinder/5e/osr/roleplay/GM/...)
-    # An accessory is a TTRPG accessory only with an explicit RPG cue; else "other".
+    core, sysm, content, accp, accw, gform = (
+        bool(hits[k]) for k in ("core", "system", "content", "acc_prod", "acc_weak", "game_form"))
+    rpg = core or sysm                       # RPG cue (rpg/d&d/5e/osr/roleplay/GM/...)
+    title_rpg = bool(TITLE_RPG.search(name))  # full phrase in title — protects e.g. "Root: The ... Roleplaying Game"
     acc = "ttrpg_accessory" if rpg else "other_accessory"
-    if content and not bc:
-        # genuine rulebook/module/sourcebook/codex -> core TTRPG even if it bundles minis
-        label = "ttrpg"
-    elif aid:
-        # maps / props / initiative aids / apps / soundtracks
-        label = acc
-    elif accs:
-        # physical accessory product (minis/STL/terrain/dice goods)
-        label = acc
-    elif core and not bc:
-        label = "ttrpg"
-    elif sysm and not bc:
-        label = "ttrpg"
-    elif rpg and accw:          # rulebook bundling a screen/tokens/dice -> still TTRPG
-        label = "ttrpg"
-    elif accw and not rpg:
+
+    if content and not gform:
+        label = "ttrpg"                      # genuine rulebook/module/etc. (even if it bundles minis)
+    elif gform:
+        # board/card/video game: keep TTRPG only if the title says so or there's real book content
+        label = "ttrpg" if (title_rpg or content) else "nontt"
+    elif accp:
+        label = acc                          # physical accessory product (minis/dice/tiles/jewelry/...)
+    elif rpg:
+        label = "ttrpg"                      # RPG content/cue, no game-form, no product
+    elif accw:
         label = "other_accessory"
-    elif core and bc:           # RPG language + board/card terms -> ambiguous, keep TTRPG-leaning
-        label = "ttrpg"
     else:
         label = "nontt"
     matched = ";".join(f"{k}:{','.join(hits[k])}" for k in hits if hits[k])

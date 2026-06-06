@@ -1,183 +1,183 @@
 grp,launch_year,product_type,n,share
-D&D 5e books,2015,rulebook,3,0.1
-D&D 5e books,2015,setting,2,0.06666666666666667
-D&D 5e books,2015,adventure,21,0.7
-D&D 5e books,2015,bestiary,1,0.03333333333333333
-D&D 5e books,2015,other,3,0.1
-D&D 5e books,2016,rulebook,3,0.0625
-D&D 5e books,2016,setting,5,0.10416666666666667
-D&D 5e books,2016,adventure,22,0.4583333333333333
-D&D 5e books,2016,supplement,3,0.0625
-D&D 5e books,2016,bestiary,9,0.1875
-D&D 5e books,2016,gm_tools,1,0.020833333333333332
-D&D 5e books,2016,other,5,0.10416666666666667
-D&D 5e books,2017,rulebook,4,0.0449438202247191
-D&D 5e books,2017,setting,5,0.056179775280898875
-D&D 5e books,2017,adventure,52,0.5842696629213483
-D&D 5e books,2017,supplement,10,0.11235955056179775
-D&D 5e books,2017,bestiary,8,0.0898876404494382
-D&D 5e books,2017,gm_tools,1,0.011235955056179775
-D&D 5e books,2017,other,9,0.10112359550561797
-D&D 5e books,2018,rulebook,6,0.05263157894736842
-D&D 5e books,2018,setting,11,0.09649122807017543
-D&D 5e books,2018,adventure,49,0.4298245614035088
-D&D 5e books,2018,supplement,10,0.08771929824561403
-D&D 5e books,2018,bestiary,19,0.16666666666666666
-D&D 5e books,2018,gm_tools,1,0.008771929824561403
-D&D 5e books,2018,other,18,0.15789473684210525
-D&D 5e books,2019,rulebook,13,0.07428571428571429
-D&D 5e books,2019,setting,19,0.10857142857142857
-D&D 5e books,2019,adventure,64,0.3657142857142857
-D&D 5e books,2019,supplement,17,0.09714285714285714
-D&D 5e books,2019,bestiary,21,0.12
-D&D 5e books,2019,gm_tools,2,0.011428571428571429
-D&D 5e books,2019,zine,11,0.06285714285714286
-D&D 5e books,2019,other,28,0.16
-D&D 5e books,2020,rulebook,13,0.05701754385964912
-D&D 5e books,2020,setting,27,0.11842105263157894
-D&D 5e books,2020,adventure,77,0.33771929824561403
-D&D 5e books,2020,supplement,31,0.13596491228070176
-D&D 5e books,2020,bestiary,31,0.13596491228070176
-D&D 5e books,2020,gm_tools,5,0.021929824561403508
-D&D 5e books,2020,zine,11,0.04824561403508772
-D&D 5e books,2020,other,33,0.14473684210526316
-D&D 5e books,2021,rulebook,18,0.07142857142857142
-D&D 5e books,2021,setting,27,0.10714285714285714
-D&D 5e books,2021,adventure,74,0.29365079365079366
-D&D 5e books,2021,supplement,41,0.1626984126984127
-D&D 5e books,2021,bestiary,34,0.1349206349206349
-D&D 5e books,2021,gm_tools,8,0.031746031746031744
-D&D 5e books,2021,zine,24,0.09523809523809523
-D&D 5e books,2021,other,26,0.10317460317460317
-D&D 5e books,2022,rulebook,10,0.07751937984496124
-D&D 5e books,2022,setting,7,0.05426356589147287
-D&D 5e books,2022,adventure,42,0.32558139534883723
-D&D 5e books,2022,supplement,17,0.13178294573643412
-D&D 5e books,2022,bestiary,31,0.24031007751937986
-D&D 5e books,2022,gm_tools,1,0.007751937984496124
-D&D 5e books,2022,zine,2,0.015503875968992248
-D&D 5e books,2022,other,19,0.14728682170542637
-D&D 5e books,2023,rulebook,4,0.034782608695652174
-D&D 5e books,2023,setting,9,0.0782608695652174
-D&D 5e books,2023,adventure,49,0.4260869565217391
-D&D 5e books,2023,supplement,17,0.14782608695652175
-D&D 5e books,2023,bestiary,23,0.2
-D&D 5e books,2023,gm_tools,1,0.008695652173913044
-D&D 5e books,2023,other,12,0.10434782608695652
-D&D 5e books,2024,rulebook,31,0.05938697318007663
-D&D 5e books,2024,setting,22,0.0421455938697318
-D&D 5e books,2024,adventure,233,0.446360153256705
-D&D 5e books,2024,supplement,54,0.10344827586206896
-D&D 5e books,2024,bestiary,80,0.1532567049808429
-D&D 5e books,2024,gm_tools,10,0.019157088122605363
-D&D 5e books,2024,zine,15,0.028735632183908046
-D&D 5e books,2024,other,77,0.1475095785440613
-D&D 5e books,2025,rulebook,23,0.05515587529976019
-D&D 5e books,2025,setting,31,0.07434052757793765
-D&D 5e books,2025,adventure,163,0.3908872901678657
-D&D 5e books,2025,supplement,68,0.1630695443645084
-D&D 5e books,2025,bestiary,60,0.14388489208633093
-D&D 5e books,2025,gm_tools,4,0.009592326139088728
-D&D 5e books,2025,zine,14,0.03357314148681055
-D&D 5e books,2025,other,54,0.12949640287769784
-D&D 5e books,2026,rulebook,7,0.05511811023622047
-D&D 5e books,2026,setting,10,0.07874015748031496
-D&D 5e books,2026,adventure,42,0.33070866141732286
-D&D 5e books,2026,supplement,27,0.2125984251968504
-D&D 5e books,2026,bestiary,16,0.12598425196850394
-D&D 5e books,2026,gm_tools,5,0.03937007874015748
-D&D 5e books,2026,zine,5,0.03937007874015748
-D&D 5e books,2026,other,15,0.11811023622047244
-Other-system books,2015,rulebook,75,0.3138075313807531
-Other-system books,2015,setting,35,0.14644351464435146
-Other-system books,2015,adventure,68,0.28451882845188287
-Other-system books,2015,supplement,17,0.07112970711297072
-Other-system books,2015,bestiary,13,0.05439330543933055
-Other-system books,2015,gm_tools,6,0.02510460251046025
-Other-system books,2015,other,25,0.10460251046025104
-Other-system books,2016,rulebook,90,0.3435114503816794
-Other-system books,2016,setting,47,0.17938931297709923
-Other-system books,2016,adventure,75,0.2862595419847328
-Other-system books,2016,supplement,13,0.04961832061068702
-Other-system books,2016,bestiary,14,0.05343511450381679
-Other-system books,2016,gm_tools,7,0.026717557251908396
-Other-system books,2016,other,16,0.061068702290076333
-Other-system books,2017,rulebook,120,0.34782608695652173
-Other-system books,2017,setting,54,0.1565217391304348
-Other-system books,2017,adventure,86,0.2492753623188406
-Other-system books,2017,supplement,21,0.06086956521739131
-Other-system books,2017,bestiary,21,0.06086956521739131
-Other-system books,2017,gm_tools,18,0.05217391304347826
-Other-system books,2017,other,25,0.07246376811594203
-Other-system books,2018,rulebook,147,0.3602941176470588
-Other-system books,2018,setting,48,0.11764705882352941
-Other-system books,2018,adventure,113,0.2769607843137255
-Other-system books,2018,supplement,24,0.058823529411764705
-Other-system books,2018,bestiary,29,0.07107843137254902
-Other-system books,2018,gm_tools,14,0.03431372549019608
-Other-system books,2018,zine,3,0.007352941176470588
-Other-system books,2018,other,30,0.07352941176470588
-Other-system books,2019,rulebook,170,0.3142329020332717
-Other-system books,2019,setting,67,0.12384473197781885
-Other-system books,2019,adventure,130,0.24029574861367836
-Other-system books,2019,supplement,19,0.03512014787430684
-Other-system books,2019,bestiary,35,0.06469500924214418
-Other-system books,2019,gm_tools,23,0.04251386321626617
-Other-system books,2019,zine,65,0.12014787430683918
-Other-system books,2019,other,32,0.059149722735674676
-Other-system books,2020,rulebook,184,0.2987012987012987
-Other-system books,2020,setting,48,0.07792207792207792
-Other-system books,2020,adventure,120,0.19480519480519481
-Other-system books,2020,supplement,31,0.05032467532467533
-Other-system books,2020,bestiary,29,0.04707792207792208
-Other-system books,2020,gm_tools,15,0.024350649350649352
-Other-system books,2020,zine,151,0.24512987012987014
-Other-system books,2020,other,38,0.06168831168831169
-Other-system books,2021,rulebook,155,0.26405451448040884
-Other-system books,2021,setting,48,0.0817717206132879
-Other-system books,2021,adventure,103,0.17546848381601363
-Other-system books,2021,supplement,21,0.03577512776831346
-Other-system books,2021,bestiary,20,0.034071550255536626
-Other-system books,2021,gm_tools,7,0.01192504258943782
-Other-system books,2021,zine,207,0.3526405451448041
-Other-system books,2021,other,26,0.044293015332197615
-Other-system books,2022,rulebook,76,0.2714285714285714
-Other-system books,2022,setting,26,0.09285714285714286
-Other-system books,2022,adventure,79,0.28214285714285714
-Other-system books,2022,supplement,10,0.03571428571428571
-Other-system books,2022,bestiary,24,0.08571428571428572
-Other-system books,2022,gm_tools,10,0.03571428571428571
-Other-system books,2022,zine,35,0.125
-Other-system books,2022,other,20,0.07142857142857142
-Other-system books,2023,rulebook,67,0.35638297872340424
-Other-system books,2023,setting,16,0.0851063829787234
-Other-system books,2023,adventure,47,0.25
-Other-system books,2023,supplement,7,0.03723404255319149
-Other-system books,2023,bestiary,18,0.09574468085106383
-Other-system books,2023,gm_tools,6,0.031914893617021274
-Other-system books,2023,zine,7,0.03723404255319149
-Other-system books,2023,other,20,0.10638297872340426
-Other-system books,2024,rulebook,239,0.33804809052333806
-Other-system books,2024,setting,70,0.09900990099009901
-Other-system books,2024,adventure,186,0.26308345120226306
-Other-system books,2024,supplement,39,0.055162659123055166
-Other-system books,2024,bestiary,50,0.07072135785007072
-Other-system books,2024,gm_tools,18,0.02545968882602546
-Other-system books,2024,zine,69,0.09759547383309759
-Other-system books,2024,other,36,0.05091937765205092
-Other-system books,2025,rulebook,201,0.3073394495412844
-Other-system books,2025,setting,67,0.10244648318042814
-Other-system books,2025,adventure,170,0.2599388379204893
-Other-system books,2025,supplement,30,0.045871559633027525
-Other-system books,2025,bestiary,47,0.07186544342507645
-Other-system books,2025,gm_tools,21,0.03211009174311927
-Other-system books,2025,zine,73,0.11162079510703364
-Other-system books,2025,other,45,0.06880733944954129
-Other-system books,2026,rulebook,86,0.3269961977186312
-Other-system books,2026,setting,20,0.07604562737642585
-Other-system books,2026,adventure,73,0.27756653992395436
-Other-system books,2026,supplement,14,0.053231939163498096
-Other-system books,2026,bestiary,21,0.07984790874524715
-Other-system books,2026,gm_tools,10,0.03802281368821293
-Other-system books,2026,zine,30,0.11406844106463879
-Other-system books,2026,other,9,0.034220532319391636
+D&D 5e books,2015,rulebook,2,0.06896551724137931
+D&D 5e books,2015,setting,2,0.06896551724137931
+D&D 5e books,2015,adventure,21,0.7241379310344828
+D&D 5e books,2015,bestiary,1,0.034482758620689655
+D&D 5e books,2015,other,3,0.10344827586206896
+D&D 5e books,2016,rulebook,3,0.06521739130434782
+D&D 5e books,2016,setting,4,0.08695652173913043
+D&D 5e books,2016,adventure,22,0.4782608695652174
+D&D 5e books,2016,supplement,3,0.06521739130434782
+D&D 5e books,2016,bestiary,9,0.1956521739130435
+D&D 5e books,2016,gm_tools,1,0.021739130434782608
+D&D 5e books,2016,other,4,0.08695652173913043
+D&D 5e books,2017,rulebook,3,0.03529411764705882
+D&D 5e books,2017,setting,4,0.047058823529411764
+D&D 5e books,2017,adventure,52,0.611764705882353
+D&D 5e books,2017,supplement,9,0.10588235294117647
+D&D 5e books,2017,bestiary,7,0.08235294117647059
+D&D 5e books,2017,gm_tools,1,0.011764705882352941
+D&D 5e books,2017,other,9,0.10588235294117647
+D&D 5e books,2018,rulebook,5,0.04807692307692308
+D&D 5e books,2018,setting,11,0.10576923076923077
+D&D 5e books,2018,adventure,47,0.4519230769230769
+D&D 5e books,2018,supplement,8,0.07692307692307693
+D&D 5e books,2018,bestiary,18,0.17307692307692307
+D&D 5e books,2018,gm_tools,1,0.009615384615384616
+D&D 5e books,2018,other,14,0.1346153846153846
+D&D 5e books,2019,rulebook,10,0.06493506493506493
+D&D 5e books,2019,setting,19,0.12337662337662338
+D&D 5e books,2019,adventure,62,0.4025974025974026
+D&D 5e books,2019,supplement,15,0.09740259740259741
+D&D 5e books,2019,bestiary,17,0.11038961038961038
+D&D 5e books,2019,gm_tools,1,0.006493506493506494
+D&D 5e books,2019,zine,11,0.07142857142857142
+D&D 5e books,2019,other,19,0.12337662337662338
+D&D 5e books,2020,rulebook,7,0.03349282296650718
+D&D 5e books,2020,setting,25,0.11961722488038277
+D&D 5e books,2020,adventure,77,0.3684210526315789
+D&D 5e books,2020,supplement,26,0.12440191387559808
+D&D 5e books,2020,bestiary,32,0.15311004784688995
+D&D 5e books,2020,gm_tools,7,0.03349282296650718
+D&D 5e books,2020,zine,11,0.05263157894736842
+D&D 5e books,2020,other,24,0.11483253588516747
+D&D 5e books,2021,rulebook,11,0.046413502109704644
+D&D 5e books,2021,setting,27,0.11392405063291139
+D&D 5e books,2021,adventure,71,0.29957805907172996
+D&D 5e books,2021,supplement,37,0.15611814345991562
+D&D 5e books,2021,bestiary,33,0.13924050632911392
+D&D 5e books,2021,gm_tools,10,0.04219409282700422
+D&D 5e books,2021,zine,25,0.10548523206751055
+D&D 5e books,2021,other,23,0.0970464135021097
+D&D 5e books,2022,rulebook,8,0.06504065040650407
+D&D 5e books,2022,setting,7,0.056910569105691054
+D&D 5e books,2022,adventure,42,0.34146341463414637
+D&D 5e books,2022,supplement,17,0.13821138211382114
+D&D 5e books,2022,bestiary,30,0.24390243902439024
+D&D 5e books,2022,gm_tools,3,0.024390243902439025
+D&D 5e books,2022,zine,2,0.016260162601626018
+D&D 5e books,2022,other,14,0.11382113821138211
+D&D 5e books,2023,rulebook,3,0.02631578947368421
+D&D 5e books,2023,setting,9,0.07894736842105263
+D&D 5e books,2023,adventure,48,0.42105263157894735
+D&D 5e books,2023,supplement,17,0.14912280701754385
+D&D 5e books,2023,bestiary,23,0.20175438596491227
+D&D 5e books,2023,gm_tools,1,0.008771929824561403
+D&D 5e books,2023,other,13,0.11403508771929824
+D&D 5e books,2024,rulebook,29,0.05742574257425743
+D&D 5e books,2024,setting,22,0.04356435643564356
+D&D 5e books,2024,adventure,227,0.4495049504950495
+D&D 5e books,2024,supplement,55,0.10891089108910891
+D&D 5e books,2024,bestiary,79,0.15643564356435644
+D&D 5e books,2024,gm_tools,10,0.019801980198019802
+D&D 5e books,2024,zine,15,0.0297029702970297
+D&D 5e books,2024,other,68,0.13465346534653466
+D&D 5e books,2025,rulebook,21,0.051470588235294115
+D&D 5e books,2025,setting,30,0.07352941176470588
+D&D 5e books,2025,adventure,158,0.3872549019607843
+D&D 5e books,2025,supplement,67,0.1642156862745098
+D&D 5e books,2025,bestiary,64,0.1568627450980392
+D&D 5e books,2025,gm_tools,5,0.012254901960784314
+D&D 5e books,2025,zine,14,0.03431372549019608
+D&D 5e books,2025,other,49,0.12009803921568628
+D&D 5e books,2026,rulebook,5,0.04132231404958678
+D&D 5e books,2026,setting,10,0.08264462809917356
+D&D 5e books,2026,adventure,38,0.3140495867768595
+D&D 5e books,2026,supplement,27,0.2231404958677686
+D&D 5e books,2026,bestiary,17,0.14049586776859505
+D&D 5e books,2026,gm_tools,5,0.04132231404958678
+D&D 5e books,2026,zine,5,0.04132231404958678
+D&D 5e books,2026,other,14,0.11570247933884298
+Other-system books,2015,rulebook,64,0.29767441860465116
+Other-system books,2015,setting,36,0.16744186046511628
+Other-system books,2015,adventure,63,0.2930232558139535
+Other-system books,2015,supplement,17,0.07906976744186046
+Other-system books,2015,bestiary,13,0.06046511627906977
+Other-system books,2015,gm_tools,6,0.027906976744186046
+Other-system books,2015,other,16,0.07441860465116279
+Other-system books,2016,rulebook,82,0.36123348017621143
+Other-system books,2016,setting,43,0.1894273127753304
+Other-system books,2016,adventure,59,0.2599118942731278
+Other-system books,2016,supplement,12,0.05286343612334802
+Other-system books,2016,bestiary,12,0.05286343612334802
+Other-system books,2016,gm_tools,6,0.02643171806167401
+Other-system books,2016,other,13,0.05726872246696035
+Other-system books,2017,rulebook,109,0.34824281150159747
+Other-system books,2017,setting,52,0.16613418530351437
+Other-system books,2017,adventure,75,0.23961661341853036
+Other-system books,2017,supplement,20,0.06389776357827476
+Other-system books,2017,bestiary,21,0.0670926517571885
+Other-system books,2017,gm_tools,16,0.051118210862619806
+Other-system books,2017,other,20,0.06389776357827476
+Other-system books,2018,rulebook,129,0.35537190082644626
+Other-system books,2018,setting,47,0.12947658402203857
+Other-system books,2018,adventure,100,0.27548209366391185
+Other-system books,2018,supplement,21,0.05785123966942149
+Other-system books,2018,bestiary,26,0.07162534435261708
+Other-system books,2018,gm_tools,13,0.03581267217630854
+Other-system books,2018,zine,3,0.008264462809917356
+Other-system books,2018,other,24,0.06611570247933884
+Other-system books,2019,rulebook,137,0.28482328482328484
+Other-system books,2019,setting,59,0.12266112266112267
+Other-system books,2019,adventure,120,0.2494802494802495
+Other-system books,2019,supplement,19,0.0395010395010395
+Other-system books,2019,bestiary,33,0.06860706860706861
+Other-system books,2019,gm_tools,26,0.05405405405405406
+Other-system books,2019,zine,63,0.13097713097713098
+Other-system books,2019,other,24,0.0498960498960499
+Other-system books,2020,rulebook,152,0.2695035460992908
+Other-system books,2020,setting,46,0.08156028368794327
+Other-system books,2020,adventure,117,0.2074468085106383
+Other-system books,2020,supplement,28,0.04964539007092199
+Other-system books,2020,bestiary,27,0.047872340425531915
+Other-system books,2020,gm_tools,18,0.031914893617021274
+Other-system books,2020,zine,148,0.2624113475177305
+Other-system books,2020,other,28,0.04964539007092199
+Other-system books,2021,rulebook,144,0.254416961130742
+Other-system books,2021,setting,48,0.08480565371024736
+Other-system books,2021,adventure,93,0.16431095406360424
+Other-system books,2021,supplement,22,0.038869257950530034
+Other-system books,2021,bestiary,19,0.03356890459363958
+Other-system books,2021,gm_tools,14,0.024734982332155476
+Other-system books,2021,zine,206,0.36395759717314485
+Other-system books,2021,other,20,0.0353356890459364
+Other-system books,2022,rulebook,65,0.2529182879377432
+Other-system books,2022,setting,24,0.0933852140077821
+Other-system books,2022,adventure,76,0.29571984435797666
+Other-system books,2022,supplement,10,0.038910505836575876
+Other-system books,2022,bestiary,21,0.08171206225680934
+Other-system books,2022,gm_tools,10,0.038910505836575876
+Other-system books,2022,zine,34,0.13229571984435798
+Other-system books,2022,other,17,0.06614785992217899
+Other-system books,2023,rulebook,57,0.3202247191011236
+Other-system books,2023,setting,18,0.10112359550561797
+Other-system books,2023,adventure,43,0.24157303370786518
+Other-system books,2023,supplement,8,0.0449438202247191
+Other-system books,2023,bestiary,17,0.09550561797752809
+Other-system books,2023,gm_tools,11,0.06179775280898876
+Other-system books,2023,zine,7,0.03932584269662921
+Other-system books,2023,other,17,0.09550561797752809
+Other-system books,2024,rulebook,215,0.3067047075606277
+Other-system books,2024,setting,71,0.10128388017118402
+Other-system books,2024,adventure,183,0.26105563480741795
+Other-system books,2024,supplement,43,0.06134094151212553
+Other-system books,2024,bestiary,48,0.06847360912981455
+Other-system books,2024,gm_tools,39,0.05563480741797432
+Other-system books,2024,zine,69,0.09843081312410841
+Other-system books,2024,other,33,0.047075606276747506
+Other-system books,2025,rulebook,181,0.2924071082390953
+Other-system books,2025,setting,63,0.10177705977382875
+Other-system books,2025,adventure,167,0.26978998384491115
+Other-system books,2025,supplement,28,0.045234248788368334
+Other-system books,2025,bestiary,41,0.06623586429725363
+Other-system books,2025,gm_tools,28,0.045234248788368334
+Other-system books,2025,zine,70,0.11308562197092084
+Other-system books,2025,other,41,0.06623586429725363
+Other-system books,2026,rulebook,77,0.29844961240310075
+Other-system books,2026,setting,19,0.07364341085271318
+Other-system books,2026,adventure,73,0.28294573643410853
+Other-system books,2026,supplement,14,0.05426356589147287
+Other-system books,2026,bestiary,20,0.07751937984496124
+Other-system books,2026,gm_tools,15,0.05813953488372093
+Other-system books,2026,zine,31,0.12015503875968993
+Other-system books,2026,other,9,0.03488372093023256
