@@ -126,6 +126,18 @@ RE = {k: compile_lex(v) for k, v in dict(
     core=CORE, system=SYSTEM, content=CONTENT_CORE,
     acc_prod=ACCESSORY_PRODUCT, acc_weak=ACCESSORY_WEAK, game_form=GAME_FORM).items()}
 TITLE_RPG = re.compile(r"role[\s-]?playing game|\bttrpg\b", re.I)
+# Clear accessory PRODUCTS identified from the TITLE (the product type lives in the
+# title; an adventure that merely *mentions* maps in its blurb must NOT be demoted).
+# These override content words (e.g. "Bestiary Cards" is a card deck, not a book),
+# unless the title itself says it's a roleplaying game.
+TITLE_ACCESSORY = re.compile(
+    r"\bcard deck\b|\bdeck of\b"
+    r"|\b(?:playing|spell|bestiary|creature|monster|encounter|character|npc|tarot|oracle|rumou?r|loot|item)\s+cards?\b"
+    r"|\bmaps\b|\bmap pack\b|\bmap tiles?\b|battle ?maps?\b"          # plural/marked maps = a map product
+    r"|\btokens?\b|\bstamps?\b|\bstencils?\b|stat[\s-]?trackers?"
+    r"|\btiles\b|\bscenery\b|\bplaymat\b|gm screen|game master screen"
+    r"|\brunes?\b|\benamel\b|\bjournals?\b"
+    r"|\b(?:t-?shirts?|shirts?|hoodies?|mugs?|enamel pins?)\b", re.I)
 
 
 def matches(text, rx):
@@ -147,9 +159,12 @@ def classify_row(name, blurb):
         bool(hits[k]) for k in ("core", "system", "content", "acc_prod", "acc_weak", "game_form"))
     rpg = core or sysm                       # RPG cue (rpg/d&d/5e/osr/roleplay/GM/...)
     title_rpg = bool(TITLE_RPG.search(name))  # full phrase in title — protects e.g. "Root: The ... Roleplaying Game"
+    title_acc = bool(TITLE_ACCESSORY.search(name)) and not title_rpg
     acc = "ttrpg_accessory" if rpg else "other_accessory"
 
-    if content and not gform:
+    if title_acc:
+        label = acc                          # clear accessory product by title (card deck / map pack)
+    elif content and not gform:
         label = "ttrpg"                      # genuine rulebook/module/etc. (even if it bundles minis)
     elif gform:
         # board/card/video game: keep TTRPG only if the title says so or there's real book content

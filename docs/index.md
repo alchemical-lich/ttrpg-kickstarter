@@ -41,7 +41,7 @@ First, a sense of scale — how big is this corner of Kickstarter, and is it gro
 
 *Funded pledged dollars on Kickstarter's Games category, stacked by subcategory. Tabletop dominates — non-RPG tabletop (green, mostly board games) plus the RPG bands (blue core, orange accessories) at the bottom — towering over video games, playing cards, and the rest. The red band is the 2022–23 coverage gap; the dip there is the missing crawls, not a real downturn.*
 
-Let’s take a closer look at ttrpgs only. On *cleaned* labels (after removing the board games, dice, and card games a keyword classifier had mistakenly filed under "RPG"[^cleanlabels]), core RPGs go from about **7% of Kickstarter-Games dollars** in the mid-2010s to the **mid-to-high teens** by the 2020s. The raw line touches ~24% in 2024, but that single year is strongly affected by the $15M Comer RPG campaign. Trimming the top 1% of projects pulls even 2024 down near 14%.[^market] 
+Let’s take a closer look at ttrpgs only. On *cleaned* labels (after removing the board games, dice, and card games a keyword classifier had mistakenly filed under "RPG"[^cleanlabels]), core RPGs go from about **7% of Kickstarter-Games dollars** in the mid-2010s to the **mid-to-high teens** by the 2020s. The raw line touches ~24% in 2024, but that single year is strongly affected by the $15M Cosmere RPG campaign. Trimming the top 1% of projects pulls even 2024 down near 14%.[^market] 
 
 ![Core RPG share of Kickstarter-Games funded dollars over time](images/desc_ttrpg_share_of_games.png)
 
@@ -55,13 +55,13 @@ But "tabletop" is mostly *board games* when it comes to dollars. Line up each su
 
 ## Where the money actually is
 
-Start with the shape of the money, among funded projects. It is *brutally* top-heavy. The **top 1% of funded RPG projects capture about 35% of all the dollars**; the top 5% capture nearly two-thirds. For accessories it's even more concentrated relative to their size — the top 1% pull in 40%. The whale post wasn't studying a weird fringe; it was studying the part of the distribution where almost all the money actually is.
+Start with the shape of the money, among funded projects. It is *brutally* top-heavy. The **top 1% of funded RPG projects capture about 34% of all the dollars**; the top 5% capture nearly two-thirds. For accessories it's even more concentrated relative to their size — the top 1% pull in 38%. The whale post wasn't studying a weird fringe; it was studying the part of the distribution where almost all the money actually is.
 
 ![Lorenz curve of pledged dollars](images/desc_lorenz_dollars.png)
 
 *How concentrated the money is. The sharp bend near the right edge means a tiny share of projects holds most of the dollars; a straight diagonal would mean perfect equality.*
 
-The typical project is far humbler. A median *funded* RPG book raises around **$5,700** from a bit over 200 backers; a median funded RPG accessory (dice, minis, a GM screen) raises about **$3,000** from roughly 100 backers. Here's a detail I liked: the *per-backer* pledge is nearly identical for the two — about $30 either way. So RPG books pull ahead by attracting roughly twice as many backers at that same price point. The gap comes from demand — how many people show up — while the spend per person barely moves.
+The typical project is far humbler. A median *funded* RPG book raises around **$5,800** from a bit over 200 backers; a median funded RPG accessory (dice, minis, a GM screen) raises about **$3,000** from roughly 100 backers. Here's a detail I liked: the *per-backer* pledge is nearly identical for the two — about $30 either way. So RPG books pull ahead by attracting roughly twice as many backers at that same price point. The gap comes from demand — how many people show up — while the spend per person barely moves.
 
 ![Distribution of pledged dollars, RPG books vs accessories](images/desc_pledged_hist_log.png)
 
@@ -158,7 +158,7 @@ Second, the staff-pick and video effects get *stronger* the further up the distr
 
 ### Naming a recognized system raises more
 
-Since I'd tagged every book by its system, I could ask a sharper version of the old "5E helps" folk wisdom: among funded books, does naming a recognized engine correlate with more money? Relative to a system-agnostic book, naming a known system is worth a roughly **25–40% bigger raise** — **D&D 5e ×1.29, OSR ×1.25**, and the named indies (Call of Cthulhu, Mothership, and friends) **×1.39**. Pathfinder and the PbtA family, interestingly, are statistically indistinguishable from agnostic. 
+Since I'd tagged every book by its system, I could ask a sharper version of the old "5E helps" folk wisdom: among funded books, does naming a recognized engine correlate with more money? Relative to a system-agnostic book, naming a known system is worth a roughly **25–45% bigger raise** — **D&D 5e ×1.32, OSR ×1.26**, and the named indies (Call of Cthulhu, Mothership, and friends) **×1.43**. Pathfinder and the PbtA family, interestingly, are statistically indistinguishable from agnostic. 
 
 ![Dollar premiums by system family and product type](images/subcat_magnitude_premiums.png)
 
@@ -236,7 +236,7 @@ The whale post asked how the giants price their tiers. I can't see reward tiers 
 
 [^whales]: The original analysis ("Kickstarter Whales," guest post by Scipio202 on Patchwork Paladin) used ENWorld's list of 53 tabletop RPG campaigns that raised ≥ $1,000,000 and tracked four price points per campaign (cheapest digital, cheapest physical, most-common, and the top "whale" tier). It's a tier-level study of mega-successes; this post is a population-level study of the whole category.
 
-[^classifier]: I validated the classifier on a fresh 165-project Claude hand-labeled sample it had never seen: about 87% precision and high recall (no missed RPGs among 75 sampled non-RPG items) for the core-RPG class — up from ~77%/71% before I tightened it (see [^cleanlabels]). The residual errors are mostly RPG accessories (map packs, dice, card decks) filed as core books rather than wholly unrelated products. For the regressions this label noise mostly behaves like random error that understates category differences (so those contrasts are conservative); for the dollar-share aggregates it's handled by the cleanup in [^cleanlabels].
+[^classifier]: I validated the classifier on fresh, held-out Claude hand-labeled samples it had never seen: about 88% precision with recall preserved (no missed RPGs among the sampled non-RPG items) for the core-RPG class — up from ~77%/71% before I tightened it (see [^cleanlabels]). The residual errors are mostly RPG accessories (map packs, dice, card decks) filed as core books rather than wholly unrelated products. For the regressions this label noise mostly behaves like random error that understates category differences (so those contrasts are conservative); for the dollar-share aggregates it's handled by the cleanup in [^cleanlabels].
 
 [^survivorship]: Concretely: in the Web Robots data only about **2% of finished tabletop projects are marked "failed,"** versus a real-world failure rate somewhere around a third to a half. The crawl is essentially "the successful subset." A reassuring cross-check: where the survivor data and the failure-aware data overlap, the funded projects' dollar amounts and backer counts match almost exactly — so the bias is in *which projects appear*, not in the numbers attached to them.
 

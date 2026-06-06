@@ -54,9 +54,12 @@ populated). Dependencies: `requirements.txt` (Python) and `code/r_dependencies.t
 - Money: Web Robots magnitude models use **nominal** USD with year fixed effects;
   Kaggle uses **real** (CPI-adjusted) USD; ICPSR uses **nominal**. Cross-source
   dollar comparisons are labeled accordingly.
-- The TTRPG class label is measured with error. A fresh 165-project hand-labeled
-  held-out audit after the 2026-06 classifier overhaul (`tables/ttrpg_heldout_audit_v2.csv`)
-  puts core-RPG **precision ≈ 87%** (was ~77%) and **recall high** (0 false negatives
-  among 75 sampled non-RPG items; was ~71%). Residual precision errors are mostly RPG
-  *accessories* — map packs, token/dice goods, card decks — filed as core books, not
-  unrelated products. Treat class contrasts as attenuated toward null.
+- The TTRPG class label is measured with error. After the 2026-06 classifier overhaul
+  (plus a title-anchored pass that moves named RPG *accessories* — map packs, card decks,
+  token/dice goods, merch — out of the core class), fresh hand-labeled held-out audits
+  (`tables/ttrpg_heldout_audit_v2.csv`, `ttrpg_heldout_audit_v3.csv`) put core-RPG
+  **precision ≈ 88%** (was ~77%) with **recall preserved** (0 false negatives on sampled
+  non-RPG items and on spot-checks of demoted items; was ~71% recall). Residual precision
+  errors are small RPG accessories whose product type appears only in the blurb (floor-plan
+  packs, scenery) — diminishing returns to chase, and no effect on the dollar aggregates.
+  Treat class contrasts as attenuated toward null.
