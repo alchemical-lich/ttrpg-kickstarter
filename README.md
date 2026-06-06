@@ -5,8 +5,10 @@ Kickstarter — what gets funded, what raises a lot, and what (if anything) actu
 *caused* the boom — built by triangulating three independent datasets and taking
 sample-selection seriously.
 
-📖 **Read the write-up:** **[alchemical-lich.github.io/kickstarter-rpgs](https://alchemical-lich.github.io/kickstarter-rpgs/)**.
-This repository is the reproducible code, data pipeline, and results behind it.
+📖 **Read the write-up:** **[alchemical-lich.github.io/ttrpg-kickstarter](https://alchemical-lich.github.io/ttrpg-kickstarter/)**.
+This repository is the write-up *and* the reproducible code, data pipeline, and
+results behind it. The write-up source lives in [`docs/`](docs/) (a static site
+served via GitHub Pages).
 
 ---
 
@@ -48,6 +50,7 @@ quasi-experimental result (ZineQuest) is flagged as the only causal claim.
 code/                Python ingest + classifier; R analysis & figures
   01_ingest/ 02_clean/ 03_features/ 04_analysis/   (run_all.sh, README.md, r_dependencies.txt)
 figures/  tables/    committed results of the pipeline
+docs/                the write-up as a static GitHub Pages site (index.md → index.html)
 data/                git-ignored; data/README.md explains how to obtain the raw sources
 ```
 
@@ -78,8 +81,8 @@ the write-up.
 ## License
 
 - **Code** (`code/`, `run_all.sh`, dependency files): **MIT** — see [`LICENSE`](LICENSE).
-- **Figures & result tables** (`figures/`, `tables/`) and the write-up (hosted at
-  [alchemical-lich.github.io/kickstarter-rpgs](https://alchemical-lich.github.io/kickstarter-rpgs/)):
+- **Figures & result tables** (`figures/`, `tables/`) and the write-up (`docs/`, hosted at
+  [alchemical-lich.github.io/ttrpg-kickstarter](https://alchemical-lich.github.io/ttrpg-kickstarter/)):
   **CC BY 4.0** — see [`LICENSE-writeup.md`](LICENSE-writeup.md).
 - Underlying Kickstarter data belong to third parties (Web Robots, Kaggle, ICPSR) and
   are **not** redistributed here.

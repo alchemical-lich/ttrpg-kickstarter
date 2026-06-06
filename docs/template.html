@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A reproducible analysis of the tabletop RPG corner of Kickstarter: what gets funded, what raises a lot, and what actually caused the boom.">
+  <title>$title$</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="site">
+      <a class="home" href="https://github.com/alchemical-lich/ttrpg-kickstarter">&larr; ttrpg-kickstarter on GitHub</a>
+      <h1>$title$</h1>
+    </header>
+    <main>
+$if(toc)$
+      <nav id="TOC" role="doc-toc">
+$toc$
+      </nav>
+$endif$
+$body$
+    </main>
+    <footer class="site">
+      <p>A reproducible analysis &mdash; code, data pipeline, figures, and tables in the
+      <a href="https://github.com/alchemical-lich/ttrpg-kickstarter">ttrpg-kickstarter</a> repository.
+      Write-up licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC&nbsp;BY&nbsp;4.0</a>.</p>
+    </footer>
+  </div>
+</body>
+</html>
