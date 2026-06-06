@@ -116,7 +116,7 @@ top <- bind_rows(slice_max(coef_tbl, coef, n = 15), slice_min(coef_tbl, coef, n 
 p <- ggplot(top, aes(coef, term, fill = dir)) + geom_col() +
   scale_fill_manual(values = c("raises more" = "#2c7fb8", "raises less" = "#d7191c"), name = NULL) +
   labs(title = "Title/blurb terms predicting pledged $ for funded RPG books (LASSO)",
-       subtitle = "coefficient on log10 pledged, controlling for structured features; note many strong terms are brand/series names",
+       subtitle = "coefficient on log10 pledged, controlling for structured features; several strong terms are brand names or tokenization artifacts (see write-up)",
        x = "LASSO coefficient (log10 pledged)", y = NULL)
 ggsave(file.path(figd, "text_top_terms.png"), p, width = 10, height = 7, dpi = 130)
 

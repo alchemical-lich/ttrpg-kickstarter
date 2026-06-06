@@ -379,27 +379,34 @@ role="doc-noteref"><sup>15</sup></a></p>
 titles and blurbs — into the model, restricting to <em>books</em> (in
 the pooled book-plus-accessory sample, physical-product words like
 “miniatures” and “scenery” mostly flag the accessory class rather than a
-wording effect). The text adds modestly to predictive power, but the
-strongest individual terms are largely a caution about the method: they
-are <strong>brand and series names</strong> — <em>Mothership</em>,
-<em>Forbidden Lands</em>, <em>Root</em>, <em>DCC</em>, <em>Dimgaard</em>
-— which a bag-of-words model can memorize as “these named lines did
-well” without the lesson generalizing to a new project.<a href="#fn16"
-class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>
-Setting brand names aside, the generalizable pattern is a
-<strong>premium-versus-commodity axis</strong>: “softcover,” “official,”
-“award,” and “supplement” predict raising <em>more</em>, while “pay what
-you want,” “one-shot,” “online,” and “ttrpg inspired” predict raising
-<em>less</em>. Presentation as a complete, premium object is associated
-with larger raises; cheap or pay-what-you-want framing is not.</p>
+wording effect). The text adds only modestly to predictive power, and
+the strongest individual terms are partly a caution about the method:
+several are <strong>brand and series names</strong> —
+<em>Mothership</em>, <em>Forbidden Lands</em>, <em>Root</em>,
+<em>Dimgaard</em> — which a bag-of-words model memorizes as “these named
+lines did well” without the lesson generalizing to a new project.<a
+href="#fn16" class="footnote-ref" id="fnref16"
+role="doc-noteref"><sup>16</sup></a> Two patterns generalize better.
+Naming a <strong>physical print format</strong> predicts a larger raise:
+books that mention a binding raise well above the PDF-only and zine
+baseline (hardcover most, ~$25k median; softcover ~$13k; neither ~$6k) —
+the word marks a printed object, not a deluxe one. And advertising
+<strong>broad system compatibility</strong> helps — blurbs that
+enumerate several compatible systems (“…AD&amp;D, 5e, DCC, Pathfinder,
+OSR…”) reach a wider audience and raise more. At the other end, “pay
+what you want,” “one-shot,” and “online” framing predicts raising
+<em>less</em> — the small-format, give-it-away end of the market.</p>
 <p><img src="images/text_top_terms.png"
 alt="Words that predict raising more vs less" /></p>
 <p><em>Title/blurb terms predicting how much a funded RPG
 <strong>book</strong> raises (LASSO, controlling for the structured
-features). Note the caveat: several of the strongest “raises more” terms
-(blue) are specific brand and series names the model has memorized; the
-generalizable signal is premium, complete-product language versus
-pay-what-you-want and one-shot framing (red).</em></p>
+features). Read with care: several of the strongest “raises more” terms
+(blue) are brand/series names the model has memorized, or tokenization
+artifacts — “dcc pathfinder” is two adjacent items in a
+system-compatibility list, and “softcov” marks a printed book, not a
+premium binding. The generalizable signals are naming a print format and
+broad system compatibility; “pay-what-you-want” and one-shot framing
+(red) predict less.</em></p>
 <p>Second, the staff-pick and video effects get <em>stronger</em> the
 further up the distribution you go. For a median project a staff pick is
 worth maybe 1.5×; for the runaway hits near the top it’s associated with
@@ -745,15 +752,21 @@ titles and blurbs into a bag of words and bigrams and let a LASSO pick
 which ones predict log-dollars, with the vocabulary chosen separately
 inside each cross-validation fold so the test data couldn’t leak in.
 Adding text lifted out-of-sample R² from about <strong>0.68 to
-0.70</strong> — real but modest. The leading caveat: a bag-of-words
-model memorizes specific successful <em>series and brand names</em>
-(here Mothership, Forbidden Lands, Root, DCC, and Dimgaard load most
-strongly), which does not generalize to new campaigns; the part worth
-keeping is the premium/complete-product-versus-commodity pattern. I
-restrict this to books because in the pooled book-and-accessory version
-the strong terms were physical-product words (diorama, scenery, minis)
-that mostly identify the accessory class rather than a wording
-strategy.<a href="#fnref16" class="footnote-back"
+0.70</strong> — real but modest. Two cautions on interpretation. (1) The
+model memorizes specific successful <em>series/brand names</em>
+(Mothership, Forbidden Lands, Root, Dimgaard), which don’t generalize.
+(2) Some “terms” are artifacts of how the text is tokenized: the bigram
+“dcc pathfinder” is not a product but two adjacent items in a
+system-compatibility list (“…AD&amp;D, 5e, DCC, Pathfinder…”), and
+“softcover” is not a premium binding but a marker that the book is
+printed at all — books that name <em>any</em> binding raise well above
+the PDF-only/zine baseline (hardcover ~$25k median, softcover ~$13k,
+neither ~$6k). The parts worth keeping are those structural signals — a
+physical print format and broad system compatibility — and the low-end
+“pay-what-you-want / one-shot” pattern. I restrict this to books because
+in the pooled book-and-accessory version the strong terms were
+physical-product words (diorama, scenery, minis) that mostly identify
+the accessory class.<a href="#fnref16" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
 <li id="fn17"><p>Same funded-books regression as the magnitude model
 above, now with the system-family and product-type tags added (premiums
