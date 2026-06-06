@@ -8,7 +8,7 @@ A while back I read [a great guest post on Patchwork Paladin](https://patchworkp
 
 It's a nice piece of detective work. But fifty-three projects is fifty-three projects, and all of them are extreme success stories. I kept wondering about the rest of the ttrpg Kickstarter projects out there. So I went looking for more data to learn about what makes rpg projects work on Kickstarter. 
 
-## Step one: get the data. Step two: distrust it.
+## Getting the data — and its survivorship problem
 
 There's a wonderful free resource called Web Robots that has been crawling Kickstarter roughly once a month since 2014 and posting the results. With the help of Claude, I stitched together more than a hundred of those monthly snapshots, deduplicated everything, and ended up with about **45,000 tabletop-games projects**. Tabletop is a messy category — it lumps board games, card games, miniatures, dice, and actual roleplaying games together — so I built a keyword classifier to sort RPG rulebooks and adventures (~10,800 of them) and RPG-specific accessories like dice and minis (~4,000) out from the boardgame crowd.[^classifier]
 
@@ -33,7 +33,7 @@ When you bring the failures back, the real tabletop success rate isn't 98%. It's
 
 *The real success rate (successes ÷ finished projects), once you put the failures back in. Two independent datasets agree closely through 2018; the longer one carries the story up to ~86% by 2023.*
 
-## Money, Money
+## Where the money actually is
 
 Start with the shape of the money, among funded projects. It is *brutally* top-heavy. The **top 1% of funded RPG projects capture about 36% of all the dollars**; the top 5% capture nearly two-thirds. For accessories it's even more concentrated — the top 1% pull in 46%. The whale post wasn't studying a weird fringe; it was studying the part of the distribution where almost all the money actually is.
 
@@ -49,7 +49,7 @@ The typical project is far humbler. A median *funded* RPG book raises around **$
 
 Accessories, meanwhile, play a different game. Their median funding goal is **$300** — basically a formality — and they blow past it: 88% of funded accessories raise at least double their goal, versus 75% for books. "Set a tiny goal and overfund” is a common strategy, especially for accessories.
 
-## What gets made: a hobby that tilted toward D&D
+## The shift toward D&D 5e
 
 Before asking what *succeeds*, it's worth looking at what people even make — and how that's changed. Over the decade the *mix* of funded RPG books shifted hard. Books that name **D&D's fifth edition** went from about **7%** of funded RPG books in 2014–15 to nearly **40%** by 2023–26. The old-school renaissance (OSR) more than doubled its share, the long tail of titles that don't name any system steadily receded as more creators hitched their book to a recognizable engine, and — a detail I'll come back to in the causal section — Pathfinder *shrank* in relative terms as 5e ate the center of the hobby.[^composition]
 
@@ -65,7 +65,7 @@ But "a 5e book" and "an indie-system book" are usually different *kinds* of obje
 
 D&D 5e is something people publish *for*: about **40% of 5e books are adventures**, another quarter are bestiaries and supplements, and only ~6% are new core rulebooks. Other systems are where new *games* live — about a third are rulebooks — and they're also where the zines cluster (**12%** of other-system books, versus ~4% of 5e ones). One ecosystem extends a giant; the other invents. That split will matter when we ask, later, whether 5e's arrival "caused" the boom — because 5e didn't grow the hobby so much as become the substrate everyone else builds on.
 
-## What actually predicts getting funded: who, not what
+## Getting funded depends more on who than what
 
 Now the question the survivor data couldn't speak to. Using the failure-inclusive datasets, I built models to predict funding success and — importantly — checked how well they did out-of-sample, not just how nicely they fit.[^auc]
 
@@ -87,7 +87,7 @@ The project attributes still matter, just less. Holding other things equal: an a
 
 A warning on that last one, because it's an easily misunderstood statistic: this is a *correlation*, and the goal is not randomly assigned. Creators set goals in anticipation of demand — a cautious creator with a small audience sets $2,000; a publisher with a big mailing list confidently sets $80,000. So "low goals succeed more" absolutely does **not** mean "lower your goal and you'll succeed." The number tells you which kind of creator picks which kind of goal; what would happen if a given creator trimmed their own is a question it simply can't answer. (I'll come back to this trap.)
 
-## What predicts raising a *lot* (once you've already won)
+## Among funded projects, what drives the size of the raise
 
 For the magnitude question — how big does a funded project get — I switched back to the rich Web Robots data, which is exactly the funded population. The standouts, expressed as "multiply the dollars by roughly":
 
@@ -110,7 +110,7 @@ Two richer wrinkles. First, I fed the campaign *text* — titles and blurbs — 
 
 Second — and this is the kind of thing only a big dataset lets you ask — the staff-pick and video effects get *stronger* the further up the distribution you go. For a median project a staff pick is worth maybe 1.5×; for the runaway hits near the top it's associated with more like 3.5×. Social proof and polish are amplified in exactly the tail where the whales live. (Correlation again — Kickstarter may hand out staff picks to projects it can already tell will be big — but it's a suggestive pattern.)
 
-### Naming a system pays
+### Naming a recognized system raises more
 
 Since I'd tagged every book by its system, I could ask a sharper version of the old "5E helps" folk wisdom: among funded books, does naming a recognized engine correlate with more money? Relative to a system-agnostic book, naming a known system is worth a roughly **25–40% bigger raise** — **D&D 5e ×1.29, OSR ×1.25**, and the named indies (Call of Cthulhu, Mothership, and friends) **×1.39**. Pathfinder and the PbtA family, interestingly, are statistically indistinguishable from agnostic. 
 
@@ -120,7 +120,7 @@ Since I'd tagged every book by its system, I could ask a sharper version of the 
 
 And the same "name a system" effect turns up on the *other* question, the one the survivor data can't answer. In the failure-inclusive data, books that name a recognizable system are also meaningfully more likely to **get funded at all** — naming a system seems to reassure backers that an audience already exists for the thing. That said, all of this is second-order: adding the system and product tags barely nudges how well the model predicts dollars, and goal-setting, reputation, and the staff pick still do the heavy lifting.[^sysprem]
 
-## Books and accessories are different — but only for one question
+## Where books and accessories diverge
 
 Because I'd split RPG books from RPG accessories, I could ask whether they respond to the same things. The answer is a tidy little asymmetry.
 
@@ -134,7 +134,7 @@ For **whether you get funded**, though, the drivers *don't* meaningfully differ 
 
 So: **product type shapes how much you raise, but not whether you raise it.** The recipe for crossing the line is general; the recipe for getting big is product-specific.
 
-## Did D&D's fifth edition cause the boom? (It doesn’t look like it.)
+## Testing whether 5e caused the boom
 
 Now for the fun part: causation. It's tempting to look at the rising RPG fortunes of the last decade and credit obvious cultural events — 5th edition in 2014, *Stranger Things*, *Critical Role*. Tempting, but mostly unprovable, and in one case likely wrong.
 
@@ -156,7 +156,7 @@ One event *does* leave a fingerprint, and tellingly it comes from the platform i
 
 *A placebo check: re-run the test pretending each month is the "treatment." Only February (highlighted) shows the jump — strong evidence the effect is ZineQuest, not noise.*
 
-### The discontinuity that wasn't
+### The funding threshold isn't a clean experiment
 
 Here's one more causal idea: can we do a regression discontinuity design? Kickstarter is **all-or-nothing**: reach 100% of your goal and you collect the money; finish at 99% and you get nothing. Two campaigns that end at 99% and 101% are, in terms of underlying demand, nearly identical — yet one is "funded" and one is not. That sharp line looks like a natural experiment: line up the just-funded against the just-missed and ask what *getting funded* does to a creator's future — do they come back and launch again?
 
@@ -170,7 +170,7 @@ That’s what is called **manipulation at the threshold**, and it isn't sinister
 
 I'd have loved to study the **2023 OGL crisis** — Wizards of the Coast's botched attempt to revise the Open Game License, which genuinely panicked RPG creators — as a shock to the system. Unfortunately I can't: the Web Robots crawl has a gap in its coverage that sits *exactly* on top of January 2023, and the only failure-inclusive source that reaches that far masks project names so I can't tell the RPGs apart.[^ogl] Bummer.
 
-## So What?
+## What the evidence supports
 
 If you're running an RPG Kickstarter, the evidence-backed takeaways are: your **track record is your biggest asset** (and your past failures follow you); a **modest goal** correlates with funding, though that mostly reflects which creators set small goals in the first place; a **staff pick and a video** travel with much bigger raises; **naming a recognized system** — 5e, OSR, a known indie line — is associated with both clearing the funding bar a little more easily and a somewhat larger raise; and **how you frame the product** — premium object versus cheap commodity — shows up in the dollars.
 
