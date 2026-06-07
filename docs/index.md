@@ -79,7 +79,7 @@ The *typical* project tells the opposite story. The median funded RPG book raise
 *Nominal index, 2015 = 100, for the median RPG-book raise (blue) and the median per-backer pledge (orange), against the CPI inflation curve (dashed). A line below the dashed curve has lost ground to inflation — both have, and badly, since about 2018–19. The red band is the 2022–23 coverage gap.*\
 *Source: Web Robots crawl (funded RPG books) + BLS CPI-U annual averages.*
 
-Some of the per-project drop is composition: ZineQuest (from 2019) pulled in a flood of cheap zines that drag the median down, and indeed if I drop zines the median holds up better through 2022. But by 2023–25 even non-zine books have slipped below **$5,000** in real terms, so it is not only zines.[^realterms] The per-backer pledge is the cleaner signal — it is a within-project ratio, it declines steadily, and it was already down to the high-$30s by 2019, before the recent surge of small projects. The hobby's crowdfunding has grown by getting *broader and cheaper*: more projects and more backers, but each one a smaller, more PDF-and-zine-shaped bet than it used to be.
+Some of the per-project drop is composition: ZineQuest (from 2019) pulled in a flood of cheap zines that drag the median down, and indeed if I drop zines the median holds up better through 2022. But by 2023–25 even non-zine books have slipped below **$5,000** in real terms, so it is not only zines.[^realterms] The per-backer pledge is the cleaner signal — it is a within-project ratio, it declines steadily, and it was already down to the high-$30s by 2019, before the recent surge of small projects. The hobby's crowdfunding has grown by getting *broader and cheaper*: more projects and more backers, but each one a smaller, more PDF-and-zine-shaped bet than it used to be. Creators have set their asks to match — the goals they choose have fallen even faster in real terms, which I come back to below.
 
 ![Real per-backer pledge over time](images/real_per_backer_pledge.png)
 
@@ -119,6 +119,13 @@ Goals have fallen markedly over the decade. The median funded RPG book asked for
 
 *Median goal by launch year (funded only). Goals more than halved over the decade, with the post-2019 slide tracking the influx of small-goal zines.*\
 *Source: Web Robots crawl — funded RPG projects only.*
+
+And inflation isn't papering over flat goals — the real decline is *steeper* than the nominal one. Deflated to constant 2025 dollars, the median goal slid from about **$4,100 in 2015 to under $700 in 2025**, an **~80% real fall**: today's typical creator asks for roughly a *sixth* of the real money their 2015 counterpart did. The modest-goal-as-safe-default habit, and the zine format that needs almost nothing to clear, have pushed the real ask down even faster than the headline number suggests.[^realterms]
+
+![Median funding goal in real terms](images/real_goal_by_year.png)
+
+*Median funded RPG-book goal by launch year, in constant 2025 dollars (mean in orange; the faded dashed line is the nominal median). Even after stripping out inflation, the typical goal fell to about a sixth of its 2015 level.*\
+*Source: Web Robots crawl (funded RPG books) + BLS CPI-U.*
 
 The clock is even more uniform. The overwhelming majority run the platform's **30-day default**, with smaller clusters at two and three weeks and almost nobody past 60 days. Campaign length is a variable creators barely change.
 

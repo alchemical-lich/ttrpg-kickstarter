@@ -84,7 +84,8 @@ books <- cls %>%
   left_join(zine, by = "id") %>%
   mutate(is_zine     = replace_na(is_zine, 0),
          pledged_real = pledged_usd * deflator,
-         avg_pledge_real = avg_pledge * deflator)
+         avg_pledge_real = avg_pledge * deflator,
+         goal_real    = goal_usd * deflator)   # the GOAL is a creator-set choice
 
 # ---- per-year summary (nominal + real) -------------------------------------
 by_year <- books %>%
@@ -103,6 +104,9 @@ by_year <- books %>%
     pledge_med_real = median(avg_pledge_real, na.rm = TRUE),
     pledge_mean_nom  = mean(avg_pledge, na.rm = TRUE),
     pledge_mean_real = mean(avg_pledge_real, na.rm = TRUE),
+    goal_med_nom   = median(goal_usd),
+    goal_med_real  = median(goal_real),
+    goal_mean_real = mean(goal_real),
     .groups = "drop")
 write_csv(by_year, file.path(tabd, "real_terms_rpg_books_by_year.csv"))
 
@@ -125,6 +129,9 @@ cat(sprintf("  excl. zines        : %s -> %s  (%s real)\n",
 cat(sprintf("Median per-backer $  : %s -> %s  (%s real; NOMINAL %s)\n",
             dollar(round(g(2015,"pledge_med_real"),1)), dollar(round(g(2025,"pledge_med_real"),1)),
             pc(g(2015,"pledge_med_real"), g(2025,"pledge_med_real")), pc(g(2015,"pledge_med_nom"), g(2025,"pledge_med_nom"))))
+cat(sprintf("Median goal (set)    : %s -> %s  (%s real; NOMINAL %s)\n",
+            dollar(round(g(2015,"goal_med_real"))), dollar(round(g(2025,"goal_med_real"))),
+            pc(g(2015,"goal_med_real"), g(2025,"goal_med_real")), pc(g(2015,"goal_med_nom"), g(2025,"goal_med_nom"))))
 
 # ---- FIG A: nominal indices vs the inflation line (the headline) -----------
 idx <- by_year %>%
@@ -191,4 +198,22 @@ pD <- ggplot(by_year, aes(launch_year, total_real / 1e6)) +
        x = "launch year", y = sprintf("real pledged $ (millions, %d USD)", BASE))
 ggsv("real_total_dollars_by_year.png", pD)
 
-cat(sprintf("\nWrote tables/real_terms_rpg_books_by_year.csv and 4 figures (real_*.png) for %d-%d.\n", Y0, Y1))
+# ---- FIG E: real funding GOAL set by creators (levels) ---------------------
+goal_long <- by_year %>%
+  transmute(launch_year, `Median (real)` = goal_med_real, `Mean (real)` = goal_mean_real,
+            `Median (nominal)` = goal_med_nom) %>%
+  pivot_longer(-launch_year, names_to = "stat", values_to = "usd")
+pE <- ggplot(goal_long, aes(launch_year, usd, color = stat, linetype = stat)) +
+  gap_rect + geom_line(linewidth = 1.1) + geom_point(size = 1.5) +
+  scale_color_manual(values = c("Median (real)" = BLUE, "Mean (real)" = ORANGE,
+                                "Median (nominal)" = GREY), name = NULL) +
+  scale_linetype_manual(values = c("Median (real)" = "solid", "Mean (real)" = "solid",
+                                   "Median (nominal)" = "dashed"), name = NULL) +
+  scale_y_continuous(labels = dollar) + yr_axis +
+  labs(title = "Funding goals set by RPG-book creators, in real dollars",
+       subtitle = sprintf("Constant %d USD (nominal median dashed for reference). The goal is a pre-launch creator choice.", BASE),
+       x = "launch year", y = sprintf("goal $ (%d USD)", BASE)) +
+  theme(legend.position = "top")
+ggsv("real_goal_by_year.png", pE)
+
+cat(sprintf("\nWrote tables/real_terms_rpg_books_by_year.csv and 5 figures (real_*.png) for %d-%d.\n", Y0, Y1))

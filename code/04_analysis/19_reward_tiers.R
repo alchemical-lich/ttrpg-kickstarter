@@ -125,11 +125,15 @@ ggsv("tier_top_share_hist.png", p_conc, h = 4.5)
 
 # 1f. the "sweet spot": price of each project's money-maximising tier
 p_sweet <- ggplot(PS, aes(money_max_price)) +
-  geom_histogram(bins = 40, fill = ORANGE, alpha = .85) + scale_x_log10(labels = label_dollar()) +
+  geom_histogram(bins = 40, fill = ORANGE, alpha = .85) +
+  scale_x_log10(labels = label_dollar(),
+                breaks = c(10, 20, 25, 50, 75, 100, 150, 250, 500, 1000, 2500),
+                minor_breaks = NULL) +
   geom_vline(xintercept = median(PS$money_max_price), linetype = "dashed") +
   labs(title = "Where the money is made: price of each project's top-grossing tier",
        subtitle = sprintf("dashed = median ($%s)", comma(round(median(PS$money_max_price)))),
-       x = "price of the highest-revenue tier (log scale)", y = "projects")
+       x = "price of the highest-revenue tier (log scale)", y = "projects") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ggsv("tier_sweetspot_hist.png", p_sweet, h = 4.5)
 
 # revenue-approximation diagnostic
@@ -185,9 +189,46 @@ print(as.data.frame(bsum %>% transmute(bucket, tiers, backers,
       backer_share = percent(backer_share,.1), dollar_share = percent(dollar_share,.1))))
 cat(sprintf("\nMedian tiers/project: %d | median top-tier $ share: %s | median money-max tier price: $%s\n",
     median(PS$n_tiers), percent(median(PS$top_tier_rev_share),1), comma(round(median(PS$money_max_price)))))
+cat(sprintf("Median highest-PRICED tier (= whale-post 'whale tier' construct): $%s  [vs whale post $478]\n",
+    comma(round(median(PS$top_price)))))
 cat(sprintf("Tier-revenue coverage (sum tier $ / pledged): median %.2f  [approximation, expect <1]\n",
     median(diag$rev_cov, na.rm = TRUE)))
 if (run_models) { cat("\n=== log10(pledged) ~ tier structure (+controls) ===\n")
   print(as.data.frame(coefs %>% filter(model=="log10_pledged") %>%
         transmute(term, est = round(est,3), se = round(se,3), p = signif(p,2)))) }
 cat("\nFigures -> figures/tier_*.png ; tables -> tables/tier_*.csv\n")
+
+# ---- REAL-TERMS tier price points (ANALYSIS-ONLY; not in the public write-up) ----
+# How creator-set tier prices shifted in constant 2025 USD. NOTE the sample is
+# top-decile funded RPG books only -> small, doubly selected; the whale (top) tier
+# in particular is era/selection-confounded. Directional, not for publication.
+cpi_tbl <- tibble(launch_year = 2012:2025,
+  cpi = c(229.594, 232.957, 236.736, 237.017, 240.007, 245.120, 251.107, 255.657,
+          258.811, 270.970, 292.655, 304.702, 313.689, 321.943))            # BLS CPI-U, 2025 partial
+BASE_CPI <- cpi_tbl$cpi[cpi_tbl$launch_year == 2025]
+defl_tbl <- cpi_tbl %>% transmute(launch_year, defl = BASE_CPI / cpi)
+binp <- function(y) cut(y, c(2014, 2018, 2021, 2025), labels = c("2015-18", "2019-21", "2022-25"))
+
+ps_real <- PS %>%
+  left_join(books %>% select(id, launch_year), by = "id") %>%
+  left_join(defl_tbl, by = "launch_year") %>%
+  filter(!is.na(defl), launch_year >= 2015, launch_year <= 2025) %>%
+  mutate(period = binp(launch_year),
+         entry_real = entry_price * defl, moneymax_real = money_max_price * defl,
+         whale_real = top_price * defl)
+pooled_real <- T %>%
+  left_join(books %>% select(id, launch_year), by = "id") %>%
+  left_join(defl_tbl, by = "launch_year") %>%
+  filter(!is.na(defl), launch_year >= 2015, launch_year <= 2025) %>%
+  mutate(period = binp(launch_year)) %>%
+  group_by(period) %>% summarise(tier_med_real = median(price * defl), .groups = "drop")
+tier_real <- ps_real %>% group_by(period) %>%
+  summarise(projects = n(),
+            entry_med_real    = median(entry_real,    na.rm = TRUE),
+            moneymax_med_real = median(moneymax_real, na.rm = TRUE),
+            whale_med_real    = median(whale_real,    na.rm = TRUE), .groups = "drop") %>%
+  left_join(pooled_real, by = "period") %>% relocate(tier_med_real, .after = projects)
+write_csv(tier_real, file.path(tabd, "real_tier_price_by_period.csv"))
+cat("\n=== Reward-tier price points in REAL terms (constant 2025 USD; ANALYSIS-ONLY) ===\n")
+print(as.data.frame(tier_real %>% mutate(across(where(is.numeric), ~round(., 1)))))
+cat("Caveat: top-decile books only, doubly selected; whale tier is era/selection-confounded.\n")
