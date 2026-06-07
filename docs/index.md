@@ -6,7 +6,7 @@
 
 A while back I read [a great guest post on Patchwork Paladin](https://patchworkpaladin.com/2026/05/18/kickstarter-whales-guest-post/) about Kickstarter "whales" by Scipio202 on the reward tiers of fifty-three tabletop RPG campaigns that raised a million dollars.[^whales] The headline finding stuck with me: across those mega-projects, the high-end "whale" tiers brought in roughly 23% of all the money, vastly more than the cheap entry tiers (under 4%), and the median whale tier clustered around a sizable ~$478.
 
-It's a careful analysis, but fifty-three projects is a small and selective sample — all of them extreme success stories. I kept wondering about the rest of the ttrpg Kickstarter projects out there. So I went looking for more data to learn about what ttrpg projects on Kickstarter. 
+It's a careful analysis, but fifty-three projects is a small and selective sample — all of them extreme success stories. I kept wondering about the rest of the ttrpg Kickstarter projects out there. So I went looking for more data to learn about ttrpg projects on Kickstarter. 
 
 ## Getting the data — and its survivorship problem
 
