@@ -68,5 +68,6 @@ $R  code/04_analysis/15_funding_threshold_rd.R          # all-or-nothing RD + Mc
 $R  code/04_analysis/16_composition_5e_split.R          # product mix: 5e vs other systems
 $R  code/04_analysis/17_subcat_drivers.R                # sub-tags in magnitude + success models
 $R  code/04_analysis/18_market_landscape.R             # baseline market-size / goal / seasonality figures
+$R  code/04_analysis/20_real_terms_trends.R            # CPI-deflated (real-$) market / per-project / per-backer trends
 
 echo "== DONE. Outputs in tables/ and figures/. =="

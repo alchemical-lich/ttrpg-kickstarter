@@ -66,6 +66,26 @@ But "tabletop" is mostly *board games* when it comes to dollars. Line up each su
 *Each subcategory's share of funded dollars (blue) vs its share of funded projects (grey). Where blue beats grey — board games, video games — is high-value territory; where grey beats blue — playing cards, accessories — is high-volume but cheap.*\
 *Source: Web Robots crawl — funded projects, all Games subcategories.*
 
+## A bigger market, but smaller projects — in real dollars
+
+Every dollar figure so far has been *nominal*. Since the mid-2010s U.S. consumer prices have risen about a third, so a $10,000 raise in 2015 and a $10,000 raise in 2025 are not the same achievement. Once I put everything in constant 2025 dollars, the growth story splits cleanly in two.[^realterms]
+
+The *market as a whole* has comfortably outpaced inflation. Total real dollars raised by funded RPG books roughly **tripled** between 2015 and 2025 — a real gain of about **+220%**, far above the ~36% that the cost of living rose over the same stretch. But that growth is almost entirely about *volume*: there are simply many more RPG-book campaigns now than a decade ago.
+
+The *typical* project tells the opposite story. The median funded RPG book raised about **$10,800 in 2015 but only ~$4,400 in 2025** — and that is already in constant dollars, a real fall of nearly **60%**. The median per-backer pledge dropped too, from roughly **$56 to $29** in real terms. So the median project and the median backer are each putting in about *half* what they did ten years ago, after inflation. On an index pegged to 2015, both lines sit well below the inflation curve for the entire back half of the decade.
+
+![Median raise and per-backer pledge against inflation](images/real_index_vs_inflation.png)
+
+*Nominal index, 2015 = 100, for the median RPG-book raise (blue) and the median per-backer pledge (orange), against the CPI inflation curve (dashed). A line below the dashed curve has lost ground to inflation — both have, and badly, since about 2018–19. The red band is the 2022–23 coverage gap.*\
+*Source: Web Robots crawl (funded RPG books) + BLS CPI-U annual averages.*
+
+Some of the per-project drop is composition: ZineQuest (from 2019) pulled in a flood of cheap zines that drag the median down, and indeed if I drop zines the median holds up better through 2022. But by 2023–25 even non-zine books have slipped below **$5,000** in real terms, so it is not only zines.[^realterms] The per-backer pledge is the cleaner signal — it is a within-project ratio, it declines steadily, and it was already down to the high-$30s by 2019, before the recent surge of small projects. The hobby's crowdfunding has grown by getting *broader and cheaper*: more projects and more backers, but each one a smaller, more PDF-and-zine-shaped bet than it used to be.
+
+![Real per-backer pledge over time](images/real_per_backer_pledge.png)
+
+*What a typical backer pledges, in constant 2025 dollars — median (blue) and mean (orange). Both fall by roughly a third to a half across the decade.*\
+*Source: Web Robots crawl — funded RPG books, CPI-adjusted.*
+
 ## The dollar distribution among funded projects
 
 Among funded projects, the distribution of dollars is strongly top-heavy. The **top 1% of funded RPG projects capture about 34% of all the dollars**; the top 5% capture nearly two-thirds. For accessories it is even more concentrated relative to their size — the top 1% pull in 38%. The whale post was studying the part of the distribution that holds most of the money.
@@ -337,3 +357,5 @@ I *wouldn't* tell you that any of these are guaranteed levers. Almost everything
 [^fundingera]: Concretely: the Kaggle export carries project *names* (so I can pick out RPGs) but ends in early 2018, while the academic set reaches 2023 but masks names (so its RPG-level signal is borrowed, and its creator-history model is really an *all-tabletop* model). Either way, the "did it fund / what predicts funding" evidence is anchored in the 2010s and in tabletop broadly. The magnitude ("how much") side, by contrast, uses the 2014–2026 Web Robots crawl and is genuinely RPG-specific and current — so the time-scope caveat bites hardest on the funding-side claims, less on the dollars-side ones.
 
 [^rpgonly]: This model pools all tabletop and includes "is an RPG" as a predictor, so the goal, campaign-length, and US slopes are estimated as *common* across tabletop. Re-estimating on RPG projects only (n ≈ 1,100, name-identified) keeps the RPG-relevant findings and clarifies the rest: the goal effect is, if anything, sharper (a tenfold-larger goal still cuts the odds of funding by about two-thirds), and the D&D/5e label stays positive (now only marginally significant, *p* ≈ 0.06). The campaign-length and US-based effects, by contrast, lose significance entirely within RPGs — they are tabletop-wide regularities, driven largely by board games, rather than RPG-specific ones. The smaller, name-only RPG sample has limited power, so treat those vanishing effects as *unresolved*, not shown to be zero.
+
+[^realterms]: I deflate nominal pledged dollars to constant 2025 dollars with the BLS Consumer Price Index for All Urban Consumers (CPI-U, U.S. city average, all items, annual averages); cumulative inflation from 2015 to 2025 is about 36%. The sample is funded core RPG books only — the survivor population — for launch years 2015–2025, with 2026 dropped as a partial year. Two caveats temper the *size* of the per-project decline (not its direction). First, recent crawls capture far more small projects than older snapshots did — the early years over-represent larger survivors — so part of the median's fall reflects better coverage of the cheap tail rather than pure shrinkage; the steadier per-backer-pledge decline, a within-project ratio, is the more robust evidence. Second, the *total* real-market figure is the most coverage- and whale-sensitive number here (2024 is inflated by the $15M Cosmere RPG; the 2022–23 dip is the coverage gap), so read the +220% as directional rather than exact. The 2025 CPI average is itself provisional.
