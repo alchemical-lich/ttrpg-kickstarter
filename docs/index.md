@@ -120,7 +120,7 @@ Goals have fallen markedly over the decade. The median funded RPG book asked for
 *Median goal by launch year (funded only). Goals more than halved over the decade, with the post-2019 slide tracking the influx of small-goal zines.*\
 *Source: Web Robots crawl — funded RPG projects only.*
 
-And inflation isn't papering over flat goals — the real decline is *steeper* than the nominal one. Deflated to constant 2025 dollars, the median goal slid from about **$4,100 in 2015 to under $700 in 2025**, an **~80% real fall**: today's typical creator asks for roughly a *sixth* of the real money their 2015 counterpart did. The modest-goal-as-safe-default habit, and the zine format that needs almost nothing to clear, have pushed the ask down even faster than the nominal figures let on.[^realterms]
+And inflation isn't papering over flat goals — the real decline is *steeper* than the nominal one. Deflated to constant 2025 dollars, the median goal slid from about **$4,100 in 2015 to under $700 in 2025**, an **~83% real fall**: today's typical creator asks for roughly a *sixth* of the real money their 2015 counterpart did. The modest-goal-as-safe-default habit, and the zine format that needs almost nothing to clear, have pushed the ask down even faster than the nominal figures let on.[^realterms]
 
 ![Median funding goal in real terms](images/real_goal_by_year.png)
 
