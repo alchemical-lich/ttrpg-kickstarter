@@ -24,7 +24,8 @@ served via GitHub Pages).
   from project attributes (AUC **0.72**). Past successes help; past failures hurt.
 - **Raising *a lot* (once funded) is about quality and social proof.** A "Projects
   We Love" staff pick travels with ~**2.6×** the dollars; a repeat creator ~1.4×.
-  Money is brutally concentrated (top 1% of projects ≈ 36–46% of all pledges).
+  Money is brutally concentrated (top 1% of funded RPG projects ≈ 34% of all pledges,
+  ~38% for accessories).
 - **Product type shapes *how much*, not *whether*.** Drivers of magnitude differ for
   rulebooks vs. accessories (a "5E" label helps books, not commodity minis); drivers
   of funding do not.
@@ -32,7 +33,7 @@ served via GitHub Pages).
   went from ~7% of funded RPG books (2014–15) to ~40% (2023–26); 5e is mostly
   *content for* the engine (adventures/supplements) while other systems are new
   rulebooks and zines. Naming a recognized system (5e, OSR, a known indie line)
-  travels with a **~25–40% larger raise** and better funding odds — though the tags
+  travels with a **~25–45% larger raise** and better funding odds — though the tags
   add only modestly to predictive power overall.
 - **Causal honesty:** **ZineQuest** (Kickstarter's Feb RPG-zine program) demonstrably
   ~doubled funded RPG February launches — a clean natural experiment. **D&D 5e did
@@ -72,11 +73,14 @@ all analysis and figures. See `code/README.md` for the stage-by-stage map.
 
 ## Honest limits
 
-The TTRPG classifier is ~77% precise / 71% recall on a fresh held-out audit (label
-error attenuates category contrasts toward zero — i.e. the reported differences are
-conservative). Reward-tier ("whale") data isn't available in any source, and a
-coverage gap makes the 2023 OGL crisis unanalyzable. These points are discussed in
-the write-up.
+The TTRPG classifier is ~88% precise on a fresh held-out audit with recall preserved
+(and ~97% agreement with hand-checking on the high-dollar tail, after tightening it);
+label error mostly attenuates category contrasts toward zero, so the reported
+differences are conservative. Reward-tier ("whale") data isn't in any *bulk* dataset,
+but I recovered a partial, doubly-selected sample — 325 top-decile RPG books, ~3,300
+tiers — from archived campaign pages on the Internet Archive's Wayback Machine. A
+crawl coverage gap still makes the 2023 OGL crisis unanalyzable. These points are
+discussed in the write-up.
 
 ## License
 
