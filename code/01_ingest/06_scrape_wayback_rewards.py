@@ -180,12 +180,33 @@ def to_deadline_dt(val):
         return None
 
 
+def load_panel_rates():
+    """id(str) -> (currency, static_usd_rate) from the Web Robots panel.
+    Used as a fallback when an archived snapshot omits static_usd_rate, so a
+    non-USD tier price still converts to USD instead of being left as native."""
+    path = os.path.join(PROJ, "data", "processed", "games_master.csv.gz")
+    rates = {}
+    if not os.path.exists(path):
+        return rates
+    with gzip.open(path, "rt", newline="") as f:
+        for row in csv.DictReader(f):
+            r = row.get("static_usd_rate")
+            if r:
+                try:
+                    rates[str(int(float(row["id"])))] = (row.get("currency"), float(r))
+                except (ValueError, KeyError):
+                    pass
+    return rates
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=None, help="process only first N targets")
     args = ap.parse_args()
     os.makedirs(CACHE, exist_ok=True)
     os.makedirs(os.path.dirname(TIERS), exist_ok=True)
+
+    panel_rates = load_panel_rates()  # fallback FX for snapshots missing static_usd_rate
 
     targets = [r for r in csv.DictReader(open(TARGETS))
                if r.get("project_url") and r["project_url"] != "MISSING"]
@@ -222,6 +243,11 @@ def main():
                 status = "fetch_fail"
             else:
                 rewards, snap_tot, currency, usd_rate, method = extract_rewards(raw)
+                if not usd_rate:                       # snapshot lacked static_usd_rate
+                    pr = panel_rates.get(pid)          # fall back to Web Robots panel rate
+                    if pr and (currency is None or pr[0] == currency):
+                        currency = currency or pr[0]
+                        usd_rate = pr[1]
                 if not rewards:
                     status = "no_rewards"; n_norew += 1
                 else:

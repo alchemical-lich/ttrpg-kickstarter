@@ -40,6 +40,15 @@ $PY code/03_features/03_subcategorize_books.py          # needs tabletop_classif
 echo "== [5] CLEAN: coverage diagnostics =="
 $R  code/02_clean/02_coverage_map.R
 
+# == [optional] REWARD-TIER ("whale") SUB-PIPELINE ==========================
+# Recovers per-tier prices/backers for top-decile RPG books from the Internet
+# Archive. SLOW + network (archive.org), so it's not run by default; its outputs
+# are committed. Uncomment to (re)build. Order matters: recover URLs -> scrape ->
+# backfill any missing FX rates -> analysis (19_reward_tiers.R, in ANALYSIS below).
+# $PY code/01_ingest/05_recover_project_urls.py
+# $PY code/01_ingest/06_scrape_wayback_rewards.py
+# $PY code/01_ingest/07_backfill_tier_usd.py   # fill missing static_usd_rate from the panel; idempotent
+
 echo "== [6] ANALYSIS =="
 $R  code/04_analysis/01_descriptive_landscape.R
 $R  code/04_analysis/02_success_rates_kaggle.R

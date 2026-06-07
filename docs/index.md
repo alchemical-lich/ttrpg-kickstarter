@@ -270,11 +270,11 @@ The first finding matches the whale post on a much larger sample. The cheap tier
 *Every reward tier sorted into price bands: share of all backers (grey) vs. approximate share of all pledged dollars (blue). Backers cluster at $50–100; the dollars shift right to the $100–500 premium tiers.*\
 *Source: Wayback-recovered reward tiers — top-decile funded RPG books.*
 
-The RPG-book "whale" sits a little lower than in the original post. Defined the same way — the single most-expensive tier in a campaign — the median top-priced tier among these books is about **$359**, versus **$478** across the million-dollar megaprojects. But the more striking pattern is that this ceiling tier isn’t where the money is made: the **highest-grossing tier of the median book is only about $99** — roughly the price of a deluxe hardcover. The expensive tier exists; few people buy it.
+The RPG-book "whale" sits a little lower than in the original post. Defined the same way — the single most-expensive tier in a campaign — the median top-priced tier among these books is about **$360**, versus **$478** across the million-dollar megaprojects. But the more striking pattern is that this ceiling tier isn’t where the money is made: the **highest-grossing tier of the median book is only about $99** — roughly the price of a deluxe hardcover. The expensive tier exists; few people buy it.
 
 ![Price of each project's top-grossing tier](images/tier_sweetspot_hist.png)
 
-*The price of the single highest-revenue tier in each project, which clusters near $100 (median, dashed) — the deluxe-book price point, and far below each book’s own most-expensive tier (median $359).*\
+*The price of the single highest-revenue tier in each project, which clusters near $100 (median, dashed) — the deluxe-book price point, and far below each book’s own most-expensive tier (median $360).*\
 *Source: Wayback-recovered reward tiers — top-decile funded RPG books.*
 
 Nor is the money concentrated in one ceiling tier. The median book offers nine tiers, and its single highest-priced tier accounts for only about 4% of its money — the top tiers are expensive but thinly subscribed. The dollars come from the mid-priced premium tiers, not the most expensive ones.
