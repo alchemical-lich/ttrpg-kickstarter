@@ -6,7 +6,7 @@
 
 A while back I read [a great guest post on Patchwork Paladin](https://patchworkpaladin.com/2026/05/18/kickstarter-whales-guest-post/) about Kickstarter "whales" by Scipio202 on the reward tiers of fifty-three tabletop RPG campaigns that raised a million dollars.[^whales] The headline finding stuck with me: across those mega-projects, the high-end "whale" tiers brought in roughly 23% of all the money, vastly more than the cheap entry tiers (under 4%), and the median whale tier clustered around a sizable ~$478.
 
-It's a careful analysis, but fifty-three projects is a small and selective sample — all of them extreme success stories. I kept wondering about the rest of the ttrpg Kickstarter projects out there. So I went looking for more data to learn about ttrpg projects on Kickstarter. 
+It's a careful analysis, but fifty-three projects is a small and selective sample — all of them extreme success stories. I kept wondering about the rest of the ttrpg Kickstarter projects out there.
 
 ## Getting the data — and its survivorship problem
 
@@ -24,7 +24,7 @@ This is survivorship bias, and it required a bit of additional thinking. It mean
 1. **Did it get funded at all?** — You cannot answer this from a dataset with no failures.
 2. **Given that it got funded, how much did it raise?** — This you *can* answer, because the survivors are exactly the population you care about.
 
-So I went and found data that *does* include the failures. A widely-used Kaggle export covers 2009–2018 and includes the flops; an academic dataset from ICPSR covers 2009–2023 with all 610,000 Kickstarter projects, successes and failures alike.[^triangulation] Triangulating across three independent sources — using the failure-inclusive ones for "did it fund" and the rich Web Robots crawl for "how much" — is the basis of everything below.
+So I looked for data that *does* include the failures. A widely-used Kaggle export covers 2009–2018 and includes the flops; an academic dataset from ICPSR covers 2009–2023 with all 610,000 Kickstarter projects, successes and failures alike.[^triangulation] Triangulating across three independent sources — using the failure-inclusive ones for "did it fund" and the rich Web Robots crawl for "how much" — is the basis of everything below.
 
 :::notice
 **The three datasets behind this post** — which one is used is noted in each figure's caption.
@@ -120,7 +120,7 @@ Goals have fallen markedly over the decade. The median funded RPG book asked for
 *Median goal by launch year (funded only). Goals more than halved over the decade, with the post-2019 slide tracking the influx of small-goal zines.*\
 *Source: Web Robots crawl — funded RPG projects only.*
 
-And inflation isn't papering over flat goals — the real decline is *steeper* than the nominal one. Deflated to constant 2025 dollars, the median goal slid from about **$4,100 in 2015 to under $700 in 2025**, an **~83% real fall**: today's typical creator asks for roughly a *sixth* of the real money their 2015 counterpart did. The modest-goal-as-safe-default habit, and the zine format that needs almost nothing to clear, have pushed the ask down even faster than the nominal figures let on.[^realterms]
+What’s interesting is that the real decline is *steeper* than the nominal one. Deflated to constant 2025 dollars, the median goal slid from about **$4,100 in 2015 to under $700 in 2025**, an **~83% real fall**: today's typical creator asks for roughly a *sixth* of the real money their 2015 counterpart did. The modest-goal-as-safe-default habit, and the zine format that needs almost nothing to clear, have pushed the ask down even faster than the nominal figures let on.[^realterms]
 
 ![Median funding goal in real terms](images/real_goal_by_year.png)
 
@@ -154,7 +154,7 @@ D&D 5e is something people publish *for*: about **40% of 5e books are adventures
 
 ## Getting funded depends more on who than what
 
-Now the question the survivor data couldn't speak to. Using the failure-inclusive datasets, I asked Claude to build models to predict funding success and checked how well they did out-of-sample, not merely how well they fit in-sample.[^auc] One to keep in mind for this whole section: the failure-inclusive data is either name-identified only through 2018 or not RPG-specific. Because the Kaggle export keeps project names, I *can* run the keyword classifier on it and isolate RPG projects — but only through 2018; ICPSR masks names, so it stays whole-tabletop. So the funding-side story leans on tabletop crowdfunding in the 2010s and may not perfectly describe the ZineQuest-era RPG market of the 2020s.[^fundingera]
+Now the question the survivor data couldn't speak to. Using the failure-inclusive datasets, I asked Claude to build models to predict funding success and checked how well they did out-of-sample, not merely how well they fit in-sample.[^auc] One thing to keep in mind for this whole section: the failure-inclusive data is either name-identified only through 2018 or not RPG-specific. Because the Kaggle export keeps project names, I *can* run the keyword classifier on it and isolate RPG projects — but only through 2018; ICPSR masks names, so it stays whole-tabletop. So the funding-side story leans on tabletop crowdfunding in the 2010s and may not perfectly describe the ZineQuest-era RPG market of the 2020s.[^fundingera]
 
 I started with two models with different kinds of information. One knew only about the **creator**: how many projects they'd run before, how many succeeded, how many failed. The other knew only about the **project**: its genre, its goal, its country, its title.
 

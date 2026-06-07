@@ -72,8 +72,7 @@ roughly 23% of all the money, vastly more than the cheap entry tiers
 ~$478.</p>
 <p>It’s a careful analysis, but fifty-three projects is a small and
 selective sample — all of them extreme success stories. I kept wondering
-about the rest of the ttrpg Kickstarter projects out there. So I went
-looking for more data to learn about ttrpg projects on Kickstarter.</p>
+about the rest of the ttrpg Kickstarter projects out there.</p>
 <h2 id="getting-the-data-and-its-survivorship-problem">Getting the data
 — and its survivorship problem</h2>
 <p>There’s a nice free resource called Web Robots that has been crawling
@@ -119,7 +118,7 @@ from a dataset with no failures.</li>
 This you <em>can</em> answer, because the survivors are exactly the
 population you care about.</li>
 </ol>
-<p>So I went and found data that <em>does</em> include the failures. A
+<p>So I looked for data that <em>does</em> include the failures. A
 widely-used Kaggle export covers 2009–2018 and includes the flops; an
 academic dataset from ICPSR covers 2009–2023 with all 610,000
 Kickstarter projects, successes and failures alike.<a href="#fn4"
@@ -329,15 +328,14 @@ alt="Median funding goal by launch year" /></p>
 over the decade, with the post-2019 slide tracking the influx of
 small-goal zines.</em><br />
 <em>Source: Web Robots crawl — funded RPG projects only.</em></p>
-<p>And inflation isn’t papering over flat goals — the real decline is
-<em>steeper</em> than the nominal one. Deflated to constant 2025
-dollars, the median goal slid from about <strong>$4,100 in 2015 to under
-$700 in 2025</strong>, an <strong>~83% real fall</strong>: today’s
-typical creator asks for roughly a <em>sixth</em> of the real money
-their 2015 counterpart did. The modest-goal-as-safe-default habit, and
-the zine format that needs almost nothing to clear, have pushed the ask
-down even faster than the nominal figures let on.<a href="#fn12"
-class="footnote-ref" id="fnref12"
+<p>What’s interesting is that the real decline is <em>steeper</em> than
+the nominal one. Deflated to constant 2025 dollars, the median goal slid
+from about <strong>$4,100 in 2015 to under $700 in 2025</strong>, an
+<strong>~83% real fall</strong>: today’s typical creator asks for
+roughly a <em>sixth</em> of the real money their 2015 counterpart did.
+The modest-goal-as-safe-default habit, and the zine format that needs
+almost nothing to clear, have pushed the ask down even faster than the
+nominal figures let on.<a href="#fn12" class="footnote-ref" id="fnref12"
 role="doc-noteref"><sup>12</sup></a></p>
 <p><img src="images/real_goal_by_year.png"
 alt="Median funding goal in real terms" /></p>
@@ -396,8 +394,8 @@ depends more on who than what</h2>
 failure-inclusive datasets, I asked Claude to build models to predict
 funding success and checked how well they did out-of-sample, not merely
 how well they fit in-sample.<a href="#fn14" class="footnote-ref"
-id="fnref14" role="doc-noteref"><sup>14</sup></a> One to keep in mind
-for this whole section: the failure-inclusive data is either
+id="fnref14" role="doc-noteref"><sup>14</sup></a> One thing to keep in
+mind for this whole section: the failure-inclusive data is either
 name-identified only through 2018 or not RPG-specific. Because the
 Kaggle export keeps project names, I <em>can</em> run the keyword
 classifier on it and isolate RPG projects — but only through 2018; ICPSR
