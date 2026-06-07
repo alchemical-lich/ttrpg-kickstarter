@@ -4,30 +4,28 @@
 
 *Note: Caveat Emptor. The analysis and write-up were generated with the help of Claude Code—since this was done on a whim, I didn’t feel the need to do everything by hand. I checked a lot of the analysis, but there might still be mistakes in there.*
 
-A while back I read [a great guest post on Patchwork Paladin](https://patchworkpaladin.com/2026/05/18/kickstarter-whales-guest-post/) about Kickstarter "whales" — the analysis where Scipio202 went through ENWorld's list of fifty-three tabletop RPG campaigns that raised a million dollars or more and pulled apart their reward tiers.[^whales] The headline finding stuck with me: across those mega-projects, the high-end "whale" tiers brought in roughly 23% of all the money, vastly more than the cheap entry tiers (under 4%), and the sweet-spot whale tier clustered around a sizable but moderate ~$478, well below the $5,000 one might assume.
+A while back I read [a great guest post on Patchwork Paladin](https://patchworkpaladin.com/2026/05/18/kickstarter-whales-guest-post/) about Kickstarter "whales" by Scipio202 on the reward tiers of fifty-three tabletop RPG campaigns that raised a million dollars.[^whales] The headline finding stuck with me: across those mega-projects, the high-end "whale" tiers brought in roughly 23% of all the money, vastly more than the cheap entry tiers (under 4%), and the median whale tier clustered around a sizable ~$478.
 
-It's a careful analysis, but fifty-three projects is a small and selective sample — all of them extreme success stories. I kept wondering about the rest of the ttrpg Kickstarter projects out there. So I went looking for more data to learn about what makes ttrpg projects work on Kickstarter. 
+It's a careful analysis, but fifty-three projects is a small and selective sample — all of them extreme success stories. I kept wondering about the rest of the ttrpg Kickstarter projects out there. So I went looking for more data to learn about what ttrpg projects on Kickstarter. 
 
 ## Getting the data — and its survivorship problem
 
-There's a wonderful free resource called Web Robots that has been crawling Kickstarter roughly once a month since 2014 and posting the results. With the help of Claude, I stitched together more than a hundred of those monthly snapshots, deduplicated everything, and ended up with about **45,000 tabletop-games projects**. Tabletop is a messy category — it lumps board games, card games, miniatures, dice, and actual roleplaying games together — so I built a keyword classifier to sort RPG rulebooks and adventures (~10,800 of them) and RPG-specific accessories like dice and minis (~4,000) out from the boardgame crowd.[^classifier]
+There's a nice free resource called Web Robots that has been crawling Kickstarter roughly once a month since 2014 and posting the results. With the help of Claude, I stitched together more than a hundred of those monthly snapshots, deduplicated everything, and ended up with about **45,000 tabletop-games projects**. Tabletop is a messy category. It lumps board games, card games, miniatures, dice, and actual roleplaying games together. To identify ttrpg projects, I built a keyword classifier to sort RPG rulebooks and adventures (~10,800 of them) and RPG-specific accessories like dice and minis (~4,000) out from the boardgame crowd.[^classifier]
 
 ![Tabletop launches by month, with coverage gaps shaded red](images/tabletop_launches_by_month_coverage.png)
 
 *All tabletop launches by month (board games included, not just RPGs), from the stitched-together monthly crawls. The red bands mark months where the **crawl** captured no Games category at all — note these are crawl months, not launch months, so the few projects still showing there were salvaged from much later crawls and badly undercount the real total. One such stretch coincides with the 2023 OGL crisis.*
 
-First thing I checked: the success rate. The data said tabletop RPGs succeed about **98% of the time**.
+First thing I checked was the success rate. The data said tabletop RPGs succeed about **98% of the time**. That number looks wildly inaccurate, and made me suspicious of the Web Robots data. Web Robots builds its snapshots from Kickstarter's public "discover" pages — and those pages overwhelmingly surface projects that are live or that succeeded. Campaigns that flopped quietly fall out of view and never make it into the crawl. So what the crawl really captures is the *survivors*, with the failures missing almost entirely.[^survivorship] A success rate computed from it therefore describes the survivors, not the full population.
 
-That number seems wildly inaccurate, and recognizing *why* it's wrong is a good example of why figuring out where your data come from is so important. Web Robots builds its snapshots from Kickstarter's public "discover" pages — and those pages overwhelmingly surface projects that are live or that succeeded. Campaigns that flopped quietly fall out of view and never make it into the crawl. So what the crawl really captures is the *survivors*, with the failures missing almost entirely.[^survivorship] A success rate computed from it therefore describes the survivors, not the full population.
-
-This is survivorship bias, and it required a bit of additional thinking. It means there are two separate questions hiding inside "what makes a campaign succeed," and they need different data:
+This is survivorship bias, and it required a bit of additional thinking. It means there are two separate questions and they need different data:
 
 1. **Did it get funded at all?** — You cannot answer this from a dataset with no failures.
 2. **Given that it got funded, how much did it raise?** — This you *can* answer, because the survivors are exactly the population you care about.
 
 So I went and found data that *does* include the failures. A widely-used Kaggle export covers 2009–2018 and includes the flops; an academic dataset from ICPSR covers 2009–2023 with all 610,000 Kickstarter projects, successes and failures alike.[^triangulation] Triangulating across three independent sources — using the failure-inclusive ones for "did it fund" and the rich Web Robots crawl for "how much" — is the basis of everything below.
 
-When you bring the failures back, the real tabletop success rate isn't 98%. It's about **two-thirds** over 2009–2018, climbing to roughly **86% by 2023**.[^rate] Tabletop has become one of the categories with the highest success rates, though it reached that point gradually.
+When you bring the failures back, the real tabletop success rate isn't 98%. It's about **two-thirds** over 2009–2018, climbing to roughly **86% by 2023**.[^rate] Note that this is all tabletop products, including boardgames, because the ICPSR data do not allow me to subset to ttrpg products only. Tabletop has become one of the categories with the highest success rates, though it reached that point gradually.
 
 ![True tabletop success rate by year, two sources](images/icpsr_success_by_year.png)
 
@@ -53,7 +51,7 @@ But "tabletop" is mostly *board games* when it comes to dollars. Line up each su
 
 *Each subcategory's share of funded dollars (blue) vs its share of funded projects (grey). Where blue beats grey — board games, video games — is high-value territory; where grey beats blue — playing cards, accessories — is high-volume but cheap.*
 
-## Where the money actually is
+## The dollar distribution among funded projects
 
 Among funded projects, the distribution of dollars is strongly top-heavy. The **top 1% of funded RPG projects capture about 34% of all the dollars**; the top 5% capture nearly two-thirds. For accessories it is even more concentrated relative to their size — the top 1% pull in 38%. The whale post was studying the part of the distribution that holds most of the money.
 
@@ -69,7 +67,7 @@ The typical project is far smaller. A median *funded* RPG book raises around **$
 
 Accessories, meanwhile, are different. Their median funding goal is **about $400**, and they exceed it comfortably: 86% of funded accessories raise at least double their goal, versus 76% for books. "Set a tiny goal and overfund” seems to be a common strategy, especially for accessories.
 
-## What creators ask for
+## Goals and Clocks
 
 Two numbers a creator picks before anything else are the **goal** (how much to ask for) and the **clock** (how long to run). RPG goals cluster in the low thousands (accessories a notch lower, in the hundreds), with the telltale spikes at round numbers like $1,000 and $5,000.
 
@@ -107,7 +105,7 @@ D&D 5e is something people publish *for*: about **40% of 5e books are adventures
 
 ## Getting funded depends more on who than what
 
-Now the question the survivor data couldn't speak to. Using the failure-inclusive datasets, I asked Claude to build models to predict funding success and checked how well they did out-of-sample, not merely how well they fit in-sample.[^auc] One to keep in mind for this whole section: the failure-inclusive data is either name-identified only through 2018 or not RPG-specific, so the funding-side story leans on tabletop crowdfunding in the 2010s and may not perfectly describe the ZineQuest-era RPG market of the 2020s.[^fundingera]
+Now the question the survivor data couldn't speak to. Using the failure-inclusive datasets, I asked Claude to build models to predict funding success and checked how well they did out-of-sample, not merely how well they fit in-sample.[^auc] One to keep in mind for this whole section: the failure-inclusive data is either name-identified only through 2018 or not RPG-specific. Because the Kaggle export keeps project names, I *can* run the keyword classifier on it and isolate RPG projects — but only through 2018; ICPSR masks names, so it stays whole-tabletop. So the funding-side story leans on tabletop crowdfunding in the 2010s and may not perfectly describe the ZineQuest-era RPG market of the 2020s.[^fundingera]
 
 I started with two models with different kinds of information. One knew only about the **creator**: how many projects they'd run before, how many succeeded, how many failed. The other knew only about the **project**: its genre, its goal, its country, its title.
 
@@ -232,11 +230,11 @@ The first finding matches the whale post on a much larger sample. The cheap tier
 
 *Every reward tier sorted into price bands: share of all backers (grey) vs. approximate share of all pledged dollars (blue). Backers cluster at $50–100; the dollars shift right to the $100–500 premium tiers.*
 
-The RPG-book "whale," though, sits at a far lower price than in the original post. There, across million-dollar megaprojects, the sweet-spot whale tier sat near $478. Among these top-decile RPG books, the **top-grossing tier of the median project is about $99** — roughly the price of a deluxe hardcover.
+The RPG-book "whale" sits a little lower than in the original post. Defined the same way — the single most-expensive tier in a campaign — the median top-priced tier among these books is about **$359**, versus **$478** across the million-dollar megaprojects. But the more striking pattern is that this ceiling tier isn’t where the money is made: the **highest-grossing tier of the median book is only about $99** — roughly the price of a deluxe hardcover. The expensive tier exists; few people buy it.
 
 ![Price of each project's top-grossing tier](images/tier_sweetspot_hist.png)
 
-*The price of the single highest-revenue tier in each project, which clusters near $100 (median, dashed) — the deluxe-book price point, well below the megaproject whale tiers.*
+*The price of the single highest-revenue tier in each project, which clusters near $100 (median, dashed) — the deluxe-book price point, and far below each book’s own most-expensive tier (median $359).*
 
 Nor is the money concentrated in one ceiling tier. The median book offers nine tiers, and its single highest-priced tier accounts for only about 4% of its money — the top tiers are expensive but thinly subscribed. The dollars come from the mid-priced premium tiers, not the most expensive ones.
 
