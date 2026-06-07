@@ -149,6 +149,11 @@ You can see it in the descriptive data as well. Splitting each year's RPG launch
 
 The project attributes still matter, just less. Holding other things equal: an actual RPG is more likely to fund than a board or card game; a "5E-compatible" or D&D/Pathfinder label helps further; US-based projects do a bit better. And there's the perennial Kickstarter finding — **modest goals fund more reliably.** Each tenfold increase in the goal cuts the odds of funding by roughly two-thirds.
 
+![What predicts getting funded — the project-attribute model](images/success_kaggle_or_plot.png)
+
+*The "what" counterpart to the creator plot above: project-attribute predictors of getting funded (odds ratios; right of 1 helps, left of 1 hurts). Naming an RPG, carrying a D&D/5e label, and being US-based lift the odds; a larger goal sharply lowers them. This is a different model on a different dataset (Kaggle, which has names but no creator history), so read it alongside the creator plot, not coefficient-against-coefficient.*\
+*Source: Kaggle — RPGs vs. other tabletop, including failures (ends 2018).*
+
 ![Success rate by funding-goal bucket](images/icpsr_success_by_goalbucket.png)
 
 *Success falls steadily as the goal climbs. But read this as "who sets what," not as a lever — cautious creators with small audiences are the ones choosing the small goals.*\
