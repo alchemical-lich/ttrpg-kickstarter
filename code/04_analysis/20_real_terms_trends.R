@@ -68,11 +68,12 @@ cpi <- cpi %>% mutate(deflator = base_cpi / cpi)   # multiply nominal $ -> const
 # ---- load funded core RPG books --------------------------------------------
 cls <- read_csv(file.path(proj, "data/processed/tabletop_classified.csv.gz"),
                 show_col_types = FALSE)
-# is_zine for the composition robustness line (funded ttrpg+accessory feature table)
-zine <- tryCatch(
+# is_zine / is_dnd5e for the WITHIN-SEGMENT composition robustness (does the real
+# decline survive holding product type roughly constant?)
+seg <- tryCatch(
   read_csv(file.path(proj, "data/processed/ttrpg_model_features.csv.gz"),
-           show_col_types = FALSE) %>% select(id, is_zine),
-  error = function(e) tibble(id = integer(), is_zine = integer()))
+           show_col_types = FALSE) %>% select(id, is_zine, is_dnd5e),
+  error = function(e) tibble(id = integer(), is_zine = integer(), is_dnd5e = integer()))
 
 books <- cls %>%
   filter(is_ttrpg == 1, state == "successful") %>%
@@ -81,8 +82,9 @@ books <- cls %>%
   filter(!is.na(launch_year), launch_year >= Y0, launch_year <= Y1,
          pledged_usd > 0) %>%
   left_join(cpi, by = "launch_year") %>%
-  left_join(zine, by = "id") %>%
+  left_join(seg, by = "id") %>%
   mutate(is_zine     = replace_na(is_zine, 0),
+         is_dnd5e    = replace_na(is_dnd5e, 0),
          pledged_real = pledged_usd * deflator,
          avg_pledge_real = avg_pledge * deflator,
          goal_real    = goal_usd * deflator)   # the GOAL is a creator-set choice
@@ -100,8 +102,11 @@ by_year <- books %>%
     proj_mean_nom  = mean(pledged_usd),
     proj_mean_real = mean(pledged_real),
     proj_med_real_nozine = median(pledged_real[is_zine == 0]),
+    proj_med_real_5e     = median(pledged_real[is_dnd5e == 1]),
     pledge_med_nom  = median(avg_pledge, na.rm = TRUE),
     pledge_med_real = median(avg_pledge_real, na.rm = TRUE),
+    pledge_med_real_nozine = median(avg_pledge_real[is_zine == 0], na.rm = TRUE),
+    pledge_med_real_5e     = median(avg_pledge_real[is_dnd5e == 1], na.rm = TRUE),
     pledge_mean_nom  = mean(avg_pledge, na.rm = TRUE),
     pledge_mean_real = mean(avg_pledge_real, na.rm = TRUE),
     goal_med_nom   = median(goal_usd),
@@ -132,6 +137,16 @@ cat(sprintf("Median per-backer $  : %s -> %s  (%s real; NOMINAL %s)\n",
 cat(sprintf("Median goal (set)    : %s -> %s  (%s real; NOMINAL %s)\n",
             dollar(round(g(2015,"goal_med_real"))), dollar(round(g(2025,"goal_med_real"))),
             pc(g(2015,"goal_med_real"), g(2025,"goal_med_real")), pc(g(2015,"goal_med_nom"), g(2025,"goal_med_nom"))))
+cat("--- WITHIN-SEGMENT robustness (is the decline composition, or broad?) ---\n")
+cat(sprintf("Per-backer, non-zine : %s -> %s  (%s real)\n",
+            dollar(round(g(2015,"pledge_med_real_nozine"),1)), dollar(round(g(2025,"pledge_med_real_nozine"),1)),
+            pc(g(2015,"pledge_med_real_nozine"), g(2025,"pledge_med_real_nozine"))))
+cat(sprintf("Per-backer, 5e-named : %s -> %s  (%s real)\n",
+            dollar(round(g(2015,"pledge_med_real_5e"),1)), dollar(round(g(2025,"pledge_med_real_5e"),1)),
+            pc(g(2015,"pledge_med_real_5e"), g(2025,"pledge_med_real_5e"))))
+cat(sprintf("Raise,      5e-named : %s -> %s  (%s real)\n",
+            dollar(round(g(2015,"proj_med_real_5e"))), dollar(round(g(2025,"proj_med_real_5e"))),
+            pc(g(2015,"proj_med_real_5e"), g(2025,"proj_med_real_5e"))))
 
 # ---- FIG A: nominal indices vs the inflation line (the headline) -----------
 idx <- by_year %>%
@@ -157,16 +172,21 @@ pA <- ggplot(idx, aes(launch_year, index, color = series, linetype = series)) +
   theme(legend.position = "top")
 ggsv("real_index_vs_inflation.png", pA)
 
-# ---- FIG B: real per-backer pledge (levels, constant $) --------------------
+# ---- FIG B: real per-backer pledge, WITHIN segments (composition check) -----
+# If the decline were just cheap zines entering, it would vanish once we drop them
+# or hold genre constant. It doesn't -> the fall is broad, not compositional.
 pledge_long <- by_year %>%
-  select(launch_year, Median = pledge_med_real, Mean = pledge_mean_real) %>%
-  pivot_longer(-launch_year, names_to = "stat", values_to = "usd")
-pB <- ggplot(pledge_long, aes(launch_year, usd, color = stat)) +
+  transmute(launch_year, `All core books` = pledge_med_real,
+            `Non-zine only` = pledge_med_real_nozine,
+            `D&D 5e-named` = pledge_med_real_5e) %>%
+  pivot_longer(-launch_year, names_to = "seg", values_to = "usd")
+pB <- ggplot(pledge_long, aes(launch_year, usd, color = seg)) +
   gap_rect + geom_line(linewidth = 1.1) + geom_point(size = 1.6) +
-  scale_color_manual(values = c(Median = BLUE, Mean = ORANGE), name = NULL) +
-  scale_y_continuous(labels = dollar) + yr_axis +
-  labs(title = "Real per-backer pledge for funded RPG books",
-       subtitle = sprintf("Pledged / backers, in constant %d USD", BASE),
+  scale_color_manual(values = c("All core books" = BLUE, "Non-zine only" = "#1b9e77",
+                                "D&D 5e-named" = ORANGE), name = NULL) +
+  scale_y_continuous(labels = dollar, limits = c(0, NA)) + yr_axis +
+  labs(title = "Real per-backer pledge falls within segments, not just overall",
+       subtitle = sprintf("Median pledged / backers, constant %d USD. Dropping zines or fixing the genre barely changes it.", BASE),
        x = "launch year", y = sprintf("real $ per backer (%d USD)", BASE)) +
   theme(legend.position = "top")
 ggsv("real_per_backer_pledge.png", pB)

@@ -232,3 +232,20 @@ write_csv(tier_real, file.path(tabd, "real_tier_price_by_period.csv"))
 cat("\n=== Reward-tier price points in REAL terms (constant 2025 USD; ANALYSIS-ONLY) ===\n")
 print(as.data.frame(tier_real %>% mutate(across(where(is.numeric), ~round(., 1)))))
 cat("Caveat: top-decile books only, doubly selected; whale tier is era/selection-confounded.\n")
+
+# Figure (USED in the write-up): the deluxe/hardback price point over time. The
+# money-max tier is the single highest-REVENUE tier per project, which clusters at
+# the ~$100 deluxe-hardcover price; unlike the whale tier it is NOT era-confounded.
+# Constant 2025 USD. Top-decile books only -> read as a price-point sanity check.
+deluxe_year <- ps_real %>% group_by(launch_year) %>%
+  summarise(n = n(), moneymax_med_real = median(moneymax_real, na.rm = TRUE), .groups = "drop")
+write_csv(deluxe_year, file.path(tabd, "real_deluxe_tier_price_by_year.csv"))
+p_dlx <- ggplot(deluxe_year, aes(launch_year, moneymax_med_real)) +
+  geom_hline(yintercept = median(deluxe_year$moneymax_med_real), color = "grey70", linetype = "dashed") +
+  geom_line(color = BLUE, linewidth = 1.1) + geom_point(color = BLUE, size = 1.9) +
+  scale_y_continuous(labels = dollar, limits = c(0, NA)) +
+  scale_x_continuous(breaks = seq(2015, 2025, 2)) +
+  labs(title = "The deluxe/hardback price point holds roughly flat in real terms",
+       subtitle = "Highest-revenue (\"money-max\") tier per project, constant 2025 USD; top-decile books only.",
+       x = "launch year", y = "real $ (2025 USD)")
+ggsv("real_deluxe_tier_price.png", p_dlx, h = 4.6)
