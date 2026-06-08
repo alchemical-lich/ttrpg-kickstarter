@@ -249,3 +249,45 @@ p_dlx <- ggplot(deluxe_year, aes(launch_year, moneymax_med_real)) +
        subtitle = "Highest-revenue (\"money-max\") tier per project, constant 2025 USD; top-decile books only.",
        x = "launch year", y = "real $ (2025 USD)")
 ggsv("real_deluxe_tier_price.png", p_dlx, h = 4.6)
+
+# ---- TIER-TYPE PRICE LADDER (same product over time; USED in the write-up) ---
+# Classify tiers by title and track the real price of a GIVEN product type. If
+# RPG products got cheaper, these lines fall; if they merely tracked inflation,
+# they stay flat. Top-decile books only; title keywords are low-coverage (vanity
+# names like "adventurer" carry no format), so read as where a format is labelled.
+BAD_TIER <- "bundle|all.?in|everything|shipping|postage|add.?on|retailer|wholesale"
+T_typed <- T %>%
+  left_join(books %>% select(id, launch_year), by = "id") %>%
+  left_join(defl_tbl, by = "launch_year") %>%
+  filter(!is.na(defl), launch_year >= 2015, launch_year <= 2025) %>%
+  mutate(ttl = str_to_lower(coalesce(tier_title, "")),
+         price_real = price * defl,
+         bad = str_detect(ttl, BAD_TIER),
+         is_digital   = str_detect(ttl, "pdf|digital|ebook|e-book|epub|vtt|roll20|foundry|fantasy grounds") & !bad,
+         is_hardcover = str_detect(ttl, "hardcover|hardback|hard cover") & !bad)
+cheapest_real <- function(df, flag) {       # cheapest labelled tier of a type, per project
+  df %>% filter({{ flag }}) %>% group_by(id, launch_year) %>%
+    summarise(p = min(price_real), .groups = "drop") %>%
+    group_by(launch_year) %>% summarise(n = n(), real = median(p), .groups = "drop")
+}
+ladder <- bind_rows(
+  cheapest_real(T_typed, is_digital)   %>% mutate(tier = "PDF / digital"),
+  cheapest_real(T_typed, is_hardcover) %>% mutate(tier = "Standard hardcover"),
+  deluxe_year %>% transmute(launch_year, n, real = moneymax_med_real, tier = "Deluxe / collector")
+) %>% filter(n >= 4)
+write_csv(ladder, file.path(tabd, "real_tier_ladder_by_year.csv"))
+p_ladder <- ggplot(ladder, aes(launch_year, real, color = tier)) +
+  geom_line(linewidth = 1.1) + geom_point(size = 1.7) +
+  scale_y_continuous(labels = dollar, limits = c(0, NA)) +
+  scale_x_continuous(breaks = seq(2015, 2025, 2)) +
+  scale_color_manual(values = c("PDF / digital" = "#1b9e77",
+                                "Standard hardcover" = BLUE,
+                                "Deluxe / collector" = "#d95f02"), name = NULL) +
+  labs(title = "The price of a given product holds roughly flat in real terms",
+       subtitle = "Median cheapest digital / hardcover / deluxe tier per project, constant 2025 USD. Top-decile books.",
+       x = "launch year", y = "real $ (2025 USD)") +
+  theme(legend.position = "top")
+ggsv("real_tier_ladder.png", p_ladder, h = 5)
+cat("\n=== Tier-type price ladder (real $, median cheapest-of-type per project) ===\n")
+print(as.data.frame(ladder %>% mutate(real = round(real)) %>%
+        pivot_wider(names_from = tier, values_from = c(n, real))))
