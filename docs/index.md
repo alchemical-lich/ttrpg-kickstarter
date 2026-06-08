@@ -27,11 +27,12 @@ This is survivorship bias, and it required a bit of additional thinking. It mean
 So I looked for data that *does* include the failures. A widely-used Kaggle export covers 2009–2018 and includes the flops; an academic dataset from ICPSR covers 2009–2023 with all 610,000 Kickstarter projects, successes and failures alike.[^triangulation] Triangulating across three independent sources — using the failure-inclusive ones for "did it fund" and the rich Web Robots crawl for "how much" — is the basis of everything below.
 
 :::notice
-**The three datasets behind this post** — which one is used is noted in each figure's caption.
+**The datasets behind this post** — which one is used is noted in each figure's caption.
 
-- **Web Robots crawl** — RPG-specific (keyword-classified), but *funded projects only* (survivors, **no failures**), 2014–2026. Answers *how much* a project raises: the dollar figures, the genre/composition mix, ZineQuest, and the reward tiers.
+- **Web Robots crawl** — RPG-specific (keyword-classified), but *funded projects only* (survivors, **no failures**), 2014–2026. Answers *how much* a project raises: the dollar figures, the genre/composition mix, and ZineQuest.
 - **ICPSR 38050** — includes failures, 2009–2023, but covers *all tabletop* (board games included) because project names are masked, so RPGs **can't be separated out**. Behind the success-rate and funding-threshold figures.
 - **Kaggle export** — includes failures *and* keeps names (so RPGs **can** be classified), but ends in early 2018. Behind the project-attribute funding model and the 5e event study.
+- **Internet Archive (Wayback) reward tiers** — per-tier prices and backer counts recovered from *archived* campaign pages, since Kickstarter's bulk data carries only campaign totals. A small, doubly-selected sample — the top decile of funded RPG books (~325 projects). Behind the reward-tier ("whale") and deluxe-price figures.
 
 Rule of thumb: the *failure-inclusive* sources (ICPSR, Kaggle) answer "**did it get funded?**"; the Web Robots crawl answers "**how much did it raise?**" among those that did.
 :::
@@ -86,7 +87,7 @@ Is this just composition — cheaper formats crowding in? Partly, but not mostly
 *Median per-backer pledge in constant 2025 dollars, for all core books, non-zine books only, and D&D 5e–named books. All three fall together — so the decline isn't just the cheap-zine mix.*\
 *Source: Web Robots crawl — funded RPG books, CPI-adjusted.*
 
-So if even comparable books raise less per backer, did the *product* get cheaper? Apparently not. Recovering the actual reward tiers from the archived campaign pages, the **price of the deluxe hardback tier** — the single highest-grossing tier in a campaign, which clusters around the ~$100 deluxe-hardcover point — holds **roughly flat in real terms**, bobbing around $90–130 in constant dollars with no downward drift.[^deluxe] The hardback didn't get cheaper; what changed is the *mix of backers within a campaign*. Projects increasingly bundle in $1–15 PDF and entry tiers, so a typical campaign now sells its hardback into a much larger crowd of cheap-tier backers — which drags the *average* outlay down even as the hardback's own price holds.
+So if even comparable books raise less per backer, did the *product* get cheaper? Apparently not. I recovered the actual reward tiers from the archived campaign pages — the same data behind the whale-tier section near the end of this post. The **price of the deluxe hardback tier** — the single highest-grossing tier in a campaign, which clusters around the ~$100 deluxe-hardcover point — holds **roughly flat in real terms**, bobbing around $90–130 in constant dollars with no downward drift.[^deluxe] The hardback didn't get cheaper; what changed is the *mix of backers within a campaign*. Projects increasingly bundle in $1–15 PDF and entry tiers, so a typical campaign now sells its hardback to a much larger crowd of cheap-tier backers — which drags the *average* outlay down even as the hardback's own price holds.
 
 ![Real price of the deluxe/hardback tier](images/real_deluxe_tier_price.png)
 
