@@ -2,7 +2,7 @@
 **Code & data:** This page is the write-up. The full reproducible pipeline (Python + R), figures, and tables live in [this repository](https://github.com/alchemical-lich/ttrpg-kickstarter).
 :::
 
-*Note: Caveat Emptor. The analysis and write-up were generated with the help of Claude Code—since this was done on a whim, I didn’t feel the need to do everything by hand. I checked a lot of the analysis, but there might still be mistakes in there.*
+*Note: Caveat Emptor. Since this was just a fun weekend exercise, I leaned on Claude Code to help with the writing of code and text. I checked a lot of the analysis and fine-tuned the text, but there might still be mistakes in there.*
 
 A while back I read [a great guest post on Patchwork Paladin](https://patchworkpaladin.com/2026/05/18/kickstarter-whales-guest-post/) about Kickstarter "whales" by Scipio202 on the reward tiers of fifty-three tabletop RPG campaigns that raised a million dollars.[^whales] The headline finding stuck with me: across those mega-projects, the high-end "whale" tiers brought in roughly 23% of all the money, vastly more than the cheap entry tiers (under 4%), and the median whale tier clustered around a sizable ~$478.
 
@@ -85,7 +85,7 @@ The typical project is far smaller. A median *funded* RPG book raises around **$
 
 Accessories, meanwhile, are different. Their median funding goal is **about $400**, and they exceed it comfortably: 86% of funded accessories raise at least double their goal, versus 76% for books. "Set a tiny goal and overfund” seems to be a common strategy, especially for accessories.
 
-## Bigger market, smaller projects, steady prices — in real dollars
+## Market size, project size, and price changes
 
 Every dollar figure so far — the median raises, the ~$30 a backer chips in — has been *nominal*, and lumped across a decade. Since the mid-2010s U.S. consumer prices have risen about a third, so a $10,000 raise in 2015 and a $10,000 raise in 2025 aren't the same achievement. Putting everything in constant 2025 dollars separates three questions that are easy to run together: did the *market* grow, did the *typical project* raise more, and did the *products themselves* get cheaper?[^realterms]
 

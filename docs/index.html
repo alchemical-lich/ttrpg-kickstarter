@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A reproducible analysis of the tabletop RPG corner of Kickstarter: what gets funded, what raises a lot, and what actually caused the boom.">
-  <title>What the Data Says About RPGs on Kickstarter</title>
+  <title>What the Data Says About Tabletop RPG Crowdfunding</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="wrap">
     <header class="site">
       <a class="home" href="https://github.com/alchemical-lich/ttrpg-kickstarter">&larr; ttrpg-kickstarter on GitHub</a>
-      <h1>What the Data Says About RPGs on Kickstarter</h1>
+      <h1>What the Data Says About Tabletop RPG Crowdfunding</h1>
     </header>
     <main>
       <nav id="TOC" role="doc-toc">
@@ -25,10 +25,9 @@ gaming crowdfunding</a></li>
 <li><a href="#the-dollar-distribution-among-funded-projects"
 id="toc-the-dollar-distribution-among-funded-projects">The dollar
 distribution among funded projects</a></li>
-<li><a
-href="#bigger-market-smaller-projects-steady-prices-in-real-dollars"
-id="toc-bigger-market-smaller-projects-steady-prices-in-real-dollars">Bigger
-market, smaller projects, steady prices — in real dollars</a></li>
+<li><a href="#market-size-project-size-and-price-changes"
+id="toc-market-size-project-size-and-price-changes">Market size, project
+size, and price changes</a></li>
 <li><a href="#goals-and-campaign-length"
 id="toc-goals-and-campaign-length">Goals and campaign length</a></li>
 <li><a href="#the-shift-toward-dd-5e"
@@ -58,10 +57,10 @@ reproducible pipeline (Python + R), figures, and tables live in <a
 href="https://github.com/alchemical-lich/ttrpg-kickstarter">this
 repository</a>.</p>
 </div>
-<p><em>Note: Caveat Emptor. The analysis and write-up were generated
-with the help of Claude Code—since this was done on a whim, I didn’t
-feel the need to do everything by hand. I checked a lot of the analysis,
-but there might still be mistakes in there.</em></p>
+<p><em>Note: Caveat Emptor. Since this was just a fun weekend exercise,
+I leaned on Claude Code to help with the writing of code and text. I
+checked a lot of the analysis and fine-tuned the text, but there might
+still be mistakes in there.</em></p>
 <p>A while back I read <a
 href="https://patchworkpaladin.com/2026/05/18/kickstarter-whales-guest-post/">a
 great guest post on Patchwork Paladin</a> about Kickstarter “whales” by
@@ -257,9 +256,8 @@ vs. accessories.</em></p>
 funded accessories raise at least double their goal, versus 76% for
 books. “Set a tiny goal and overfund” seems to be a common strategy,
 especially for accessories.</p>
-<h2
-id="bigger-market-smaller-projects-steady-prices-in-real-dollars">Bigger
-market, smaller projects, steady prices — in real dollars</h2>
+<h2 id="market-size-project-size-and-price-changes">Market size, project
+size, and price changes</h2>
 <p>Every dollar figure so far — the median raises, the ~$30 a backer
 chips in — has been <em>nominal</em>, and lumped across a decade. Since
 the mid-2010s U.S. consumer prices have risen about a third, so a

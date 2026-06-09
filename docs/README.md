@@ -25,7 +25,7 @@ pandoc index.md \
   --to html5 --standalone \
   --toc --toc-depth=2 \
   --template=template.html \
-  --metadata title="What the Data Says About RPGs on Kickstarter" \
+  --metadata title="What the Data Says About Tabletop RPG Crowdfunding" \
   --output index.html
 ```
 

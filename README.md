@@ -1,4 +1,4 @@
-# What the Data Says About RPGs on Kickstarter
+# What the Data Says About Tabletop RPG Crowdfunding
 
 A reproducible analysis of the tabletop **role-playing game (TTRPG)** corner of
 Kickstarter — what gets funded, what raises a lot, and what (if anything) actually
@@ -93,6 +93,6 @@ discussed in the write-up.
 
 ## Citation
 
-> alchemical-lich (2026). *What the Data Says About RPGs on Kickstarter.*
+> alchemical-lich (2026). *What the Data Says About Tabletop RPG Crowdfunding.*
 
 Inspired by the ["Kickstarter Whales" guest post on Patchwork Paladin](https://patchworkpaladin.com/2026/05/18/kickstarter-whales-guest-post/).
