@@ -114,7 +114,7 @@ So if even comparable books raise less per backer, did the **products themselves
 
 I think this suggests an interesting shift in the Kickstarter market over time. While any *given* tier held its real value, the *typical project* still raised less — because campaigns now spread their backers across more, and cheaper, tiers (e.g., a $1–15 PDF or an entry pledge below the hardback), and because more, smaller projects launch every year. The same project with a hardback option now reaches a much broader base of cheap-tier backers, which drags the *average* outlay down even as its own price holds. At the **population** level the average RPG product really is cheaper now — but only because cheap formats like zines and PDF-only releases proliferated, which is a compositional effect. RPG products didn't get cheaper *per se* but the available *mix* of projects and pledge tiers did, allowing backers to commit fewer real dollars on a pledge. Creators have also set their asks to match — the goals they choose have fallen even faster in real terms, which I come back to below.
 
-## Goals and Clocks
+## Goals and campaign length
 
 Two numbers a creator picks before anything else are the **goal** (how much to ask for) and the **clock** (how long to run). RPG goals cluster in the low thousands (accessories a notch lower, in the hundreds), with the telltale spikes at round numbers like $1,000 and $5,000.
 
@@ -162,7 +162,7 @@ But "a 5e book" and "an indie-system book" are usually different *kinds* of obje
 
 D&D 5e is something people publish *for*: about **40% of 5e books are adventures**, another quarter are bestiaries and supplements, and only ~6% are new core rulebooks. Other systems are where new *games* live — about a third are rulebooks — and they're also where the zines cluster (**12%** of other-system books, versus ~4% of 5e ones). One ecosystem extends an existing system; the other produces new ones. 
 
-## Getting funded depends more on who than what
+## What predicts getting funded: the creator more than the project
 
 Now the question the survivor data couldn't speak to. Using the failure-inclusive datasets, I asked Claude to build models to predict funding success and checked how well they did out-of-sample, not merely how well they fit in-sample.[^auc] One thing to keep in mind for this whole section: the failure-inclusive data is either name-identified only through 2018 or not RPG-specific. Because the Kaggle export keeps project names, I *can* run the keyword classifier on it and isolate RPG projects — but only through 2018; ICPSR masks names, so it stays whole-tabletop. So the funding-side story leans on tabletop crowdfunding in the 2010s and may not perfectly describe the ZineQuest-era RPG market of the 2020s.[^fundingera]
 
@@ -198,7 +198,7 @@ The project attributes still matter, just less. Holding other things equal: an a
 
 A warning on that last one, because it's an easily misunderstood statistic: this is a *correlation*, and the goal is not randomly assigned. Creators set goals in anticipation of demand — a cautious creator with a small audience sets $2,000; a publisher with a big mailing list confidently sets $80,000. So "low goals succeed more" does **not** mean "lower your goal and you'll succeed." The number tells you which kind of creator picks which kind of goal; what would happen if a given creator trimmed their own is a question it cannot answer. (I return to this point below.)
 
-## Among funded projects, what drives the size of the raise
+## Among funded projects, what correlates with the size of the raise
 
 For the magnitude question — how big does a funded project get — I switched back to the rich Web Robots data, which is exactly the funded population. The standouts, expressed as "multiply the dollars by roughly":
 
@@ -223,7 +223,7 @@ Two further points. First, I fed each campaign's *text* — titles and blurbs �
 
 Second, the staff-pick and video effects get *stronger* the further up the distribution you go. For a median project a staff pick is worth maybe 1.5×; for the runaway hits near the top it's associated with more like 3.5×. Social proof and production polish are amplified in the upper tail. (Correlation again — Kickstarter may hand out staff picks to projects it can already tell will be big — but it's a suggestive pattern.)
 
-### Naming a recognized system raises more
+### Books that name a system tend to raise more
 
 Since I'd tagged every book by its system, I could ask a sharper version of the old "5E helps" folk wisdom: among funded books, does naming a recognized engine correlate with more money? Relative to a system-agnostic book, naming a known system is worth a roughly **25–45% bigger raise** — **D&D 5e ×1.32, OSR ×1.26**, and the named indies (Call of Cthulhu, Mothership, and similar) **×1.43**. Pathfinder and the PbtA family are statistically indistinguishable from agnostic. 
 
@@ -249,7 +249,7 @@ For **whether you get funded**, though, the drivers *don't* meaningfully differ 
 
 So: **product type shapes how much you raise, but not whether you raise it.** 
 
-## Testing whether 5e caused the boom
+## Did 5e cause the boom?
 
 It is tempting to credit the rising RPG fortunes of the last decade to obvious cultural events — 5th edition in 2014, *Stranger Things*, *Critical Role*. But that is hard to show in the data. 
 
