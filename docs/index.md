@@ -67,9 +67,27 @@ But "tabletop" is mostly *board games* when it comes to dollars. Line up each su
 *Each subcategory's share of funded dollars (blue) vs its share of funded projects (grey). Where blue beats grey — board games, video games — is high-value territory; where grey beats blue — playing cards, accessories — is high-volume but cheap.*\
 *Source: Web Robots crawl — funded projects, all Games subcategories.*
 
+## The dollar distribution among funded projects
+
+Among funded projects, the distribution of dollars is strongly top-heavy. The **top 1% of funded RPG projects capture about 34% of all the dollars**; the top 5% capture nearly two-thirds. For accessories it is even more concentrated relative to their size — the top 1% pull in 38%. The whale post was studying the part of the distribution that holds most of the money.
+
+![Lorenz curve of pledged dollars](images/desc_lorenz_dollars.png)
+
+*How concentrated the money is. The sharp bend near the right edge means a tiny share of projects holds most of the dollars; a straight diagonal would mean perfect equality.*\
+*Source: Web Robots crawl — funded RPG projects only.*
+
+The typical project is far smaller. A median *funded* RPG book raises around **$5,800** from a bit over 200 backers; a median funded RPG accessory (dice, minis, a GM screen) raises about **$3,000** from roughly 100 backers. The *per-backer* pledge is nearly identical — about $30 either way — so RPG books pull ahead purely by attracting roughly twice as many backers, not by charging more per pledge.
+
+![Distribution of pledged dollars, RPG books vs accessories](images/desc_pledged_hist_log.png)
+
+*What funded projects raise (log scale). RPG books sit to the right of accessories — they raise more — but both distributions have a long tail reaching toward the millions.*\
+*Source: Web Robots crawl — funded RPG books vs. accessories.*
+
+Accessories, meanwhile, are different. Their median funding goal is **about $400**, and they exceed it comfortably: 86% of funded accessories raise at least double their goal, versus 76% for books. "Set a tiny goal and overfund” seems to be a common strategy, especially for accessories.
+
 ## Bigger market, smaller projects, steady prices — in real dollars
 
-Every dollar figure so far has been *nominal*. Since the mid-2010s U.S. consumer prices have risen about a third, so a $10,000 raise in 2015 and a $10,000 raise in 2025 are not the same achievement. Putting everything in constant 2025 dollars separates three questions that are easy to run together: did the *market* grow, did the *typical project* raise more, and did the *products themselves* get cheaper?[^realterms]
+Every dollar figure so far — the median raises, the ~$30 a backer chips in — has been *nominal*, and lumped across a decade. Since the mid-2010s U.S. consumer prices have risen about a third, so a $10,000 raise in 2015 and a $10,000 raise in 2025 aren't the same achievement. Putting everything in constant 2025 dollars separates three questions that are easy to run together: did the *market* grow, did the *typical project* raise more, and did the *products themselves* get cheaper?[^realterms]
 
 The **market** grew, comfortably outpacing inflation. Total real dollars raised by funded RPG books roughly **tripled** between 2015 and 2025 — a real gain of about **220%**, far above the ~36% that the cost of living rose over the same stretch. But that's almost entirely *volume*: there are simply many more RPG-book campaigns now than a decade ago.
 
@@ -95,24 +113,6 @@ So if even comparable books raise less per backer, did the **products themselves
 *Source: Wayback-recovered reward tiers, CPI-adjusted.*
 
 I think this suggests an interesting shift in the Kickstarter market over time. While any *given* tier held its real value, the *typical project* still raised less — because campaigns now spread their backers across more, and cheaper, tiers (e.g., a $1–15 PDF or an entry pledge below the hardback), and because more, smaller projects launch every year. The same project with a hardback option now reaches a much broader base of cheap-tier backers, which drags the *average* outlay down even as its own price holds. At the **population** level the average RPG product really is cheaper now — but only because cheap formats like zines and PDF-only releases proliferated, which is a compositional effect. RPG products didn't get cheaper *per se* but the available *mix* of projects and pledge tiers did, allowing backers to commit fewer real dollars on a pledge. Creators have also set their asks to match — the goals they choose have fallen even faster in real terms, which I come back to below.
-
-## The dollar distribution among funded projects
-
-Among funded projects, the distribution of dollars is strongly top-heavy. The **top 1% of funded RPG projects capture about 34% of all the dollars**; the top 5% capture nearly two-thirds. For accessories it is even more concentrated relative to their size — the top 1% pull in 38%. The whale post was studying the part of the distribution that holds most of the money.
-
-![Lorenz curve of pledged dollars](images/desc_lorenz_dollars.png)
-
-*How concentrated the money is. The sharp bend near the right edge means a tiny share of projects holds most of the dollars; a straight diagonal would mean perfect equality.*\
-*Source: Web Robots crawl — funded RPG projects only.*
-
-The typical project is far smaller. A median *funded* RPG book raises around **$5,800** from a bit over 200 backers; a median funded RPG accessory (dice, minis, a GM screen) raises about **$3,000** from roughly 100 backers. The *per-backer* pledge is nearly identical for the two — about $30 either way. RPG books therefore pull ahead by attracting roughly twice as many backers at the same price point: the gap is driven by demand (the number of backers) rather than by the average pledge.
-
-![Distribution of pledged dollars, RPG books vs accessories](images/desc_pledged_hist_log.png)
-
-*What funded projects raise (log scale). RPG books sit to the right of accessories — they raise more — but both distributions have a long tail reaching toward the millions.*\
-*Source: Web Robots crawl — funded RPG books vs. accessories.*
-
-Accessories, meanwhile, are different. Their median funding goal is **about $400**, and they exceed it comfortably: 86% of funded accessories raise at least double their goal, versus 76% for books. "Set a tiny goal and overfund” seems to be a common strategy, especially for accessories.
 
 ## Goals and Clocks
 
