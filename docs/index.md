@@ -238,7 +238,7 @@ In the failure-inclusive data, books that name a recognizable system are also me
 
 Because I'd split RPG books from RPG accessories, I could ask whether they respond to the same things. The answer reveals a small asymmetry.
 
-For **how much you raise**, the drivers genuinely differ. The starkest example: a "5E-compatible" label *raises* money for a rulebook but is slightly *negative* for an accessory.[^bookacc] That makes intuitive sense — a branded D&D *book* is a selling point, but generic "D&D dice" or "D&D minis" are a commodity in a crowded field. Being US-based flips sign too.
+For **how much you raise**, the drivers differ. The starkest example: a "5E-compatible" label *raises* money for a rulebook but is slightly *negative* for an accessory.[^bookacc] That makes intuitive sense — a branded D&D *book* is a selling point, but generic "D&D dice" or "D&D minis" are a commodity in a crowded field. Being US-based flips sign too.
 
 ![Magnitude drivers split by product type](images/magclass_by_class_coefs.png)
 
