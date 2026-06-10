@@ -2,7 +2,7 @@
 **Code & data:** This page is the write-up. The full reproducible pipeline (Python + R), figures, and tables can be found in [this repository](https://github.com/alchemical-lich/ttrpg-kickstarter).
 :::
 
-*Note: Caveat Emptor. Since this was just a fun weekend exercise, I leaned on Claude Code to help with the writing of code and text. I checked a lot of the analysis and fine-tuned the text, but there might still be mistakes in there.*
+*Note: Caveat Emptor. This was just a fun weekend exercise, which means I leaned a lot on Claude Code to help with the writing of code and text. While I checked a lot of elements, I did not vet every single of line of code. Claude sometimes does boneheaded stuff, so please consider everything as preliminary.*
 
 I recently read [a great guest post on Patchwork Paladin](https://patchworkpaladin.com/2026/05/18/kickstarter-whales-guest-post/) about Kickstarter "whales" by Scipio202 on the reward tiers of fifty-three tabletop RPG campaigns that raised a million dollars.[^whales] The analysis revealed that across those mega-projects, the high-end "whale" tiers brought in roughly 23% of all the money, vastly more than the cheap entry tiers (under 4%), and the median whale tier clustered around a sizable ~$478.
 
