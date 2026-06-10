@@ -87,7 +87,7 @@ Accessories, meanwhile, are different. Their median funding goal is **about $400
 
 ## Market size, project size, and price changes
 
-Every dollar figure so far — the median raises, the ~$30 a backer chips in — has been *nominal*, and lumped across a decade. Since the mid-2010s U.S. consumer prices have risen about a third, so a $10,000 raise in 2015 and a $10,000 raise in 2025 aren't the same achievement. Putting everything in constant 2025 dollars separates three questions that are easy to run together: did the *market* grow, did the *typical project* raise more, and did the *products themselves* get cheaper?[^realterms]
+Every dollar figure so far — the median raises, the ~$30 a backer chips in — has been *nominal*, and lumped across a decade. Since the mid-2010s U.S. consumer prices have risen about a third, so a $10,000 raise in 2015 and a $10,000 raise in 2025 aren't the same achievement. Putting everything in constant 2025 dollars separates three questions that are distinct: did the *market* grow, did the *typical project* raise more, and did the *products themselves* get cheaper?[^realterms]
 
 The **market** grew, comfortably outpacing inflation. Total real dollars raised by funded RPG books roughly **tripled** between 2015 and 2025 — a real gain of about **220%**, far above the ~36% that the cost of living rose over the same stretch. But that's almost entirely *volume*: there are simply many more RPG-book campaigns now than a decade ago.
 
