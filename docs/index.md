@@ -1,5 +1,5 @@
 :::notice
-**Code & data:** This page is the write-up. The full reproducible pipeline (Python + R), figures, and tables live in [this repository](https://github.com/alchemical-lich/ttrpg-kickstarter).
+**Code & data:** This page is the write-up. The full reproducible pipeline (Python + R), figures, and tables can be found here [this repository](https://github.com/alchemical-lich/ttrpg-kickstarter).
 :::
 
 *Note: Caveat Emptor. Since this was just a fun weekend exercise, I leaned on Claude Code to help with the writing of code and text. I checked a lot of the analysis and fine-tuned the text, but there might still be mistakes in there.*
