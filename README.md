@@ -1,9 +1,8 @@
 # What the Data Says About Tabletop RPG Crowdfunding
 
 A reproducible analysis of the tabletop **role-playing game (TTRPG)** corner of
-Kickstarter — what gets funded, what raises a lot, and what (if anything) actually
-*caused* the boom — built by triangulating three independent datasets and taking
-sample-selection seriously.
+Kickstarter: what gets funded, what raises a lot, and what (if anything) caused the
+boom. It triangulates three independent datasets and takes sample selection seriously.
 
 📖 **Read the write-up:** **[alchemical-lich.github.io/ttrpg-kickstarter](https://alchemical-lich.github.io/ttrpg-kickstarter/)**.
 This repository is the write-up *and* the reproducible code, data pipeline, and
@@ -14,36 +13,38 @@ served via GitHub Pages).
 
 ## The gist
 
-- **The obvious dataset lies about success.** The widely-used Web Robots crawl is
-  built from Kickstarter's "discover" pages, which surface survivors — only ~2% of
-  finished tabletop projects in it are "failed," implying a fake ~98% success rate.
-  Bringing in failure-aware data puts the *real* rate around **two-thirds (2009–18),
-  rising to ~86% by 2023.**
-- **Getting funded is about *who*, not *what*.** A model built only from the
-  creator's track record predicts funding much better (AUC **0.83**) than one built
-  from project attributes (AUC **0.72**). Past successes help; past failures hurt.
-- **Raising *a lot* (once funded) is about quality and social proof.** A "Projects
-  We Love" staff pick travels with ~**2.6×** the dollars; a repeat creator ~1.4×.
-  Money is brutally concentrated (top 1% of funded RPG projects ≈ 34% of all pledges,
-  ~38% for accessories).
-- **Product type shapes *how much*, not *whether*.** Drivers of magnitude differ for
-  rulebooks vs. accessories (a "5E" label helps books, not commodity minis); drivers
-  of funding do not.
-- **The hobby tilted toward D&D — and *naming a system* pays.** Books naming D&D 5e
-  went from ~7% of funded RPG books (2014–15) to ~40% (2023–26); 5e is mostly
-  *content for* the engine (adventures/supplements) while other systems are new
-  rulebooks and zines. Naming a recognized system (5e, OSR, a known indie line)
-  travels with a **~25–45% larger raise** and better funding odds — though the tags
-  add only modestly to predictive power overall.
-- **Causal honesty:** **ZineQuest** (Kickstarter's Feb RPG-zine program) demonstrably
-  ~doubled funded RPG February launches — a clean natural experiment. **D&D 5e did
-  *not*** produce an identifiable break — the RPG advantage predates it. And the
-  tempting **all-or-nothing funding-threshold RD fails its manipulation test** —
-  projects bunch hard just above 100% of goal (McCrary p ≈ 4e-86), a cautionary
-  example of why a sharp cutoff isn't automatically a clean experiment.
+- **The obvious dataset overstates success.** The widely-used Web Robots crawl is
+  built from Kickstarter's "discover" pages, which surface survivors: only ~2% of
+  finished tabletop projects in it are marked "failed," implying a ~98% success rate.
+  Bringing in failure-aware data puts the real rate around two-thirds (2009–18),
+  rising to ~86% by 2023.
+- **Creator track record predicts funding better than project attributes.** A model
+  built only from the creator's history reaches AUC **0.83**, against **0.72** for one
+  built from project attributes. Past successes help; past failures hurt. The two
+  models run on different datasets, so this is a decomposition across sources rather
+  than a head-to-head.
+- **Among funded projects, staff picks and repeat creators track the biggest raises.**
+  A "Projects We Love" staff pick travels with ~**2.6×** the dollars; a repeat creator
+  ~1.4×. The money is very concentrated: the top 1% of funded RPG projects take about
+  34% of all pledges, ~38% for accessories.
+- **Product type shapes how much you raise but not whether you raise it.** Drivers of
+  magnitude differ for rulebooks and accessories (a "5E" label helps books but not
+  commodity minis); drivers of funding don't differ.
+- **The hobby tilted toward D&D, and naming a system pays.** Books naming D&D 5e went
+  from ~7% of funded RPG books (2014–15) to ~40% (2023–26). 5e is mostly content *for*
+  the engine (adventures and supplements), while other systems are where new rulebooks
+  and zines live. Naming a recognized system (5e, OSR, a known indie line) travels with
+  a **~25–45% larger raise** and better funding odds, though the tags add only modestly
+  to predictive power.
+- **On causal claims.** **ZineQuest** (Kickstarter's February RPG-zine program) roughly
+  doubled funded RPG February launches, and it is the one design here close to a natural
+  experiment. **D&D 5e produced no identifiable break** — the RPG advantage predates it.
+  And the **all-or-nothing funding-threshold RD fails its manipulation test**: projects
+  bunch hard just above 100% of goal (McCrary p ≈ 4e-86), so a sharp cutoff isn't
+  automatically a usable experiment.
 
-All claims are evidence-based; correlations are labeled as such; the one
-quasi-experimental result (ZineQuest) is flagged as the only causal claim.
+Correlations are labeled as such throughout, and ZineQuest is flagged as the only
+result close to a causal claim.
 
 ## Repository layout
 
@@ -71,15 +72,15 @@ data/                git-ignored; data/README.md explains how to obtain the raw 
 **Languages:** Python for data engineering (ingest, classifier); **R + ggplot2** for
 all analysis and figures. See `code/README.md` for the stage-by-stage map.
 
-## Honest limits
+## Limits
 
-The TTRPG classifier is ~88% precise on a fresh held-out audit with recall preserved
-(and ~97% agreement with hand-checking on the high-dollar tail, after tightening it);
-label error mostly attenuates category contrasts toward zero, so the reported
-differences are conservative. Reward-tier ("whale") data isn't in any *bulk* dataset,
-but I recovered a partial, doubly-selected sample — 325 top-decile RPG books, ~3,300
-tiers — from archived campaign pages on the Internet Archive's Wayback Machine. A
-crawl coverage gap still makes the 2023 OGL crisis unanalyzable. These points are
+The TTRPG classifier is ~88% precise on a fresh held-out audit with recall preserved,
+and agrees with hand-checking about 97% of the time on the high-dollar tail after
+tightening. Label error mostly attenuates category contrasts toward zero, so the
+reported differences are conservative. Reward-tier ("whale") data isn't in any bulk
+dataset; I recovered a partial, doubly-selected sample of 325 top-decile RPG books and
+~3,300 tiers from archived campaign pages on the Internet Archive's Wayback Machine.
+A crawl coverage gap still makes the 2023 OGL crisis unanalyzable. All of this is
 discussed in the write-up.
 
 ## License
