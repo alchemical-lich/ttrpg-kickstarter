@@ -62,17 +62,26 @@ logit_tbl <- tibble(term = rownames(ct), coef = ct[, 1], se = ct[, 2],
                     p_value = ct[, 4], odds_ratio = exp(ct[, 1]))
 write_csv(logit_tbl, file.path(tabd, "success_kaggle_logit_coefs.csv"))
 
+lab07 <- c(log10_goal = "Funding goal (per 10x)",
+           duration_days = "Campaign length (per day)",
+           country_us = "US-based",
+           title_words = "Title length (per word)",
+           is_ttrpg = "Is an RPG",
+           is_ttrpg_accessory = "Is an RPG accessory",
+           is_dnd5e = "Names D&D / 5e / Pathfinder",
+           is_osr = "Names an OSR system")
 cf <- logit_tbl %>%
   mutate(lo = exp(coef - 1.96 * se), hi = exp(coef + 1.96 * se),
+         term = recode(term, !!!lab07),
          term = fct_reorder(term, odds_ratio))
 p_or <- ggplot(cf, aes(odds_ratio, term)) +
   geom_vline(xintercept = 1, linetype = "dashed", color = "grey50") +
   geom_pointrange(aes(xmin = lo, xmax = hi), color = "#33aa66") +
   scale_x_log10() +
-  labs(title = "Odds of funding — Kaggle Tabletop (2009-2018), project attributes",
-       subtitle = "odds ratios; 95% CI (HC1); year/month/dow FE. TTRPG flag is name-only.",
+  labs(title = "What predicts getting funded: project attributes",
+       subtitle = "Odds ratios; Kaggle tabletop 2009-2018; 95% CI (robust); RPG flags are name-only",
        x = "odds ratio (log scale)", y = NULL)
-ggsave(file.path(figd, "success_kaggle_or_plot.png"), p_or, width = 9, height = 5, dpi = 130)
+ggsave(file.path(figd, "success_kaggle_or_plot.png"), p_or, width = 10, height = 5, dpi = 130)
 
 # ---- (2) Honest 5-fold CV: logit vs LASSO vs RF (AUC + Brier) --------------
 mm <- model.matrix(as.formula(paste("~", paste(c(xvars, "launch_year",
@@ -115,6 +124,22 @@ p_roc <- ggplot(roc_df, aes(fpr, tpr, color = model)) +
        x = "false positive rate", y = "true positive rate")
 ggsave(file.path(figd, "success_kaggle_roc.png"), p_roc, width = 6.5, height = 6, dpi = 130)
 
+# ---- (3) RPG-only robustness check -----------------------------------------
+# The plotted model pools ALL tabletop with an "is an RPG" predictor, which assumes
+# the goal/duration/US slopes are common across tabletop. Re-estimate on RPG projects
+# ONLY (drop the now-constant RPG flags) so those slopes are estimated within RPGs.
+# Smaller, name-only sample -> lower power; read vanishing effects as "unresolved".
+xvars_rpg <- setdiff(xvars, c("is_ttrpg", "is_ttrpg_accessory"))
+Dr  <- D %>% filter(is_ttrpg == 1)
+fml_rpg <- as.formula(paste("funded ~", paste(xvars_rpg, collapse = " + "),
+                            "| launch_year + launch_month"))
+logit_rpg <- feglm(fml_rpg, data = Dr, family = binomial(), vcov = "hetero")
+ctr <- as.data.frame(coeftable(logit_rpg))
+logit_rpg_tbl <- tibble(term = rownames(ctr), coef = ctr[, 1], se = ctr[, 2],
+                        p_value = ctr[, 4], odds_ratio = exp(ctr[, 1]))
+write_csv(logit_rpg_tbl, file.path(tabd, "success_kaggle_rpgonly_coefs.csv"))
+auc_rpg <- auc_fn(Dr$funded, predict(logit_rpg, type = "response"))
+
 # ---- console + comparison to ICPSR -----------------------------------------
 cat("######## SUCCESS vs FAILURE — Kaggle Tabletop (2009-2018) ########\n")
 cat(sprintf("n = %d (successful=%d, failed=%d; base rate %.1f%%)\n",
@@ -122,6 +147,10 @@ cat(sprintf("n = %d (successful=%d, failed=%d; base rate %.1f%%)\n",
 cat("\n=== Logit odds ratios (project attributes; name-only TTRPG/genre) ===\n")
 print(logit_tbl %>% mutate(across(c(coef, se, odds_ratio), ~round(.x, 3)),
                            p_value = signif(p_value, 2)) %>% as.data.frame())
+cat(sprintf("\n=== RPG-ONLY robustness (n=%d, funded %.1f%%, in-sample AUC=%.3f) ===\n",
+            nrow(Dr), 100 * mean(Dr$funded), auc_rpg))
+print(logit_rpg_tbl %>% mutate(across(c(coef, se, odds_ratio), ~round(.x, 3)),
+                               p_value = signif(p_value, 2)) %>% as.data.frame())
 cat("\n=== Honest 5-fold CV (AUC ↑ / Brier ↓) ===\n"); print(as.data.frame(cv), digits = 4)
 cat("\n=== RF importance (non-FE) ===\n"); print(as.data.frame(imp), digits = 3)
 icp <- tryCatch(read_csv(file.path(tabd, "success_cv_metrics.csv"), show_col_types = FALSE),

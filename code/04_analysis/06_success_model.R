@@ -62,17 +62,25 @@ logit_tbl <- tibble(term = rownames(ct), coef = ct[, 1], se = ct[, 2],
                     p_value = ct[, 4], odds_ratio = exp(ct[, 1]))
 write_csv(logit_tbl, file.path(tabd, "success_logit_coefs.csv"))
 
+lab06 <- c(log10_goal = "Funding goal (per 10x)",
+           duration_days = "Campaign length (per day)",
+           log1p_prior_funded = "Prior funded projects",
+           log1p_prior_failed = "Prior failed projects",
+           csuccess_rate = "Prior success rate",
+           has_prior = "Has launched before",
+           creator_known = "Creator ID on record")
 cf <- logit_tbl %>%
   mutate(lo = exp(coef - 1.96 * se), hi = exp(coef + 1.96 * se),
+         term = recode(term, !!!lab06),
          term = fct_reorder(term, odds_ratio))
 p_or <- ggplot(cf, aes(odds_ratio, term)) +
   geom_vline(xintercept = 1, linetype = "dashed", color = "grey50") +
   geom_pointrange(aes(xmin = lo, xmax = hi), color = "#d7191c") +
   scale_x_log10() +
-  labs(title = "Odds of funding — Tabletop Kickstarter (ICPSR 2009-2023)",
-       subtitle = "odds ratios; 95% CI, SE clustered by creator; year/month/dow FE",
+  labs(title = "What predicts getting funded: creator track record",
+       subtitle = "Odds ratios; ICPSR all-tabletop 2009-2023; 95% CI clustered by creator",
        x = "odds ratio (log scale)", y = NULL)
-ggsave(file.path(figd, "success_or_plot.png"), p_or, width = 9, height = 4.5, dpi = 130)
+ggsave(file.path(figd, "success_or_plot.png"), p_or, width = 10, height = 4.7, dpi = 130)
 
 # ---- (2) Honest 5-fold CV: logit vs LASSO vs RF (AUC + Brier) --------------
 mm <- model.matrix(as.formula(paste("~", paste(c(xvars, "launch_year",
