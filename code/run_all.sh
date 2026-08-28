@@ -44,10 +44,14 @@ $R  code/02_clean/02_coverage_map.R
 # Recovers per-tier prices/backers for top-decile RPG books from the Internet
 # Archive. SLOW + network (archive.org), so it's not run by default; its outputs
 # are committed. Uncomment to (re)build. Order matters: recover URLs -> scrape ->
-# backfill any missing FX rates -> analysis (19_reward_tiers.R, in ANALYSIS below).
+# backfill any missing FX rates -> parse tier CONTENTS -> bundle features -> the two
+# tier analyses (19_reward_tiers.R and 21_tier_bundles.R, in ANALYSIS below).
+# Stage 08 re-parses the snapshots stage 06 already cached, so it needs NO network.
 # $PY code/01_ingest/05_recover_project_urls.py
 # $PY code/01_ingest/06_scrape_wayback_rewards.py
 # $PY code/01_ingest/07_backfill_tier_usd.py   # fill missing static_usd_rate from the panel; idempotent
+# $PY code/01_ingest/08_parse_tier_contents.py # tier item lists from the cached pages (offline)
+# $PY code/03_features/05_tier_bundle_features.py
 
 echo "== [6] ANALYSIS =="
 $R  code/04_analysis/01_descriptive_landscape.R
@@ -68,6 +72,8 @@ $R  code/04_analysis/15_funding_threshold_rd.R          # all-or-nothing RD + Mc
 $R  code/04_analysis/16_composition_5e_split.R          # product mix: 5e vs other systems
 $R  code/04_analysis/17_subcat_drivers.R                # sub-tags in magnitude + success models
 $R  code/04_analysis/18_market_landscape.R             # baseline market-size / goal / seasonality figures
+$R  code/04_analysis/19_reward_tiers.R               # reward-tier ("whale") price/backer structure
 $R  code/04_analysis/20_real_terms_trends.R            # CPI-deflated (real-$) market / per-project / per-backer trends
+$R  code/04_analysis/21_tier_bundles.R                 # tier CONTENTS: bundle breadth vs item count
 
 echo "== DONE. Outputs in tables/ and figures/. =="
