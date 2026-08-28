@@ -6,7 +6,7 @@
 
 I recently read [a great guest post on Patchwork Paladin](https://patchworkpaladin.com/2026/05/18/kickstarter-whales-guest-post/) about Kickstarter "whales" by Scipio202, on the reward tiers of fifty-three tabletop RPG campaigns that raised a million dollars.[^whales] It found that across those mega-projects the high-end "whale" tiers brought in roughly 23% of all the money, against under 4% for the cheap entry tiers, and that the median whale tier sat at about $478.
 
-It's a careful analysis, but fifty-three projects is a small and selective sample, all of them extreme success stories. I kept wondering about the rest of the ttrpg Kickstarter projects out there.
+That is careful work on data nobody had assembled before, and fifty-three million-dollar campaigns is the right sample for a question about million-dollar campaigns. What I kept wondering was whether the same picture describes the rest of the ttrpg projects on Kickstarter, most of which look nothing like those.
 
 ## Getting the data
 
@@ -309,12 +309,12 @@ That pooled number, though, is the thing worth being careful about, because it i
 
 ![Share of dollars by tier price, across campaign sizes](images/tier_dollar_share_by_size.png)
 
-*Where each size band's pledged dollars came from, by the price of the tier that carried them. The premium band grows from a fifth of the money for typical funded books to nearly two-thirds for the largest campaigns. A study of million-dollar projects describes the right-hand bar.*\
+*Where each size band's pledged dollars came from, by the price of the tier that carried them. The premium band grows from a fifth of the money for typical funded books to nearly two-thirds for the largest campaigns. The right-hand bar is what a million-dollar campaign looks like; most funded books look like the left.*\
 *Source: Wayback-recovered reward tiers — funded RPG books.*
 
 The RPG-book "whale" sits lower than in the original post. Defined the same way, as the single most-expensive tier in a campaign, the median top-priced tier across these books is about **$300**, versus **$478** among the million-dollar megaprojects. That ceiling tier isn't where the money is made: the **highest-grossing tier of the median book is only about $65**. The expensive tier exists, but few people buy it, and that holds at every size — the top-priced tier collects about 4–6% of its campaign's money whether the campaign raised $30,000 or $3 million.
 
-The tier that does the earning is not a fixed price either. It rises with the campaign, from about **$50** for books under $50,000 to **$127** for those above $250,000. In every band it lands close to what a printed copy of that book costs, which suggests the "sweet spot" is not a psychological price point that creators should aim for but simply the tier that has the physical book in it. Reading only the megaprojects would put that number near $100 for everyone.
+The tier that does the earning is not a fixed price either. It rises with the campaign, from about **$50** for books under $50,000 to **$127** for those above $250,000. In every band it lands close to what a printed copy of that book costs, which suggests the "sweet spot" is less a psychological price point creators should aim for than simply the tier with the physical book in it. Looking only at the largest campaigns would suggest a single figure near $100; across the category it is a moving target.
 
 ![Price of each project's top-grossing tier](images/tier_sweetspot_hist.png)
 
