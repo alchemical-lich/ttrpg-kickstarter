@@ -141,11 +141,13 @@ keeps names (so RPGs <strong>can</strong> be classified), but ends in
 early 2018. Behind the project-attribute funding model and the 5e event
 study.</li>
 <li><strong>Internet Archive (Wayback) reward tiers</strong> — per-tier
-prices and backer counts recovered from <em>archived</em> campaign
-pages, since Kickstarter’s bulk data carries only campaign totals. A
-small, doubly-selected sample: the top decile of funded RPG books (~325
-projects). Behind the reward-tier (“whale”) and deluxe-price
-figures.</li>
+prices, backer counts, and (for 2017–2022 campaigns) the itemized
+contents of each tier, recovered from <em>archived</em> campaign pages,
+since Kickstarter’s bulk data carries only campaign totals. A selected
+sample: the top decile of funded RPG books plus the rest of the top
+quartile for 2017–2022 (683 books, ~6,600 tiers), of which 415 books
+also have itemized tier contents. Behind the reward-tier (“whale”),
+deluxe-price, and bundle figures.</li>
 </ul>
 <p>Rule of thumb: the <em>failure-inclusive</em> sources (ICPSR, Kaggle)
 answer “<strong>did it get funded?</strong>”; the Web Robots crawl
@@ -749,45 +751,77 @@ in any of the bulk datasets. So I went back and recovered them (with the
 help of Claude), reading the <em>archived</em> campaign pages from the
 Internet Archive’s Wayback Machine rather than scraping Kickstarter
 directly.<a href="#fn27" class="footnote-ref" id="fnref27"
-role="doc-noteref"><sup>27</sup></a> About half of the top-decile RPG
-books had an archived page complete enough to use, giving 325 books and
-roughly 3,300 tiers. The sample is doubly selected and the figures are
-approximate: per-tier price × backers recovers about three-quarters of
-each project’s total, the rest being over-pledges, add-ons, and
-shipping.</p>
-<p>The first finding matches the whale post on a much larger sample. The
-cheap tiers draw most of the backers; the premium tiers hold most of the
-money. Sorting every tier by price, entry tiers under $25 account for
-about a seventh of all backers but under <strong>3% of the
-dollars</strong>, while the $100–500 band holds roughly a quarter of the
-backers and <strong>over half the dollars</strong>.</p>
+role="doc-noteref"><sup>27</sup></a> I did this twice: first for the top
+decile of funded RPG books, and then, because the whole point of this
+exercise is to get away from looking only at the winners, for the rest
+of the top quartile as well. That gives <strong>683 books and about
+6,600 tiers</strong>, from campaigns raising anywhere between roughly
+$19,000 and $15 million. The sample is still selected and the figures
+are approximate: per-tier price × backers recovers about three-quarters
+of each project’s total, the rest being over-pledges, add-ons, and
+shipping.<a href="#fn28" class="footnote-ref" id="fnref28"
+role="doc-noteref"><sup>28</sup></a></p>
+<p>The broad shape matches the whale post. The cheap tiers draw most of
+the backers and the premium tiers hold most of the money: across all 683
+books, tiers under $25 take about a fifth of the backers but <strong>4%
+of the dollars</strong>, while the $100–500 band holds a fifth of the
+backers and <strong>half the dollars</strong>.</p>
+<p>That pooled number, though, is the thing worth being careful about,
+because it is an average across campaigns of wildly different sizes and
+it is not true of any of them in particular. Split the books by what
+they raised and the premium tiers’ importance climbs steadily with the
+size of the campaign. For books raising over $250,000, the $100–500
+tiers supply <strong>63%</strong> of the money. For a book raising under
+$50,000 — which is most funded RPG books — they supply
+<strong>20%</strong>, and the sub-$50 tiers that barely register for the
+megaprojects carry a third of the total.</p>
 <p><img src="images/tier_backers_vs_dollars_by_price.png"
 alt="Backers vs. dollars by reward-tier price" /></p>
 <p><em>Every reward tier sorted into price bands: share of all backers
 (grey) vs. approximate share of all pledged dollars (blue). Backers
 cluster at $50–100; the dollars shift right to the $100–500 premium
 tiers.</em><br />
-<em>Source: Wayback-recovered reward tiers — top-decile funded RPG
-books.</em></p>
-<p>The RPG-book “whale” sits a little lower than in the original post.
-Defined the same way, as the single most-expensive tier in a campaign,
-the median top-priced tier among these books is about
-<strong>$360</strong>, versus <strong>$478</strong> across the
+<em>Source: Wayback-recovered reward tiers — funded RPG books.</em></p>
+<p><img src="images/tier_dollar_share_by_size.png"
+alt="Share of dollars by tier price, across campaign sizes" /></p>
+<p><em>Where each size band’s pledged dollars came from, by the price of
+the tier that carried them. The premium band grows from a fifth of the
+money for typical funded books to nearly two-thirds for the largest
+campaigns. A study of million-dollar projects describes the right-hand
+bar.</em><br />
+<em>Source: Wayback-recovered reward tiers — funded RPG books.</em></p>
+<p>The RPG-book “whale” sits lower than in the original post. Defined
+the same way, as the single most-expensive tier in a campaign, the
+median top-priced tier across these books is about
+<strong>$300</strong>, versus <strong>$478</strong> among the
 million-dollar megaprojects. That ceiling tier isn’t where the money is
-made, though: the <strong>highest-grossing tier of the median book is
-only about $99</strong>, roughly the price of a deluxe hardcover. The
-expensive tier exists, but few people buy it.</p>
+made: the <strong>highest-grossing tier of the median book is only about
+$65</strong>. The expensive tier exists, but few people buy it, and that
+holds at every size — the top-priced tier collects about 4–6% of its
+campaign’s money whether the campaign raised $30,000 or $3 million.</p>
+<p>The tier that does the earning is not a fixed price either. It rises
+with the campaign, from about <strong>$50</strong> for books under
+$50,000 to <strong>$127</strong> for those above $250,000. In every band
+it lands close to what a printed copy of that book costs, which suggests
+the “sweet spot” is not a psychological price point that creators should
+aim for but simply the tier that has the physical book in it. Reading
+only the megaprojects would put that number near $100 for everyone.</p>
 <p><img src="images/tier_sweetspot_hist.png"
 alt="Price of each project’s top-grossing tier" /></p>
 <p><em>The price of the single highest-revenue tier in each project,
-which clusters near $100 (median, dashed). That is the deluxe-book price
-point, and far below each book’s own most-expensive tier (median
-$360).</em><br />
-<em>Source: Wayback-recovered reward tiers — top-decile funded RPG
-books.</em></p>
+pooled across all sizes (median, dashed), far below each book’s own
+most-expensive tier.</em><br />
+<em>Source: Wayback-recovered reward tiers — funded RPG books.</em></p>
+<p><img src="images/tier_sweetspot_by_size.png"
+alt="Top-priced vs top-grossing tier, by campaign size" /></p>
+<p><em>Median top-priced tier (orange) and median top-grossing tier
+(blue) in each size band. The earning tier tracks the printed-book price
+point for that segment; the ceiling tier is roughly flat and always far
+above it.</em><br />
+<em>Source: Wayback-recovered reward tiers — funded RPG books.</em></p>
 <p>Nor is the money concentrated in one ceiling tier. The median book
-offers nine tiers, and its single highest-priced tier accounts for only
-about 4% of its money. The dollars come from the mid-priced premium
+offers eight tiers, and its single highest-priced tier accounts for
+about 5% of its money. The dollars come from the mid-priced premium
 tiers rather than the most expensive ones.</p>
 <p>One cautious note on whether tier design tracks raising more:
 projects that earn a larger share of their revenue from the high-end
@@ -795,6 +829,86 @@ tiers do raise much more overall, but that is largely mechanical, since
 a big campaign has whales because it is big. The number of tiers barely
 matters, and a high ceiling price on its own, holding the whale share
 fixed, is if anything slightly negative.</p>
+<h3 id="what-is-actually-in-the-expensive-tiers">What is actually in the
+expensive tiers</h3>
+<p>Price is a crude stand-in for the thing people mean by a whale tier.
+The folk theory is not just that the tier is expensive but that it is
+<em>stuffed</em>: the book plus dice, plus minis, plus a GM screen, plus
+a map pack. Kickstarter’s older campaign pages list the contents of each
+tier explicitly, under an “Includes:” heading, so for part of the sample
+I can count what a tier actually contains rather than inferring it from
+the price.<a href="#fn29" class="footnote-ref" id="fnref29"
+role="doc-noteref"><sup>29</sup></a> That gives two measures per tier:
+the number of items listed, and the number of distinct <em>kinds</em> of
+accessory (dice, minis, maps, GM screens, cards and tokens, art and
+merchandise, apparel, other physical goods), counting the book itself
+and digital extras as neither.</p>
+<p>The first thing this shows is that the premise is shaky. Bundles do
+get broader as tiers get more expensive, but the growth stops around
+$100. A $100–250 tier lists a median of 6 items spanning about 0.9
+accessory categories; a $500-plus tier lists 7 items across 1.2
+categories. The expensive tiers are not meaningfully more stuffed than
+the mid-premium ones. They are mostly just more expensive.</p>
+<p><img src="images/tier_bundle_breadth_by_band.png"
+alt="Bundle breadth by tier price" /></p>
+<p><em>Distinct accessory categories per tier, by price band. The climb
+flattens above $100: the $250–500 and $500+ bands look alike.
+Kickstarter itemizations are cumulative (“everything above, plus…”), so
+the models below control for price rather than reading this gradient as
+an effect.</em><br />
+<em>Source: Wayback-recovered reward tiers, itemized subset, funded RPG
+books 2017–2022.</em></p>
+<p>Comparing tiers <em>within</em> the same campaign, holding price
+fixed, backers do prefer a fuller tier. Each additional item listed goes
+with about <strong>18% more backers</strong> on that tier. What they are
+responding to is the raw count. Once the number of items is held fixed,
+the number of distinct accessory categories adds nothing: the estimate
+is +0.002 in log10 units, and it changes sign between subsamples.
+Variety of contents seems to carry no weight of its own once you know
+how much is in the box.</p>
+<p><img src="images/tier_bundle_effects.png"
+alt="Bundling effects at the tier and project level" /></p>
+<p><em>Effect of one more item, and of one more accessory category, on
+the backers a tier attracts and on what the campaign raises overall.
+Within a campaign, more items pulls backers to that tier; variety does
+not, and neither shows up in the campaign total.</em><br />
+<em>Source: Wayback-recovered reward tiers, itemized subset, funded RPG
+books 2017–2022.</em></p>
+<p>None of this reaches the campaign total. A project whose richest tier
+spans more accessory categories does not raise more than one whose does
+not, in either half of the sample: the estimate is +0.004 among the
+biggest books (<em>p</em> = 0.78) and +0.013 among the smaller ones
+(<em>p</em> = 0.09). What bundling appears to do is move backers between
+a campaign’s own tiers rather than bring additional money in. That is
+the same conclusion the price-only analysis reached, now from the
+contents rather than from a proxy.</p>
+<p>The sharpest version of the test uses creators who ran more than one
+campaign in the sample, 70 of them across 212 campaigns. Comparing those
+campaigns to each other, heavier bundling does look like it pays: about
+12% more per accessory category, comfortably significant. Comparing each
+creator against their <em>own</em> other campaigns, it disappears, to
++0.011 with a confidence interval running from ×0.94 to ×1.12.<a
+href="#fn30" class="footnote-ref" id="fnref30"
+role="doc-noteref"><sup>30</sup></a> The cross-sectional version was
+picking up the difference between creators who bundle and creators who
+do not, which is mostly a difference in the size of the audience they
+already had. For a given creator deciding what to put in a $250 tier,
+the evidence does not support bundling as a lever.</p>
+<p>I am more confident in it than I would otherwise be, because the
+tier-level result was tested out of sample. The specification was fixed
+on the original sample of large books, and then applied unchanged to a
+second, separately collected set of smaller campaigns. The item-count
+effect holds in both (×1.23 among the large books, ×1.15 among the
+smaller ones); the accessory-variety effect flips sign between them,
+which is what a null looks like.<a href="#fn31" class="footnote-ref"
+id="fnref31" role="doc-noteref"><sup>31</sup></a></p>
+<p><img src="images/tier_bundle_replication.png"
+alt="The same specification in two independent samples" /></p>
+<p><em>The same tier-level model fit separately in each sample. Item
+count replicates; accessory variety does not, and its sign is not
+stable.</em><br />
+<em>Source: Wayback-recovered reward tiers, itemized subset, funded RPG
+books 2017–2022.</em></p>
 <h2 id="what-the-evidence-supports">What the evidence supports</h2>
 <p>If you’re running an RPG Kickstarter, these are the takeaways with
 some evidence behind them. Your <strong>track record is your biggest
@@ -812,8 +926,8 @@ tier.</p>
 <p>These are not guaranteed levers though! Almost everything here is a
 correlation drawn from observational data, with all the usual hazards:
 creators choose their goals strategically, Kickstarter chooses who gets
-staff-picked, my RPG classifier is imperfect,<a href="#fn28"
-class="footnote-ref" id="fnref28" role="doc-noteref"><sup>28</sup></a>
+staff-picked, my RPG classifier is imperfect,<a href="#fn32"
+class="footnote-ref" id="fnref32" role="doc-noteref"><sup>32</sup></a>
 and the one result that is in the neighborhood of a causal effect is
 about a niche February program for zines.</p>
 <hr />
@@ -1111,7 +1225,80 @@ price × backers recovers about 76% of pledged (the remainder is
 over-pledging, add-ons, and shipping, which the page total includes but
 the per-tier figures do not).<a href="#fnref27" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
-<li id="fn28"><p>I validated the classifier on fresh, held-out Claude
+<li id="fn28"><p>The tier sample pools two scrapes: the top decile of
+funded RPG books across all years, and the rest of the top quartile
+restricted to campaigns launched 2017–2022 (which is where the archived
+pages are richest). That makes the pooled frame ragged — the smallest
+size band exists only because of the second scrape, so campaign size and
+era are entangled in it. This is why I report the size bands separately
+rather than leaning on a single pooled median: the by-band figures are
+the estimand I actually want, and each band is a describable population.
+As a check, re-running the bands on 2017–2022 campaigns alone reproduces
+the gradient almost exactly (top-grossing tier $50 / $60 / $78 / $120
+across the bands, versus $50 / $65 / $85 / $127 pooled; premium-tier
+dollar share 20% / 29% / 35% / 56% versus 20% / 31% / 42% / 63%), so the
+gradient is about size, not about which years each band happens to
+cover. Band composition is in
+<code>tables/tier_frame_composition.csv</code>. One analysis
+deliberately stays on the top decile alone: the real-terms price ladder
+earlier in the post, because that is a per-year series and folding in a
+scrape that only covers 2017–2022 would inject a composition-driven dip
+in exactly those years and read as products getting cheaper.<a
+href="#fnref28" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn29"><p>The tier <em>contents</em> come from re-parsing
+archived campaign pages I had already downloaded for the price analysis,
+so no new scraping was involved. Kickstarter’s pre-2023 page template
+renders each tier’s contents as an explicit itemized list; the template
+Kickstarter moved to afterwards renders rewards client-side, and the
+current one carries no itemization at all. Coverage is therefore a hard
+window rather than a random sample: zero before 2017, 58–85% of pages
+for campaigns launched 2017–2022, zero after. Everything in this
+subsection describes that window, on 415 books and about 3,400 itemized
+tiers. Two further limits. Items are classified into categories by
+keyword rules on creator-written text, which is fuzzy, and about a fifth
+of items stay unclassified (mostly project-specific content names); the
+project-level null is unchanged if every unclassified item is generously
+counted as an accessory. And the itemizations are cumulative, since a
+higher tier says “everything above, plus…”, so bundle size rises with
+price by construction. The models control for price with a flexible
+spline and are re-run dropping each campaign’s cheapest and dearest
+tier; the item-count effect survives both.<a href="#fnref29"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn30"><p>Creator fixed effects on the 212 campaigns run by the
+70 creators with at least two in the bundle sample; 51 of those creators
+actually vary their bundle breadth between campaigns, and the
+within-creator spread of breadth is about 80% of the overall spread, so
+the design is not starved of variation. The estimate is stable across
+specifications (creator alone +0.012, creator plus year +0.011, adding a
+campaign-sequence term +0.013), and it is 0.048 with <em>p</em> = 0.001
+on the identical sample when creator effects are dropped, which is the
+whole point. With only ~70 clusters I report CR2 standard errors and a
+null-imposed wild cluster bootstrap alongside the conventional ones;
+they agree closely (<em>p</em> = 0.62 and 0.61). This addresses
+selection on the creator, not selection on the campaign: a creator who
+bundles more heavily <em>for a particular book because they expect that
+book to do well</em> would still bias the estimate upward, and the
+result is a null regardless.<a href="#fnref30" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn31"><p>The tier-level models use campaign fixed effects, so
+they compare tiers against other tiers in the same campaign, with
+standard errors clustered by campaign (tiers within a campaign are not
+independent, and treating them as such understates the uncertainty by
+about half). On the out-of-sample test: the original tier sample was the
+top decile of funded RPG books; the second sample extends to the rest of
+the top quartile, campaigns roughly five times smaller, collected
+afterwards with the specification already fixed. One caution that this
+exercise turned up and that I would have got wrong otherwise: pooling
+the two samples makes the <em>project-level</em> breadth effect look
+real (+0.031, <em>p</em> = 0.005), because the two samples differ in
+both bundle breadth and campaign size, and a pooled regression reads
+that between-sample gradient as an effect. Fitting within each sample
+separately, as reported above, it disappears. About half the archived
+pages were captured mid-campaign, so tier backer counts are often
+partial; a uniform undercount is absorbed by the campaign fixed effect,
+and the estimate is the same in pages captured early and late.<a
+href="#fnref31" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn32"><p>I validated the classifier on fresh, held-out Claude
 hand-labeled samples it had never seen: about 88% precision with recall
 preserved (no missed RPGs among the sampled non-RPG items) for the
 core-RPG class, up from ~77%/71% before I tightened it. The residual
@@ -1120,7 +1307,7 @@ core books rather than wholly unrelated products. For the regressions
 this label noise mostly behaves like random error that understates
 category differences, so those contrasts are conservative; for the
 dollar-share aggregates it is handled by the classifier cleanup.<a
-href="#fnref28" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+href="#fnref32" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
     </main>

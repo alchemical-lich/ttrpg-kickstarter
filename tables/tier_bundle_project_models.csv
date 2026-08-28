@@ -1,0 +1,14 @@
+model,term,est,se,p,n,note,sample
+project,max_bundle_breadth,0.030942271206037583,0.011046749356701168,0.005341860449745239,413,"breadth, price-free","ALL (pooled - CONFOUNDED, see note)"
+project,max_bundle_breadth,0.030442340773082718,0.011130271186013344,0.0065150839318389685,413,"breadth, + ceiling price","ALL (pooled - CONFOUNDED, see note)"
+project,max_ub,0.022251455808858202,0.01053812135428936,0.03534886381822569,413,UPPER BOUND: unclassified counted as accessories,"ALL (pooled - CONFOUNDED, see note)"
+project,has_whale,0.004371311882038106,0.03660187306351788,0.9049958809437413,413,design proxy: offers a >=$500 tier,"ALL (pooled - CONFOUNDED, see note)"
+project,max_bundle_breadth,0.013226539931067968,0.007789794389012484,0.09072168797014199,273,"breadth, price-free",expansion ($19.1-68.6k)
+project,max_bundle_breadth,0.013520531721268613,0.007823794482168937,0.0851614735882871,273,"breadth, + ceiling price",expansion ($19.1-68.6k)
+project,max_ub,0.007110250405841205,0.0071939369158657875,0.3238953399221731,273,UPPER BOUND: unclassified counted as accessories,expansion ($19.1-68.6k)
+project,has_whale,-0.021211038316563978,0.021958032876341776,0.33495488604181733,273,design proxy: offers a >=$500 tier,expansion ($19.1-68.6k)
+project,max_bundle_breadth,0.0041571675098061416,0.014599837268154739,0.7763102896117093,140,"breadth, price-free",top decile (>=$68.6k)
+project,max_bundle_breadth,0.003121825598372688,0.014820766966933534,0.8335122743436025,140,"breadth, + ceiling price",top decile (>=$68.6k)
+project,max_ub,7.038120850098695e-4,0.014075021125716434,0.960198114372538,140,UPPER BOUND: unclassified counted as accessories,top decile (>=$68.6k)
+project,has_whale,0.005082395627620847,0.05578128542513597,0.9275475594078739,140,design proxy: offers a >=$500 tier,top decile (>=$68.6k)
+project,max_bundle_breadth,0.013657143914417668,0.007632380769401434,0.07431567577939283,413,pooled + frame dummy (absorbs the between-frame gradient),ALL (pooled + frame dummy)
