@@ -323,9 +323,14 @@ binp <- function(y) cut(y, c(2014, 2018, 2021, 2025), labels = c("2015-18", "201
 # including it in a per-YEAR series would create a composition-driven dip in those
 # years that reads as products getting cheaper.
 DECILE_FLOOR <- 68585
+# ONE id set, applied to every real-terms series below. An earlier version pinned
+# only ps_real and left T_typed (the PDF and hardcover lines) on the pooled frame,
+# which tripled their yearly n and pulled the PDF median from ~$25 to ~$19 -- the
+# exact composition artefact this restriction exists to prevent.
+decile_ids <- books %>% filter(!is.na(pledged), pledged >= DECILE_FLOOR) %>% pull(id)
 ps_real <- PS %>%
-  left_join(books %>% select(id, launch_year, pledged), by = "id") %>%
-  filter(!is.na(pledged), pledged >= DECILE_FLOOR) %>% select(-pledged) %>%
+  filter(id %in% decile_ids) %>%
+  left_join(books %>% select(id, launch_year), by = "id") %>%
   left_join(defl_tbl, by = "launch_year") %>%
   filter(!is.na(defl), launch_year >= 2015, launch_year <= 2025) %>%
   mutate(period = binp(launch_year),
@@ -372,6 +377,7 @@ ggsv("real_deluxe_tier_price.png", p_dlx, h = 4.6)
 # names like "adventurer" carry no format), so read as where a format is labelled.
 BAD_TIER <- "bundle|all.?in|everything|shipping|postage|add.?on|retailer|wholesale"
 T_typed <- T %>%
+  filter(id %in% decile_ids) %>%                      # see DECILE_FLOOR note above
   left_join(books %>% select(id, launch_year), by = "id") %>%
   left_join(defl_tbl, by = "launch_year") %>%
   filter(!is.na(defl), launch_year >= 2015, launch_year <= 2025) %>%
