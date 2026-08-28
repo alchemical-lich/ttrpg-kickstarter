@@ -15,7 +15,7 @@ with hand-verified override lists and flags the rest for review.
 Input : data/interim/ttrpg_book_targets.csv  (+ blurbs from tabletop_classified)
 Output: data/interim/ttrpg_book_targets_audited.csv  (adds is_book, label, reason)
 """
-import os, re
+import os, re, sys, argparse
 import pandas as pd
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -26,37 +26,50 @@ OUT  = os.path.join(PROJ, "data", "interim", "ttrpg_book_targets_audited.csv")
 
 # --- hand-verified overrides (by distinctive lowercase title substring) ---------
 # Real RPG BOOKS that the rules below would wrongly exclude (incidental words):
-FORCE_KEEP = [
-    "avatar legends", "root: the", "lairs & legends", "ariadne's book of legends",
-    "shadowrun", "dc heroes", "corvus belli", "infinity roleplaying",
-    "mythic legions: the roleplaying", "kingdoms, warfare & more minis",
-]
-# Non-books the rules might miss or that need a human call (verified via blurb):
-FORCE_EXCLUDE = [
-    "darkest dungeon: the board game", "sorcery: contested realm", "pixels - the electronic",
-    "realm brew", "horror on the orient express", "trudvang legends", "robotech",
-    "the deck of many", "super dungeon explore", "dragonstone dice", "tidal blades",
-    "obojima tales from yatamon", "too many bones", "elder dice", "ascendice",
-    "elixir dice", "time of legends", "folklore: the affliction", "wyrmwood tabletop tiles",
-    "wyrmwood magnetic game master screen", "return to planet apocalypse", "euthia",
-    "godice", "valor & villainy", "apocrypha adventure card game", "arcadia quest",
-    "rpg inspired jewelry", "bisoulovely", "infinidungeon", "bardsung", "npc rivals",
-    "d6: dungeons, dudes", "damage dice", "the adventurer's tarot",
-    "elements of inspiration", "one last fight", "oracle rpg app", "ember",
-    # additional non-books verified from the needs_review pass:
-    "animal adventures: tales of dungeons and dog", "animal adventures: tales of cats",
-    "vampire: the masquerade - heritage", "the wyrmwood hero vault", "gametee",
-    "unspeakable words", "cyberpunk red: combat zone", "fatum, dark myths",
-    "darklands: a world of war", "forgotten world: fantasy figures", "stonespine architects",
-    "realm: the soul searchers", "munchkin starfinder", "stones dungeon tiles",
-    # borderline RPG-adjacent products excluded under the STRICT books/PDFs-only rule
-    # (card/accessory packs, GM tool-kits, digital/VTT, hybrid games):
-    "daggerheart class packs", "serpent's tongue", "the far traveler's collection",
-    "roleplaying without limits", "gamemaster's chest", "wind wraith",
-    "grim & deliberate beast",
-]
+# --- HAND-VERIFIED OVERRIDES, PINNED TO PROJECT IDS -------------------------
+# These encode human calls about SPECIFIC projects, so they are keyed by id. They
+# were originally written as title substrings, which silently leaked onto any new
+# project sharing a name fragment: on the 2026-08 top-quartile expansion, the
+# FORCE_KEEP entry "root: the" whitelisted "Root: The Marauder Expansion" ($2.0M)
+# and "Root: The Underworld Expansion" ($1.7M), and "shadowrun" whitelisted
+# "Shadowrun: Sprawl Ops Boardgame" ($293k) -- all board games, and because
+# FORCE_KEEP is checked BEFORE HARD_EXCLUDE, the literal word "Boardgame" in the
+# title could not save it. Pinning to ids makes an override apply to the project a
+# human actually looked at and nothing else. The id sets below reproduce the
+# original top-decile audit exactly (12 keeps / 64 excludes).
+# Provenance -- the substrings these were resolved from:
+#   KEEP:    avatar legends / root: the / lairs & legends / ariadne's book of legends /
+#            shadowrun / dc heroes / corvus belli / infinity roleplaying /
+#            mythic legions: the roleplaying / kingdoms, warfare & more minis
+#   EXCLUDE: see git history for the 59 substrings (dice, board games, minis, VTT, etc.)
+# To override a NEW project, add its id here after checking it by hand.
+FORCE_KEEP_IDS = {
+    88939782, 279502168, 781308113, 966643752, 1017655225, 1237480310, 1267388269,
+    1320623133, 1398121404, 1491991867, 1805778307, 2092989754
+}
 
-# --- high-precision rules (title primarily; blurb only as backup) ---------------
+# 2026-08-27: +19 ids from hand-reviewing the expansion frame's review:default_keep
+# bucket (board-game expansions incl. Root Marauder/Underworld, wargames, card decks,
+# terrain, a VTT, a convention, an actual-play series, metal coins, a deck box), plus
+# 3 that the generic rules waved through: a rules-teaching APP whose blurb says
+# "skip the rulebook", a dice-carrying case, and a box of condition rings (the last
+# passed because BOOK_SIGNAL matches a bare "RPG" anywhere in the title).
+FORCE_EXCLUDE_IDS = {
+    20643541, 28618311, 34826433, 39662244, 45013082, 91488235, 99446425, 147133584,
+    155384546, 222010673, 224234069, 236666395, 270751638, 278155818, 299287174,
+    336396222, 337792901, 361189273, 383786970, 404100990, 416743843, 454198961,
+    603512871, 619342545, 637799472, 649215067, 675227295, 717195057, 734267646,
+    767721919, 781752217, 789714926, 797712747, 798311583, 872237421, 927490714,
+    927796413, 937294187, 954382197, 993119939, 995168509, 1019039281, 1043743498,
+    1100304724, 1120021125, 1126754232, 1174760394, 1205282050, 1233850363, 1295579858,
+    1304260125, 1330403707, 1335064839, 1352145973, 1357271204, 1368412031, 1373371332,
+    1380310762, 1419050255, 1475643313, 1478074330, 1487828540, 1487875152, 1501883284,
+    1624367842, 1650606848, 1687074130, 1690704587, 1691374856, 1718020169, 1826699694,
+    1827553534, 1837926388, 1840588764, 1848456681, 1859509147, 1875566704, 1913513490,
+    1953460883, 1953926196, 1978834938, 2004729639, 2021895418, 2073980318, 2113586431,
+    2123520847
+}
+
 HARD_EXCLUDE = re.compile(
     r"\b(board ?game|deck-?build(?:er|ing)?|trading card game|\btcg\b|\bccg\b|"
     r"miniatures?|\bminis\b|\bstl\b|\bterrain\b|jewell?ry|map tiles?|battle ?mat|"
@@ -70,14 +83,12 @@ BOOK_SIGNAL  = re.compile(
     r"\bbook\b|hardcover|softcover)\b", re.I)
 
 
-def classify(name, blurb):
+def classify(pid, name, blurb):
     nl = (name or "").lower(); tl = (nl + " || " + (blurb or "")).lower()
-    for s in FORCE_KEEP:
-        if s in nl:
-            return True, "book", "override:keep"
-    for s in FORCE_EXCLUDE:
-        if s in nl:
-            return False, "non_book", "override:exclude"
+    if pid in FORCE_KEEP_IDS:
+        return True, "book", "override:keep"
+    if pid in FORCE_EXCLUDE_IDS:
+        return False, "non_book", "override:exclude"
     if HARD_EXCLUDE.search(name or ""):
         return False, "non_book", "rule:title_nonbook"
     if DICE_TITLE.search(name or "") and not re.search(r"roleplaying|\brpg\b|adventure|setting", nl):
@@ -92,15 +103,27 @@ def classify(name, blurb):
 
 
 def main():
-    tg = pd.read_csv(TG)
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--targets", default=None,
+                    help="target CSV to audit (default: the canonical top-decile list)")
+    ap.add_argument("--out", default=None, help="output path")
+    args = ap.parse_args()
+    tg_path, out_path = args.targets or TG, args.out or OUT
+    if os.path.abspath(tg_path) == os.path.abspath(out_path):
+        sys.exit("refusing to run: --targets and --out are the same file")
+    # NOTE for expansion runs: the override lists below were hand-built against the
+    # TOP-DECILE names. On a new frame they will not fire, so more rows fall through
+    # to the generic rules and to review:default_keep -- treat the audit as noisier
+    # there and spot-check the survivors.
+    tg = pd.read_csv(tg_path)
     cl = pd.read_csv(CL, low_memory=False)[["id", "blurb"]]
     df = tg.merge(cl, on="id", how="left").sort_values("pledged_usd", ascending=False)
-    res = df.apply(lambda r: classify(r["name"], r["blurb"]), axis=1)
+    res = df.apply(lambda r: classify(int(r["id"]), r["name"], r["blurb"]), axis=1)
     df["is_book"] = [x[0] for x in res]
     df["label"]   = [x[1] for x in res]
     df["reason"]  = [x[2] for x in res]
     df["needs_review"] = df["reason"].str.startswith("review")
-    df.to_csv(OUT, index=False)
+    df.to_csv(out_path, index=False)
 
     n = len(df); nb = int(df["is_book"].sum())
     print(f"audited {n} targets -> {nb} books, {n-nb} non-books "
@@ -111,7 +134,7 @@ def main():
     print("\n=== needs_review (unclassifiable by rules; kept by default) ===")
     for r in df[df["needs_review"]].head(25).itertuples():
         print(f"  ${r.pledged_usd:>10,.0f}  {str(r.name)[:46]}  ||  {str(r.blurb)[:60]}")
-    print(f"\nWrote {OUT}")
+    print(f"\nWrote {out_path}")
 
 
 if __name__ == "__main__":

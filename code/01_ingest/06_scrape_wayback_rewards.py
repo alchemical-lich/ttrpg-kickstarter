@@ -202,14 +202,44 @@ def load_panel_rates():
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=None, help="process only first N targets")
+    ap.add_argument("--targets", default=None, help="target CSV (default: canonical top-decile list)")
+    ap.add_argument("--tiers",   default=None, help="output tiers .csv.gz (use a NEW file for a new frame)")
+    ap.add_argument("--cover",   default=None, help="output coverage CSV (use a NEW file for a new frame)")
+    ap.add_argument("--books-only", action="store_true",
+                    help="keep only rows with is_book==True (audited target lists)")
     args = ap.parse_args()
+    global TARGETS, TIERS, COVER
+    if args.targets: TARGETS = args.targets
+    if args.tiers:   TIERS   = args.tiers
+    if args.cover:   COVER   = args.cover
+    if os.path.abspath(TIERS) == os.path.abspath(COVER):
+        sys.exit("refusing to run: --tiers and --cover are the same file")
     os.makedirs(CACHE, exist_ok=True)
     os.makedirs(os.path.dirname(TIERS), exist_ok=True)
+
+    # RESUME SAFETY. The final step rewrites TIERS (.gz) from the .part file. If a
+    # previous run finished and its .part was cleaned up, a new run would rebuild the
+    # .gz from ONLY the new rows and silently drop everything already collected. Seed
+    # the .part from the existing .gz so the rewrite is always additive.
+    part = TIERS.replace(".gz", "") + ".part"
+    if os.path.exists(TIERS) and not os.path.exists(part):
+        with gzip.open(TIERS, "rt") as gz:
+            prior = list(csv.DictReader(gz))
+        if prior:
+            with open(part, "w", newline="") as fh:
+                w = csv.DictWriter(fh, fieldnames=TIER_COLS)
+                w.writeheader(); w.writerows({k: r.get(k, "") for k in TIER_COLS} for r in prior)
+            print(f"seeded {os.path.basename(part)} with {len(prior):,} existing tier rows "
+                  f"(so the final rewrite cannot drop them)")
 
     panel_rates = load_panel_rates()  # fallback FX for snapshots missing static_usd_rate
 
     targets = [r for r in csv.DictReader(open(TARGETS))
                if r.get("project_url") and r["project_url"] != "MISSING"]
+    if args.books_only:
+        n0 = len(targets)
+        targets = [r for r in targets if str(r.get("is_book", "")).strip().lower() in ("true", "1")]
+        print(f"--books-only: {n0} -> {len(targets)} audited books")
     if args.limit:
         targets = targets[:args.limit]
 

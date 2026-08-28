@@ -7,9 +7,19 @@
 # whether tier design tracks raising more / higher willingness-to-pay.
 #
 # SCOPE & CAVEATS (read before interpreting)
-#   * SAMPLE = the top decile of *funded* RPG books (pledged >= ~$70k) that also have
-#     an archived Kickstarter snapshot. That's a tail of a tail: funded-only, top-
-#     decile-only, archive-covered-only. Nothing here generalises to typical books.
+#   * SAMPLE = funded RPG books with a usable archived snapshot, pooled over two
+#     scraped frames: the top decile (all years) and the rest of the top quartile
+#     (2017-2022 only). ~683 books. Still funded-only and archive-covered-only, and
+#     the frame is RAGGED -- the small bands exist only because of the 2017-2022
+#     expansion, so band composition and era are entangled. Because of that, every
+#     headline statistic is reported BY SIZE BAND as well as pooled; read the
+#     gradient, not the pooled median. An era-restricted (2017-2022) version of the
+#     by-band table is written alongside as a robustness check.
+#   * THE REAL-TERMS LADDER AT THE BOTTOM DELIBERATELY STAYS ON THE TOP DECILE.
+#     The expansion covers only 2017-2022, so folding it into a per-YEAR price series
+#     would inject a composition-driven price dip in exactly those years and read as
+#     a fall in product prices. A year-over-year series needs consistent year
+#     coverage; the by-band analyses do not.
 #   * "Success vs not" is NOT studyable here — every project is funded. "Success" =
 #     MAGNITUDE (pledged, overfunding, avg pledge), not the funding binary.
 #   * TIER REVENUE is APPROXIMATE: revenue_tier ~= price(minimum) x backers_tier. It
@@ -34,9 +44,20 @@ tabd <- file.path(proj, "tables"); figd <- file.path(proj, "figures")
 ggsv <- function(n, p, w = 9, h = 5) ggsave(file.path(figd, n), p, width = w, height = h, dpi = 130)
 
 # ---- load & frame ----------------------------------------------------------
-tiers <- read_csv(file.path(proj, "data/processed/ttrpg_reward_tiers.csv.gz"), show_col_types = FALSE)
-cov   <- read_csv(file.path(proj, "data/interim/ttrpg_reward_coverage.csv"), show_col_types = FALSE)
-aud   <- read_csv(file.path(proj, "data/interim/ttrpg_book_targets_audited.csv"), show_col_types = FALSE)
+# Two scraped frames: the original top-decile run (all years) and the 2026-08
+# top-quartile expansion (2017-2022 only). The whale question is explicitly about
+# how money splits ACROSS the size distribution, so the distributional analyses
+# below pool them and additionally report every headline statistic BY SIZE BAND --
+# a single pooled median over a ragged frame would describe no real population,
+# whereas the by-band gradient is the actual answer.
+rd <- function(...) { f <- file.path(proj, ...); if (file.exists(f)) read_csv(f, show_col_types = FALSE) else NULL }
+tiers <- bind_rows(rd("data/processed/ttrpg_reward_tiers.csv.gz"),
+                   rd("data/processed/ttrpg_reward_tiers_expansion.csv.gz")) %>%
+         distinct(id, reward_id, .keep_all = TRUE)
+cov   <- bind_rows(rd("data/interim/ttrpg_reward_coverage.csv"),
+                   rd("data/interim/ttrpg_reward_coverage_expansion.csv")) %>% distinct(id, .keep_all = TRUE)
+aud   <- bind_rows(rd("data/interim/ttrpg_book_targets_audited.csv"),
+                   rd("data/interim/ttrpg_book_targets_expansion_audited.csv")) %>% distinct(id, .keep_all = TRUE)
 feat  <- tryCatch(read_csv(file.path(proj, "data/processed/ttrpg_model_features.csv.gz"),
             show_col_types = FALSE) %>%
             select(id, any_of(c("is_dnd5e","is_osr","is_pbta","is_zine","staff_pick",
@@ -198,6 +219,95 @@ if (run_models) { cat("\n=== log10(pledged) ~ tier structure (+controls) ===\n")
         transmute(term, est = round(est,3), se = round(se,3), p = signif(p,2)))) }
 cat("\nFigures -> figures/tier_*.png ; tables -> tables/tier_*.csv\n")
 
+# =====================================================================
+# BY SIZE BAND — the gradient the motivating blog post could not see
+# =====================================================================
+# The whole point of widening past the megaprojects: whether "the money sits in the
+# $100-500 tiers" and "the sweet spot is ~$100" are facts about RPG books, or facts
+# about BIG RPG books. Reported per band, and again restricted to 2017-2022 so the
+# ragged frame cannot masquerade as a size gradient.
+# $0-20k merged into "<$50k": the top-quartile cut is ~$19k, so only 11 projects
+# fell below $20k and their medians were pure noise.
+BANDS <- c(0, 50e3, 100e3, 250e3, Inf)
+BLABS <- c("<$50k", "$50-100k", "$100-250k", "$250k+")
+
+band_stats <- function(TT, PP) {
+  bs <- TT %>%
+    mutate(pband = cut(price, c(0, 25, 50, 100, 500, Inf), right = FALSE,
+                       labels = c("<$25", "$25-50", "$50-100", "$100-500", "$500+"))) %>%
+    group_by(band, pband) %>% summarise(rev = sum(revenue), bk = sum(tier_backers), .groups = "drop_last") %>%
+    mutate(dollar_share = rev / sum(rev), backer_share = bk / sum(bk)) %>% ungroup()
+  ps <- PP %>% group_by(band) %>%
+    summarise(projects = n(), med_tiers = median(n_tiers),
+              med_top_price = median(top_price), med_moneymax = median(money_max_price),
+              med_top_tier_share = median(top_tier_rev_share), .groups = "drop")
+  ps %>% left_join(bs %>% filter(pband == "$100-500") %>% select(band, sh_100_500 = dollar_share), by = "band") %>%
+         left_join(bs %>% filter(pband == "<$25")     %>% select(band, sh_under25 = dollar_share), by = "band")
+}
+
+PSb <- PS %>% left_join(books %>% select(id, pledged, launch_year), by = "id") %>%
+  filter(!is.na(pledged)) %>% mutate(band = cut(pledged, BANDS, labels = BLABS))
+Tb  <- T %>% inner_join(PSb %>% select(id, band, launch_year), by = "id")
+
+BANDTAB <- band_stats(Tb, PSb)
+write_csv(BANDTAB, file.path(tabd, "tier_by_size_band.csv"))
+
+BANDTAB_ERA <- band_stats(Tb  %>% filter(launch_year >= 2017, launch_year <= 2022),
+                          PSb %>% filter(launch_year >= 2017, launch_year <= 2022))
+write_csv(BANDTAB_ERA, file.path(tabd, "tier_by_size_band_2017_2022.csv"))
+
+# composition of the pooled frame, so the raggedness is auditable rather than implied
+PSb %>% mutate(era = ifelse(launch_year >= 2017 & launch_year <= 2022, "2017-2022", "other")) %>%
+  count(band, era) %>% pivot_wider(names_from = era, values_from = n, values_fill = 0) %>%
+  write_csv(file.path(tabd, "tier_frame_composition.csv"))
+
+p_band <- BANDTAB %>%
+  select(band, `top-priced tier` = med_top_price, `top-GROSSING tier` = med_moneymax) %>%
+  pivot_longer(-band) %>%
+  ggplot(aes(band, value, colour = name, group = name)) +
+  geom_line(linewidth = .9) + geom_point(size = 2.6) +
+  scale_y_continuous(labels = dollar) +
+  scale_colour_manual(values = c("top-priced tier" = ORANGE, "top-GROSSING tier" = BLUE), name = NULL) +
+  labs(title = "The \"sweet spot\" is not a price, it is the standard physical book",
+       subtitle = paste0(
+         "Median across projects in each size band. The tier that actually earns the most (blue) tracks\n",
+         "the printed-book price point in that segment and sits far below the campaign's own ceiling\n",
+         "tier (orange). Looking only at the largest campaigns would suggest a single figure near $100.\n",
+         "Funded RPG books with recoverable tiers; small bands come from the 2017-2022 expansion."),
+       x = "what the campaign raised", y = "median tier price")
+ggsv("tier_sweetspot_by_size.png", p_band, h = 5)
+
+# The money question, which is the one the motivating post could only answer for
+# megaprojects: what share of a campaign's dollars comes from which tier price band?
+COMP <- Tb %>%
+  mutate(pband = cut(price, c(0, 25, 50, 100, 500, Inf), right = FALSE,
+                     labels = c("<$25", "$25-50", "$50-100", "$100-500", "$500+"))) %>%
+  group_by(band, pband) %>% summarise(rev = sum(revenue), .groups = "drop_last") %>%
+  mutate(share = rev / sum(rev)) %>% ungroup()
+write_csv(COMP, file.path(tabd, "tier_dollar_share_by_size_band.csv"))
+
+p_comp <- ggplot(COMP, aes(band, share, fill = pband)) +
+  geom_col(width = .72) +
+  scale_y_continuous(labels = percent) +
+  scale_fill_brewer(palette = "Blues", direction = 1, name = "tier price") +
+  labs(title = "Where a campaign's money comes from depends on how big the campaign is",
+       subtitle = paste0(
+         "Share of each size band's pledged dollars, by the price of the tier it came through.\n",
+         "Premium $100-500 tiers supply 63% of the dollars for $250k+ campaigns but 20% for\n",
+         "typical funded books, where cheap tiers carry far more of the total. The right-hand bar\n",
+         "is what a million-dollar campaign looks like; most funded books look like the left."),
+       x = "what the campaign raised", y = "share of pledged dollars")
+ggsv("tier_dollar_share_by_size.png", p_comp, h = 5)
+
+cat("\n=== BY SIZE BAND (the gradient) ===\n")
+print(as.data.frame(BANDTAB %>% transmute(band, projects, med_tiers,
+       med_top_price = dollar(med_top_price), med_moneymax = dollar(med_moneymax),
+       top_tier_share = percent(med_top_tier_share, 0.1),
+       sh_100_500 = percent(sh_100_500, 0.1), sh_under25 = percent(sh_under25, 0.1))))
+cat("\n  same, restricted to 2017-2022 (rules out the ragged frame driving it):\n")
+print(as.data.frame(BANDTAB_ERA %>% transmute(band, projects,
+       med_moneymax = dollar(med_moneymax), sh_100_500 = percent(sh_100_500, 0.1))))
+
 # ---- REAL-TERMS tier price points (ANALYSIS-ONLY; not in the public write-up) ----
 # How creator-set tier prices shifted in constant 2025 USD. NOTE the sample is
 # top-decile funded RPG books only -> small, doubly selected; the whale (top) tier
@@ -209,8 +319,13 @@ BASE_CPI <- cpi_tbl$cpi[cpi_tbl$launch_year == 2025]
 defl_tbl <- cpi_tbl %>% transmute(launch_year, defl = BASE_CPI / cpi)
 binp <- function(y) cut(y, c(2014, 2018, 2021, 2025), labels = c("2015-18", "2019-21", "2022-25"))
 
+# TOP DECILE ONLY on purpose (see header): the expansion covers 2017-2022 only, so
+# including it in a per-YEAR series would create a composition-driven dip in those
+# years that reads as products getting cheaper.
+DECILE_FLOOR <- 68585
 ps_real <- PS %>%
-  left_join(books %>% select(id, launch_year), by = "id") %>%
+  left_join(books %>% select(id, launch_year, pledged), by = "id") %>%
+  filter(!is.na(pledged), pledged >= DECILE_FLOOR) %>% select(-pledged) %>%
   left_join(defl_tbl, by = "launch_year") %>%
   filter(!is.na(defl), launch_year >= 2015, launch_year <= 2025) %>%
   mutate(period = binp(launch_year),

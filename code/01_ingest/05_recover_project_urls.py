@@ -69,12 +69,33 @@ def iter_projects(path):
             buf = s[last:].encode("utf-8")
 
 
-def select_targets():
+def select_targets(quantile=None, year_min=None, year_max=None, exclude=None):
+    """Funded core-TTRPG books at/above a pledged quantile, optionally restricted to a
+    launch-year window and excluding ids already recovered.
+
+    Defaults reproduce the original top-decile, all-years selection exactly.
+    The year window exists because the reward-page ITEMIZATION markup that
+    03_features/05 parses is only present for campaigns launched ~2017-2022; outside
+    that window a scrape returns prices but no tier contents (see 04_analysis/21).
+    """
+    q = DECILE if quantile is None else quantile
     df = pd.read_csv(CLASSIFIED, low_memory=False)
     df = df[(df["ttrpg_label"] == "ttrpg") & (df["state"] == "successful")].copy()
     df = df[df["pledged_usd"].notna() & (df["pledged_usd"] > 0)]
-    cut = df["pledged_usd"].quantile(DECILE)
+    # the cutoff is computed on ALL funded books, before any year filter, so the
+    # quantile means the same thing whether or not a window is applied
+    cut = df["pledged_usd"].quantile(q)
     tg = df[df["pledged_usd"] >= cut].copy()
+    if year_min or year_max:
+        # build ONE mask against the current index; filtering in two steps would
+        # reindex the second boolean Series against an already-shrunk frame
+        yr = pd.to_datetime(tg["launched_at"], unit="s", errors="coerce").dt.year
+        mask = yr.notna()
+        if year_min: mask &= yr >= year_min
+        if year_max: mask &= yr <= year_max
+        tg = tg[mask]
+    if exclude:
+        tg = tg[~tg["id"].astype(str).isin({str(x) for x in exclude})]
     keep = ["id", "name", "pledged_usd", "backers_count", "goal_usd",
             "launched_at", "deadline", "crawl_date"]
     return tg[keep].sort_values("pledged_usd", ascending=False).reset_index(drop=True), cut
@@ -97,9 +118,33 @@ def download(url, dest):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--plan", action="store_true", help="print scale and exit")
+    ap.add_argument("--quantile", type=float, default=None,
+                    help="pledged quantile cutoff among funded books (default 0.90 = top decile)")
+    ap.add_argument("--year-min", type=int, default=None, help="earliest launch year to include")
+    ap.add_argument("--year-max", type=int, default=None, help="latest launch year to include")
+    ap.add_argument("--exclude-from", default=None, metavar="CSV",
+                    help="drop ids already recovered in this CSV (expansion runs). Kept "
+                         "separate from --out on purpose: flush() REWRITES --out from "
+                         "scratch each pass, so pointing an expansion run at the "
+                         "canonical targets file would destroy the URLs already in it.")
+    ap.add_argument("--out", default=None,
+                    help="output path. Use a NEW file for expansion runs (see --exclude-from)")
     args = ap.parse_args()
 
-    targets, cut = select_targets()
+    global OUT
+    if args.out:
+        OUT = args.out
+    exclude = set()
+    if args.exclude_from:
+        if not os.path.exists(args.exclude_from):
+            sys.exit(f"--exclude-from: no such file: {args.exclude_from}")
+        exclude = set(pd.read_csv(args.exclude_from)["id"].astype(str))
+        print(f"excluding {len(exclude):,} ids already in {os.path.basename(args.exclude_from)}")
+    if os.path.abspath(OUT) == os.path.abspath(args.exclude_from or ""):
+        sys.exit("refusing to run: --out and --exclude-from are the same file; "
+                 "flush() would overwrite the ids you are excluding.")
+
+    targets, cut = select_targets(args.quantile, args.year_min, args.year_max, exclude)
     want = {int(r.id): {"id": int(r.id), "name": r.name,
                         "pledged_usd": r.pledged_usd, "backers_count": r.backers_count,
                         "goal_usd": r.goal_usd, "launched_at": r.launched_at,
@@ -111,8 +156,12 @@ def main():
     cand = [cd for cd in by_crawl.index if cd in crawl_urls]
     missing_url = [cd for cd in by_crawl.index if cd not in crawl_urls]
 
-    print(f"TARGET: top {round((1-DECILE)*100)}% of funded core-TTRPG books")
-    print(f"  pledged cutoff (90th pct): ${cut:,.0f}")
+    q = DECILE if args.quantile is None else args.quantile
+    win = ""
+    if args.year_min or args.year_max:
+        win = f", launched {args.year_min or '..'}-{args.year_max or '..'}"
+    print(f"TARGET: top {round((1-q)*100)}% of funded core-TTRPG books{win}")
+    print(f"  pledged cutoff ({round(q*100)}th pct): ${cut:,.0f}")
     print(f"  n targets: {len(want)}  | pledged range ${targets.pledged_usd.min():,.0f}–${targets.pledged_usd.max():,.0f}")
     print(f"  distinct master crawls to cover them: {len(cand)}"
           + (f"  (+{len(missing_url)} crawl-dates not in URL list)" if missing_url else ""))
