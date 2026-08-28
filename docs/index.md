@@ -6,7 +6,7 @@
 
 I recently read [a great guest post on Patchwork Paladin](https://patchworkpaladin.com/2026/05/18/kickstarter-whales-guest-post/) about Kickstarter "whales" by Scipio202, on the reward tiers of fifty-three tabletop RPG campaigns that raised a million dollars.[^whales] It found that across those mega-projects the high-end "whale" tiers brought in roughly 23% of all the money, against under 4% for the cheap entry tiers, and that the median whale tier sat at about $478.
 
-That answered the question it set out to answer. It left me curious about everything around it: how the rest of Kickstarter's RPG projects fare, what separates the ones that get funded from the ones that don't, and whether the whale pattern holds for a book raising five thousand dollars rather than five million.
+It left me curious about everything around it: how the rest of Kickstarter's RPG projects fare, what separates the ones that get funded from the ones that don't, and whether the whale pattern holds for a book raising five thousand dollars rather than five million.
 
 ## Getting the data
 
