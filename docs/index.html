@@ -76,17 +76,25 @@ curious about how the rest of Kickstarter’s RPG projects fare. What
 separates the ones that get funded from the ones that don’t? Does the
 whale pattern hold for a book raising five thousand dollars rather than
 five million?</p>
+<p>Briefly, what I found: the whale pattern holds up, but it describes
+very large campaigns and does not carry down to the rest of the
+category. For most funded RPG books the earning tier is the ordinary
+mid-priced one with the printed book in it, and the single most
+expensive tier collects four to six percent of a campaign’s money at
+every size I can measure. On the funding side, a creator’s track record
+predicts more than any attribute of the project itself. The rest of this
+post is how I got there, and how far the data will carry each claim.</p>
 <h2 id="getting-the-data">Getting the data</h2>
 <p>There’s a nice free resource called Web Robots that has been crawling
-Kickstarter roughly once a month since 2014 and posting the results.
-With the help of Claude, I stitched together more than a hundred of
-those monthly snapshots, deduplicated everything, and ended up with
-about <strong>45,000 tabletop-games projects</strong>. Tabletop is a
-messy category that lumps board games, card games, miniatures, dice, and
-actual roleplaying games together. To identify ttrpg projects, I built a
-keyword classifier to sort RPG rulebooks and adventures (~10,800 of
-them) and RPG-specific accessories like dice and minis (~4,000) out from
-the boardgame crowd.<a href="#fn2" class="footnote-ref" id="fnref2"
+Kickstarter roughly once a month since 2014 and posting the results. I
+stitched together more than a hundred of those monthly snapshots,
+deduplicated everything, and ended up with about <strong>45,000
+tabletop-games projects</strong>. Tabletop is a messy category that
+lumps board games, card games, miniatures, dice, and actual roleplaying
+games together. To identify ttrpg projects, I built a keyword classifier
+to sort RPG rulebooks and adventures (~10,800 of them) and RPG-specific
+accessories like dice and minis (~4,000) out from the boardgame crowd.<a
+href="#fn2" class="footnote-ref" id="fnref2"
 role="doc-noteref"><sup>2</sup></a></p>
 <p><img src="images/tabletop_launches_by_month_coverage.png"
 alt="Tabletop launches by month, with coverage gaps shaded red" /></p>
@@ -131,17 +139,16 @@ for “how much.”</p>
 noted in each figure’s caption.</p>
 <ul>
 <li><strong>Web Robots crawl</strong> — RPG-specific
-(keyword-classified), but <em>funded projects only</em> (survivors,
-<strong>no failures</strong>), 2014–2026. Answers <em>how much</em> a
-project raises: the dollar figures, the genre/composition mix, and
-ZineQuest.</li>
+(keyword-classified), but <em>funded projects only</em> (survivors, no
+failures), 2014–2026. Answers <em>how much</em> a project raises: the
+dollar figures, the genre/composition mix, and ZineQuest.</li>
 <li><strong>ICPSR 38050</strong> — includes failures, 2009–2023, but
 covers <em>all tabletop</em> (board games included) because project
-names are masked, so RPGs <strong>can’t be separated out</strong>.
-Behind the success-rate and funding-threshold figures.</li>
+names are masked, so RPGs <em>cannot</em> be separated out. Behind the
+success-rate and funding-threshold figures.</li>
 <li><strong>Kaggle export</strong> — includes failures <em>and</em>
-keeps names (so RPGs <strong>can</strong> be classified), but ends in
-early 2018. Behind the project-attribute funding model and the 5e event
+keeps names (so RPGs <em>can</em> be classified), but ends in early
+2018. Behind the project-attribute funding model and the 5e event
 study.</li>
 <li><strong>Internet Archive (Wayback) reward tiers</strong> — per-tier
 prices, backer counts, and (for 2017–2022 campaigns) the itemized
@@ -158,13 +165,12 @@ answers “<strong>how much did it raise?</strong>” among those that
 did.</p>
 </div>
 <p>With the failures back in, the tabletop success rate runs at about
-<strong>two-thirds</strong> over 2009–2018, climbing to roughly
-<strong>86% by 2023</strong>.<a href="#fn5" class="footnote-ref"
-id="fnref5" role="doc-noteref"><sup>5</sup></a> Note that this covers
-all tabletop products, boardgames included, because the ICPSR data do
-not allow me to subset to ttrpg products only. Tabletop has become one
-of the categories with the highest success rates, though it got there
-gradually.</p>
+<strong>two-thirds</strong> over 2009–2018, climbing to roughly 86% by
+2023.<a href="#fn5" class="footnote-ref" id="fnref5"
+role="doc-noteref"><sup>5</sup></a> Note that this covers all tabletop
+products, boardgames included, because the ICPSR data do not allow me to
+subset to ttrpg products only. Tabletop has become one of the categories
+with the highest success rates, though it got there gradually.</p>
 <p><img src="images/icpsr_success_by_year.png"
 alt="True tabletop success rate by year, two sources" /></p>
 <p><em>The real success rate (successes ÷ finished projects), once you
@@ -227,11 +233,11 @@ subcategories.</em></p>
 <h2 id="the-dollar-distribution-among-funded-projects">The dollar
 distribution among funded projects</h2>
 <p>Among funded projects, the distribution of dollars is strongly
-top-heavy. The <strong>top 1% of funded RPG projects capture about 34%
-of all the dollars</strong>, and the top 5% capture nearly two-thirds.
-For accessories it is even more concentrated relative to their size,
-with the top 1% pulling in 38%. The whale post was studying the part of
-the distribution that holds most of the money.</p>
+top-heavy. The top 1% of funded RPG projects capture about
+<strong>34%</strong> of all the dollars, and the top 5% capture nearly
+two-thirds. For accessories it is even more concentrated relative to
+their size, with the top 1% pulling in 38%. The whale post was studying
+the part of the distribution that holds most of the money.</p>
 <p><img src="images/desc_lorenz_dollars.png"
 alt="Lorenz curve of pledged dollars" /></p>
 <p><em>How concentrated the money is. The sharp bend near the right edge
@@ -267,18 +273,17 @@ did the market grow, did the typical project raise more, and did the
 products themselves get cheaper?<a href="#fn9" class="footnote-ref"
 id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
 <p>The <strong>market</strong> grew, comfortably outpacing inflation.
-Total real dollars raised by funded RPG books roughly
-<strong>tripled</strong> between 2015 and 2025, a gain of about 220%
-against the ~36% that the cost of living rose over the same stretch.
-Almost all of that is volume: there are many more RPG-book campaigns now
-than a decade ago.</p>
+Total real dollars raised by funded RPG books roughly tripled between
+2015 and 2025, a gain of about 220% against the ~36% that the cost of
+living rose over the same stretch. Almost all of that is volume: there
+are many more RPG-book campaigns now than a decade ago.</p>
 <p>The <strong>typical project</strong>, by contrast, shrank. In
-constant dollars the median funded RPG book raised about <strong>$10,800
-in 2015 and only ~$4,400 in 2025</strong>, a fall of nearly 60%, while
-the median per-backer pledge dropped from roughly <strong>$56 to
-$29</strong>. The median project and the median backer each put in about
-half what they did a decade ago, and both sit well below the inflation
-line for the whole back half of the decade.</p>
+constant dollars the median funded RPG book raised about $10,800 in 2015
+and only ~$4,400 in 2025, a fall of nearly 60%, while the median
+per-backer pledge dropped from roughly $56 to $29. The median project
+and the median backer each put in about half what they did a decade ago,
+and both sit well below the inflation line for the whole back half of
+the decade.</p>
 <p><img src="images/real_index_vs_inflation.png"
 alt="Median raise and per-backer pledge against inflation" /></p>
 <p><em>Nominal index, 2015 = 100, for the median RPG-book raise (blue)
@@ -291,11 +296,11 @@ averages.</em></p>
 <p>Is this drop driven by cheap zines entering the Kickstarter market
 and dragging the median down? Partly, but not completely. ZineQuest
 (from 2019) did pull in a flood of cheap zines, and dropping them lifts
-the median a little, though not by much: among <strong>non-zine</strong>
-books the real per-backer pledge still dropped about 45%, and within the
-subcategory of books that <strong>name D&amp;D 5e</strong> it dropped
-about 56% (with the real raise down 62%). Excluding the cheapest type of
-project doesn’t change the picture, so this is more than a compositional
+the median a little, though not by much: among <em>non-zine</em> books
+the real per-backer pledge still dropped about 45%, and within the
+subcategory of books that <em>name D&amp;D 5e</em> it dropped about 56%
+(with the real raise down 62%). Excluding the cheapest type of project
+doesn’t change the picture, so this is more than a compositional
 effect.</p>
 <p><img src="images/real_per_backer_pledge.png"
 alt="Real per-backer pledge, by segment" /></p>
@@ -307,13 +312,12 @@ together, so the decline is not just the cheap-zine mix.</em><br />
 <strong>products themselves</strong> get cheaper? No. The archived
 campaign pages behind the whale-tier section near the end of this post
 let me follow the price of a given product over time, and those prices
-barely budge in real terms: the cheapest <strong>digital/PDF</strong>
-tier holds around $25, the standard <strong>hardcover</strong> around
-$50, and the <strong>deluxe</strong> edition around $100, all in
-constant 2025 dollars, none drifting down.<a href="#fn10"
-class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> A
-hardback RPG book costs about what it always did, once you adjust for
-inflation.</p>
+barely budge in real terms: the cheapest <em>digital/PDF</em> tier holds
+around $25, the standard <em>hardcover</em> around $50, and the
+<em>deluxe</em> edition around $100, all in constant 2025 dollars, none
+drifting down.<a href="#fn10" class="footnote-ref" id="fnref10"
+role="doc-noteref"><sup>10</sup></a> A hardback RPG book costs about
+what it always did, once you adjust for inflation.</p>
 <p><img src="images/real_tier_ladder.png"
 alt="The real price of each product type holds flat" /></p>
 <p><em>Median price of the cheapest digital, hardcover, and deluxe tier
@@ -321,18 +325,18 @@ per project, in constant 2025 dollars. Each product type is roughly flat
 across the decade; read the levels rather than the year-to-year wiggles.
 Recovered tiers, top-decile funded RPG books only.</em><br />
 <em>Source: Wayback-recovered reward tiers, CPI-adjusted.</em></p>
-<p>I think this points to a shift in the market rather than in prices.
-Any given tier held its real value, but the typical project still raised
-less, because campaigns now spread their backers across more and cheaper
-tiers (a $1–15 PDF, an entry pledge below the hardback), and because
-more, smaller projects launch every year. A campaign with a hardback
-option now also reaches a much broader base of cheap-tier backers, which
-pulls the average outlay down even as the hardback’s own price holds. So
-at the population level the average RPG product is cheaper, but that is
-composition: cheap formats like zines and PDF-only releases
-proliferated, and backers can now commit fewer real dollars on a pledge.
-Creators have set their asks to match, and the goals they choose have
-fallen even faster in real terms, which I come back to below.</p>
+<p>So the market changed shape while the prices held still. Any given
+tier held its real value, but the typical project still raised less,
+because the mix changed underneath it: cheap formats like zines and
+PDF-only releases proliferated, more and smaller projects launch every
+year, and a campaign with a hardback option now also reaches a broad
+base of $1–15 cheap-tier backers who pull the average outlay down
+without touching the hardback’s own price. At the population level the
+average RPG product is therefore cheaper, but the cause is
+compositional: what gets published changed, while the price of any given
+thing did not. Creators have set their asks to match, and the goals they
+choose have fallen faster still in real terms, which I come back to
+below.</p>
 <h2 id="goals-and-campaign-length">Goals and campaign length</h2>
 <p>Two numbers a creator picks before anything else are the
 <strong>goal</strong> (how much to ask for) and the
@@ -346,13 +350,12 @@ around $1–5K; accessories sit lower. The vertical spikes are
 round-number goals.</em><br />
 <em>Source: Web Robots crawl — funded RPG projects only.</em></p>
 <p>Goals have fallen markedly over the decade. The median funded RPG
-book asked for about <strong>$4,000 in 2016 and only ~$600 by
-2024</strong>; accessories fell more steeply, from ~$2,500 to about
-$100. Part of this is the zine wave, since small-format projects with
-tiny goals became common after 2019, and part is creators gravitating to
-a modest, beatable goal as the safe default.<a href="#fn11"
-class="footnote-ref" id="fnref11"
-role="doc-noteref"><sup>11</sup></a></p>
+book asked for about <strong>$4,000</strong> in 2016 and only ~$600 by
+2024; accessories fell more steeply, from ~$2,500 to about $100. Part of
+this is the zine wave, since small-format projects with tiny goals
+became common after 2019, and part is creators gravitating to a modest,
+beatable goal as the safe default.<a href="#fn11" class="footnote-ref"
+id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
 <p><img src="images/desc_median_goal_by_year.png"
 alt="Median funding goal by launch year" /></p>
 <p><em>Median goal by launch year (funded only). Goals more than halved
@@ -360,11 +363,11 @@ over the decade, with the post-2019 slide tracking the influx of
 small-goal zines.</em><br />
 <em>Source: Web Robots crawl — funded RPG projects only.</em></p>
 <p>The real decline is steeper than the nominal one. Deflated to
-constant 2025 dollars, the median goal slid from about <strong>$4,100 in
-2015 to under $700 in 2025</strong>, an <strong>~83% real fall</strong>:
-today’s typical creator asks for roughly a sixth of the real money their
-2015 counterpart did. The modest-goal habit and the zine format, which
-needs almost nothing to clear, have pushed the ask down faster than the
+constant 2025 dollars, the median goal slid from about $4,100 in 2015 to
+under $700 in 2025, an <strong>~83% real fall</strong>: today’s typical
+creator asks for roughly a sixth of the real money their 2015
+counterpart did. The modest-goal habit and the zine format, which needs
+almost nothing to clear, have pushed the ask down faster than the
 nominal figures let on.<a href="#fn12" class="footnote-ref" id="fnref12"
 role="doc-noteref"><sup>12</sup></a></p>
 <p><img src="images/real_goal_by_year.png"
@@ -386,13 +389,13 @@ two-to-four-week window.</em><br />
 <h2 id="the-shift-toward-dd-5e">The shift toward D&amp;D 5e</h2>
 <p>Before asking what succeeds, it helps to look at what people make and
 how that has changed. Over the decade the mix of funded RPG books
-shifted substantially. Books that name <strong>D&amp;D’s fifth
-edition</strong> went from about <strong>7%</strong> of funded RPG books
-in 2014–15 to nearly <strong>40%</strong> by 2023–26. The old-school
-renaissance (OSR) more than doubled its share. The long tail of titles
-that name no system receded as more creators hitched their book to a
-recognizable engine, and Pathfinder shrank in relative terms as 5e came
-to dominate the hobby.<a href="#fn13" class="footnote-ref" id="fnref13"
+shifted substantially. Books that name D&amp;D’s fifth edition went from
+about <strong>7%</strong> of funded RPG books in 2014–15 to nearly
+<strong>40%</strong> by 2023–26. The old-school renaissance (OSR) more
+than doubled its share. The long tail of titles that name no system
+receded as more creators hitched their book to a recognizable engine,
+and Pathfinder shrank in relative terms as 5e came to dominate the
+hobby.<a href="#fn13" class="footnote-ref" id="fnref13"
 role="doc-noteref"><sup>13</sup></a></p>
 <p><img src="images/comp_system_family.png"
 alt="Composition of funded RPG books by system family over time" /></p>
@@ -410,7 +413,7 @@ everything else (right). 5e is mostly adventures and supplements; other
 systems are where new rulebooks and zines live.</em><br />
 <em>Source: Web Robots crawl — funded RPG books only.</em></p>
 <p>D&amp;D 5e is something people publish <em>for</em>: about
-<strong>40% of 5e books are adventures</strong>, another quarter are
+<strong>40%</strong> of 5e books are adventures, another quarter are
 bestiaries and supplements, and only ~6% are new core rulebooks. Other
 systems are where new games live, with about a third of them rulebooks,
 and they are also where the zines cluster (12% of other-system books,
@@ -419,19 +422,10 @@ versus ~4% of 5e ones).</p>
 id="what-predicts-getting-funded-the-creator-more-than-the-project">What
 predicts getting funded: the creator more than the project</h2>
 <p>This is the question the survivor data cannot answer. Using the
-failure-inclusive datasets, I asked Claude to build models to predict
-funding success and checked how well they did out-of-sample rather than
-how well they fit in-sample.<a href="#fn14" class="footnote-ref"
-id="fnref14" role="doc-noteref"><sup>14</sup></a> One thing to keep in
-mind for this whole section: the failure-inclusive data is either
-name-identified only through 2018 or not RPG-specific. Because the
-Kaggle export keeps project names, I <em>can</em> run the keyword
-classifier on it and isolate RPG projects, but only through 2018; ICPSR
-masks names, so it stays whole-tabletop. The funding-side story
-therefore leans on tabletop crowdfunding in the 2010s and may not
-perfectly describe the ZineQuest-era RPG market of the 2020s.<a
-href="#fn15" class="footnote-ref" id="fnref15"
-role="doc-noteref"><sup>15</sup></a></p>
+failure-inclusive datasets, I built models to predict funding success
+and checked how well they did out-of-sample rather than how well they
+fit in-sample.<a href="#fn14" class="footnote-ref" id="fnref14"
+role="doc-noteref"><sup>14</sup></a></p>
 <p>I started with two models with different kinds of information. One
 knew only about the <strong>creator</strong>: how many projects they’d
 run before, how many succeeded, how many failed. The other knew only
@@ -439,18 +433,19 @@ about the <strong>project</strong>: its genre, its goal, its country,
 its title.</p>
 <p>The creator model came out ahead, with an AUC of about
 <strong>0.83</strong> against the project model’s
-<strong>0.72</strong>.<a href="#fn16" class="footnote-ref" id="fnref16"
-role="doc-noteref"><sup>16</sup></a> The two models are built on
+<strong>0.72</strong>.<a href="#fn15" class="footnote-ref" id="fnref15"
+role="doc-noteref"><sup>15</sup></a> The two models are built on
 different datasets, though (only one source pairs creator IDs with
-failures, only the other carries project names), and the creator-history
-model isn’t even RPG-specific, so this is a decomposition across sources
-rather than a head-to-head on the same projects. Read with that caveat,
-the finding points one way: <em>who is asking</em> looks at least as
-predictive as <em>what they’re asking for</em>. A creator’s prior track
-record is the strongest single predictor I found. Each past success
-multiplies the odds of funding, a strong prior success rate multiplies
-them a good deal more, and past failures predict future failure in the
-same way.</p>
+failures, only the other carries project names), the creator-history
+model isn’t even RPG-specific, and both are anchored in the 2010s, so
+this is a decomposition across sources rather than a head-to-head on the
+same projects.<a href="#fn16" class="footnote-ref" id="fnref16"
+role="doc-noteref"><sup>16</sup></a> Read with that caveat, the finding
+points one way: <em>who is asking</em> looks at least as predictive as
+<em>what they’re asking for</em>. A creator’s prior track record is the
+strongest single predictor I found. Each past success raises the odds of
+funding, a strong prior success rate raises them a good deal more, and
+past failures cut them by at least as much in the other direction.</p>
 <p><img src="images/success_or_plot.png"
 alt="Odds-ratio plot of funding predictors from the creator-history model" /></p>
 <p><em>What predicts getting funded, from the creator-history model
@@ -550,8 +545,9 @@ are <strong>brand and series names</strong> (<em>Mothership</em>,
 <em>Forbidden Lands</em>, <em>Root</em>, <em>Dimgaard</em>) that a
 bag-of-words model memorizes as “these named lines did well” without the
 lesson generalizing to a new project.<a href="#fn20"
-class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a>
-What does generalize is duller. Naming a <strong>physical print
+class="footnote-ref" id="fnref20"
+role="doc-noteref"><sup>20</sup></a></p>
+<p>What does generalize is duller. Naming a <strong>physical print
 format</strong> predicts a larger raise: books that mention a binding
 raise well above the PDF-only and zine baseline (hardcover most, ~$25k
 median; softcover ~$13k; neither ~$6k), so the word marks a printed
@@ -577,9 +573,10 @@ framing (red) predict less.</em><br />
 the distribution you go. For a median project a staff pick is worth
 maybe 1.5×; for the runaway hits near the top it’s associated with more
 like 3.5×. Social proof and production polish seem to be amplified in
-the upper tail. (Correlation again: Kickstarter may hand out staff picks
-to projects it can already tell will be big. Still, it’s a suggestive
-pattern.)</p>
+the upper tail. Correlation again, and a particularly awkward one:
+Kickstarter may be handing staff picks to the projects it can already
+tell will be big, in which case what looks like amplification is really
+just selection. Still, it is a suggestive pattern.</p>
 <h3 id="books-that-name-a-system-tend-to-raise-more">Books that name a
 system tend to raise more</h3>
 <p>Since I’d tagged every book by its system, I could ask a sharper
@@ -796,12 +793,13 @@ like; most funded books look like the left.</em><br />
 <p>The RPG-book “whale” sits lower than in the original post. Defined
 the same way, as the single most-expensive tier in a campaign, the
 median top-priced tier across these books is about
-<strong>$300</strong>, versus <strong>$478</strong> among the
-million-dollar megaprojects. That ceiling tier isn’t where the money is
-made: the <strong>highest-grossing tier of the median book is only about
-$65</strong>. The expensive tier exists, but few people buy it, and that
-holds at every size — the top-priced tier collects about 4–6% of its
-campaign’s money whether the campaign raised $30,000 or $3 million.</p>
+<strong>$300</strong>, versus $478 among the million-dollar
+megaprojects. That ceiling tier isn’t where the money is made: the
+highest-grossing tier of the median book is only about
+<strong>$65</strong>. The expensive tier exists, but few people buy it,
+and that holds at every size — the top-priced tier collects about 4–6%
+of its campaign’s money whether the campaign raised $30,000 or $3
+million.</p>
 <p>The tier that does the earning is not a fixed price either. It rises
 with the campaign, from about <strong>$50</strong> for books under
 $50,000 to <strong>$127</strong> for those above $250,000. In every band
@@ -939,19 +937,18 @@ the money is the ordinary one with the printed book in it, priced at
 whatever a printed copy of that particular book costs.</p>
 <h2 id="what-the-evidence-supports">What the evidence supports</h2>
 <p>If you’re running an RPG Kickstarter, these are the takeaways with
-some evidence behind them. Your <strong>track record is your biggest
-asset</strong>, and your past failures follow you. A <strong>modest
-goal</strong> correlates with funding, though that mostly reflects which
-creators set small goals in the first place. A <strong>staff pick and a
-video</strong> come with much bigger raises. <strong>Naming a recognized
-system</strong> (5e, OSR, a known indie line) is associated with
-clearing the funding bar a little more easily and with a somewhat larger
-raise. <strong>How you frame the product</strong>, premium object versus
-cheap commodity, shows up in the dollars. And within a campaign, the
-money comes from the <strong>mid-premium reward tiers</strong>
-($100–500) rather than the entry PDFs or a single high-priced ceiling
-tier.</p>
-<p>These are not guaranteed levers though! Almost everything here is a
+some evidence behind them. Your <strong>track record</strong> is your
+biggest asset, and your past failures follow you. A modest goal
+correlates with funding, though that mostly reflects which creators set
+small goals in the first place. A <strong>staff pick and a
+video</strong> come with much bigger raises. Naming a recognized system
+(5e, OSR, a known indie line) is associated with clearing the funding
+bar a little more easily and with a somewhat larger raise. How you frame
+the product, premium object versus cheap commodity, shows up in the
+dollars. And within a campaign, the money comes from the
+<strong>mid-premium reward tiers</strong> ($100–500) rather than the
+entry PDFs or a single high-priced ceiling tier.</p>
+<p>None of these is a lever, though. Almost everything here is a
 correlation drawn from observational data, with all the usual hazards:
 creators choose their goals strategically, Kickstarter chooses who gets
 staff-picked, my RPG classifier is imperfect,<a href="#fn32"
@@ -1117,7 +1114,15 @@ under the ROC curve): 0.5 is a coin flip, 1.0 is perfect. I also checked
 several model types (logistic regression, LASSO, random forest) and they
 agreed, which is a sign the result isn’t an artifact of one method.<a
 href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn15"><p>Concretely: the Kaggle export carries project
+<li id="fn15"><p>The creator-history model reached an AUC of about
+<strong>0.83</strong>; the project-attribute model about
+<strong>0.72</strong>. They are built on different datasets (only one
+source has creator IDs <em>and</em> failures, only the other has project
+names), so this is a decomposition across sources rather than a
+head-to-head in one regression. It is robust, though, and the message is
+that reputation beats genre.<a href="#fnref15" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p>Concretely: the Kaggle export carries project
 <em>names</em> (so I can pick out RPGs) but ends in early 2018, while
 the academic set reaches 2023 but masks names (so its RPG-level signal
 is borrowed, and its creator-history model is really an
@@ -1126,15 +1131,7 @@ predicts funding” evidence is anchored in the 2010s and in tabletop
 broadly. The magnitude (“how much”) side, by contrast, uses the
 2014–2026 Web Robots crawl and is genuinely RPG-specific and current, so
 the time-scope caveat bites hardest on the funding-side claims and less
-on the dollars-side ones.<a href="#fnref15" class="footnote-back"
-role="doc-backlink">↩︎</a></p></li>
-<li id="fn16"><p>The creator-history model reached an AUC of about
-<strong>0.83</strong>; the project-attribute model about
-<strong>0.72</strong>. They are built on different datasets (only one
-source has creator IDs <em>and</em> failures, only the other has project
-names), so this is a decomposition across sources rather than a
-head-to-head in one regression. It is robust, though, and the message is
-that reputation beats genre.<a href="#fnref16" class="footnote-back"
+on the dollars-side ones.<a href="#fnref16" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
 <li id="fn17"><p>This model pools all tabletop and includes “is an RPG”
 as a predictor, so the goal, campaign-length, and US slopes are
