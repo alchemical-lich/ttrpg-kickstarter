@@ -85,7 +85,7 @@ The typical project is far smaller. A median *funded* RPG book raises around **$
 *What funded projects raise (log scale). RPG books sit to the right of accessories, meaning they raise more, but both distributions have a long tail reaching toward the millions.*\
 *Source: Web Robots crawl — funded RPG books vs. accessories.*
 
-Accessories set the bar lower. Their median funding goal is **about $400**, and they clear it comfortably: 86% of funded accessories raise at least double their goal, versus 76% for books. "Set a tiny goal and overfund" seems to be a common strategy.
+Accessories set the bar lower. Their median funding goal is **about $400**, and they clear it comfortably: 86% of funded accessories raise at least double their goal, versus 76% for books. "Set a tiny goal and overfund" looks like a common strategy.
 
 ## Market size, project size, and price changes
 
@@ -170,7 +170,7 @@ This is the question the survivor data cannot answer. Using the failure-inclusiv
 
 I started with two models with different kinds of information. One knew only about the **creator**: how many projects they'd run before, how many succeeded, how many failed. The other knew only about the **project**: its genre, its goal, its country, its title.
 
-The creator model came out ahead, with an AUC of about **0.83** against the project model's **0.72**.[^whovwhat] The two models are built on different datasets, though (only one source pairs creator IDs with failures, only the other carries project names), the creator-history model isn't even RPG-specific, and both are anchored in the 2010s, so this is a decomposition across sources rather than a head-to-head on the same projects.[^fundingera] Read with that caveat, the finding points one way: *who is asking* looks at least as predictive as *what they're asking for*. A creator's prior track record is the strongest single predictor I found. Each past success raises the odds of funding, a strong prior success rate raises them a good deal more, and past failures cut them by at least as much in the other direction.
+The creator model came out ahead, with an AUC of about **0.83** against the project model's **0.72**.[^whovwhat] That comparison is looser than it looks: the two models are built on different datasets (only one source pairs creator IDs with failures, only the other carries project names), the creator-history model isn't even RPG-specific, and both are anchored in the 2010s, so this is a decomposition across sources rather than a head-to-head on the same projects.[^fundingera] Read with that caveat, the finding points one way: *who is asking* looks at least as predictive as *what they're asking for*. A creator's prior track record is the strongest single predictor I found. Each past success raises the odds of funding, a strong prior success rate raises them a good deal more, and past failures cut them by at least as much in the other direction.
 
 ![Odds-ratio plot of funding predictors from the creator-history model](images/success_or_plot.png)
 
@@ -225,7 +225,7 @@ What does generalize is duller. Naming a **physical print format** predicts a la
 *Title/blurb terms predicting how much a funded RPG **book** raises (LASSO, controlling for the structured features). Read with care: several of the strongest "raises more" terms (blue) are brand/series names the model has memorized, or tokenization artifacts. "dcc pathfinder" is two adjacent items in a system-compatibility list, and "softcov" marks a printed book rather than a premium binding. The generalizable signals are naming a print format and broad system compatibility; "pay-what-you-want" and one-shot framing (red) predict less.*\
 *Source: Web Robots crawl — funded RPG books only.*
 
-Second, the staff-pick and video effects get stronger the further up the distribution you go. For a median project a staff pick is worth maybe 1.5×; for the runaway hits near the top it's associated with more like 3.5×. Social proof and production polish seem to be amplified in the upper tail. Correlation again, and a particularly awkward one: Kickstarter may be handing staff picks to the projects it can already tell will be big, in which case what looks like amplification is really just selection. Still, it is a suggestive pattern.
+Second, the staff-pick and video effects get stronger the further up the distribution you go. For a median project a staff pick is worth maybe 1.5×; for the runaway hits near the top it's associated with more like 3.5×. Social proof and production polish are amplified in the upper tail. Correlation again, and a particularly awkward one: Kickstarter may be handing staff picks to the projects it can already tell will be big, in which case what looks like amplification is really just selection. Still, it is a suggestive pattern.
 
 ### Books that name a system tend to raise more
 
@@ -236,7 +236,7 @@ Since I'd tagged every book by its system, I could ask a sharper version of the 
 *Multiply-the-dollars premiums for funded RPG books, versus a system-agnostic rulebook. Naming a recognized system (blue) pays; product type (orange) matters less, except that zines raise less.*\
 *Source: Web Robots crawl — funded RPG books only.*
 
-In the failure-inclusive data, books that name a recognizable system are also meaningfully more likely to **get funded at all**. Naming a system seems to reassure backers that an audience already exists for the thing. That said, all of this is second-order: adding the system and product tags barely changes how well the model predicts dollars, and goal-setting, reputation, and the staff pick remain the dominant predictors.[^sysprem]
+In the failure-inclusive data, books that name a recognizable system are also meaningfully more likely to **get funded at all**. Naming a system presumably reassures backers that an audience already exists for the thing. That said, all of this is second-order: adding the system and product tags barely changes how well the model predicts dollars, and goal-setting, reputation, and the staff pick remain the dominant predictors.[^sysprem]
 
 ## Where books and accessories diverge
 
@@ -249,7 +249,7 @@ For **how much you raise**, the drivers differ. The clearest example is that a "
 *Same drivers, different products. The book effect (blue) and accessory effect (orange) pull apart, most visibly for the 5E label, which lifts books but not commodity minis.*\
 *Source: Web Robots crawl — funded RPG books vs. accessories.*
 
-For **whether you get funded**, though, the drivers don't meaningfully differ between books and accessories. The things that get you across the funding line (a modest goal, a reasonable campaign length, an established creator) seem to work about the same regardless of what you're selling. Product type shapes how much you raise, then, but not whether you raise it.
+While the dollars respond differently, the funding line does not: for **whether you get funded**, the drivers don't meaningfully differ between books and accessories. The things that get you across the funding line (a modest goal, a reasonable campaign length, an established creator) appear to work about the same regardless of what you're selling. Product type shapes how much you raise, then, but not whether you raise it.
 
 ## Did 5e cause the boom?
 
@@ -262,7 +262,7 @@ The usual way to test "did event X cause the RPG surge" is a difference-in-diffe
 *The 5e effect that does not appear. The RPG-vs-control success gap is already positive in 2012 and flat across the mid-2014 release (dashed line). No jump, and no causal story.*\
 *Source: Kaggle — RPGs vs. other tabletop, including failures (ends 2018).*
 
-The ttrpg boom is real, but pinning it on 5e specifically doesn't seem to be supported in the data. The treatment was too gradual and too anticipated, and 5e probably lifted D&D *board games* too, contaminating the comparison. *Stranger Things* and *Critical Role* are even harder to test cleanly, so I won't try.
+The ttrpg boom is real, but pinning it on 5e specifically is not supported in the data. The treatment was too gradual and too anticipated, and 5e probably lifted D&D *board games* too, contaminating the comparison. *Stranger Things* and *Critical Role* are even harder to test cleanly, so I won't try.
 
 The 5e test came up empty, but one effect does show up clearly in the raw data. Sort core RPG launches by calendar month and one month departs from the pattern, though only recently. Through 2018, February was unremarkable; from 2019 on it rises to more than **a fifth of the whole year's launches**.
 
@@ -304,7 +304,7 @@ The whale post's question, how the money splits across a campaign's reward tiers
 
 The broad shape matches the whale post. The cheap tiers draw most of the backers and the premium tiers hold most of the money: across all 683 books, tiers under $25 take about a fifth of the backers but **4% of the dollars**, while the $100–500 band holds a fifth of the backers and **half the dollars**.
 
-That pooled number, though, is the thing worth being careful about, because it is an average across campaigns of wildly different sizes and it is not true of any of them in particular. Split the books by what they raised and the premium tiers' importance climbs steadily with the size of the campaign. For books raising over $250,000, the $100–500 tiers supply **63%** of the money. For a book raising under $50,000 — which is most funded RPG books — they supply **20%**, and the sub-$50 tiers that barely register for the megaprojects carry a third of the total.
+While that pooled number is the headline, it is also the one to be careful with: it averages across campaigns of wildly different sizes, and it is not true of any of them in particular. Split the books by what they raised and the premium tiers' importance climbs steadily with the size of the campaign. For books raising over $250,000, the $100–500 tiers supply **63%** of the money. For a book raising under $50,000 — which is most funded RPG books — they supply **20%**, and the sub-$50 tiers that barely register for the megaprojects carry a third of the total.
 
 ![Backers vs. dollars by reward-tier price](images/tier_backers_vs_dollars_by_price.png)
 
@@ -345,7 +345,7 @@ The first thing this shows is that the premise is shaky. Bundles do get broader 
 *Distinct accessory categories per tier, by price band. The climb flattens above $100: the $250–500 and $500+ bands look alike. Kickstarter itemizations are cumulative ("everything above, plus…"), so the models below control for price rather than reading this gradient as an effect.*\
 *Source: Wayback-recovered reward tiers, itemized subset, funded RPG books 2017–2022.*
 
-Comparing tiers *within* the same campaign, holding price fixed, backers do prefer a fuller tier. Each additional item listed goes with about **18% more backers** on that tier. What they are responding to is the raw count. Once the number of items is held fixed, the number of distinct accessory categories adds nothing: the estimate is +0.002 in log10 units, and it changes sign between subsamples. Variety of contents seems to carry no weight of its own once you know how much is in the box.
+Comparing tiers *within* the same campaign, holding price fixed, backers do prefer a fuller tier. Each additional item listed goes with about **18% more backers** on that tier. What they are responding to is the raw count. Once the number of items is held fixed, the number of distinct accessory categories adds nothing: the estimate is +0.002 in log10 units, and it changes sign between subsamples. Variety of contents carries no detectable weight of its own once you know how much is in the box.
 
 ![Bundling effects at the tier and project level](images/tier_bundle_effects.png)
 
@@ -371,7 +371,7 @@ Two honest limits on that. Everything here is measured on campaigns that got fun
 
 If you're running an RPG Kickstarter, these are the takeaways with some evidence behind them. Your **track record** is your biggest asset, and your past failures follow you. A modest goal correlates with funding, though that mostly reflects which creators set small goals in the first place. A **staff pick and a video** come with much bigger raises. Naming a recognized system (5e, OSR, a known indie line) is associated with clearing the funding bar a little more easily and with a somewhat larger raise. How you frame the product, premium object versus cheap commodity, shows up in the dollars. And within a campaign, the money comes from the **mid-premium reward tiers** ($100–500) rather than the entry PDFs or a single high-priced ceiling tier.
 
-None of these is a lever, though. Almost everything here is a correlation drawn from observational data, with all the usual hazards: creators choose their goals strategically, Kickstarter chooses who gets staff-picked, my RPG classifier is imperfect,[^classifier] and the one result that is in the neighborhood of a causal effect is about a niche February program for zines.
+But none of these is a lever. Almost everything here is a correlation drawn from observational data, with all the usual hazards: creators choose their goals strategically, Kickstarter chooses who gets staff-picked, my RPG classifier is imperfect,[^classifier] and the one result that is in the neighborhood of a causal effect is about a niche February program for zines.
 
 ---
 
