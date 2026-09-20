@@ -21,7 +21,7 @@ There's a nice free resource called Web Robots that has been crawling Kickstarte
 
 The first thing I checked was the success rate. The data said tabletop RPGs succeed about **98% of the time**. That looks wildly inaccurate, and it made me suspicious of the Web Robots data. Web Robots builds its snapshots from Kickstarter's public "discover" pages, and those pages overwhelmingly surface projects that are live or that succeeded. Campaigns that flopped quietly fall out of view and never make it into the crawl.[^survivorship] Any success rate computed from it describes the survivors rather than the full population.
 
-This is survivorship bias, and it required a bit of additional thinking. It means there are two separate questions and they need different data:
+This is survivorship bias, and it splits the project in two. There are two separate questions here, and they need different data:
 
 1. **Did it get funded at all?** — You cannot answer this from a dataset with no failures.
 2. **Given that it got funded, how much did it raise?** — This you *can* answer, because the survivors are exactly the population you care about.
@@ -200,7 +200,7 @@ The project attributes still matter, just less. Holding other things equal: an a
 
 A warning on that last one, because it's an easily misunderstood statistic: this is a correlation, and the goal is not randomly assigned. Creators set goals in anticipation of demand. A cautious creator with a small audience sets $2,000; a publisher with a big mailing list confidently sets $80,000. So "low goals succeed more" does **not** mean "lower your goal and you'll succeed." The number tells you which kind of creator picks which kind of goal; what would happen if a given creator trimmed their own is a question it cannot answer. (I return to this point below.)
 
-## Among funded projects, what correlates with the size of the raise
+## What makes a funded project big?
 
 For the magnitude question, meaning how big a funded project gets, I switched back to the rich Web Robots data, which is the funded population. The standouts, expressed as "multiply the dollars by roughly":
 
@@ -240,7 +240,7 @@ In the failure-inclusive data, books that name a recognizable system are also me
 
 ## Where books and accessories diverge
 
-Because I'd split RPG books from RPG accessories, I could ask whether they respond to the same things. They mostly do, with one asymmetry.
+Books and accessories mostly respond to the same things, with one asymmetry.
 
 For **how much you raise**, the drivers differ. The clearest example is that a "5E-compatible" label raises money for a rulebook but is slightly negative for an accessory.[^bookacc] That makes intuitive sense: a branded D&D *book* is a selling point, while generic "D&D dice" or "D&D minis" are a commodity in a crowded field. Being US-based flips sign too.
 
@@ -363,7 +363,7 @@ I am more confident in it than I would otherwise be, because the tier-level resu
 *The same tier-level model fit separately in each sample. Item count replicates; accessory variety does not, and its sign is not stable.*\
 *Source: Wayback-recovered reward tiers, itemized subset, funded RPG books 2017–2022.*
 
-So, two plain answers. Whale tiers are not what makes a campaign big. The single most expensive tier collects between four and six percent of its own campaign's money, and it does that at every size, from twenty-thousand-dollar books to multi-million-dollar ones. The money sits in the mid-premium tiers instead, and even that is largely a fact about large campaigns, since those tiers supply about 63% of the dollars for books above $250,000 and about 20% for books below $50,000, which is most of them. Nor do whale tiers look like a lever. Offering a $500-plus tier does not predict raising more in either half of the sample, and neither does filling it with accessories. The closest thing to a counterfactual I can construct, comparing a creator against their own other campaigns, moves the apparent payoff from +0.048 across creators to +0.011 within them, which says the cross-sectional pattern is mostly about *which creators* bundle rather than what bundling does to a campaign.
+So, two plain answers. Whale tiers are not what makes a campaign big. The single most expensive tier collects between four and six percent of its own campaign's money, and it does that at every size, from twenty-thousand-dollar books to multi-million-dollar ones. The money sits in the mid-premium tiers instead, and even that is largely a fact about large campaigns, since those tiers supply about 63% of the dollars for books above $250,000 and about 20% for books below $50,000, which is most of them. Nor do whale tiers look like a lever. Offering a $500-plus tier does not predict raising more in either half of the sample, and neither does filling it with accessories. The closest thing to a counterfactual I can construct is to compare a creator against their own other campaigns. Doing so moves the apparent payoff from +0.048 across creators to +0.011 within them. Most of what the cross-sectional pattern captures, then, is *which creators* bundle.
 
 Two honest limits on that. Everything here is measured on campaigns that got funded, so none of it speaks to whether a fancy tier helps a project reach its goal in the first place. And a null is a bound, not a proof: what I can say is that a whale tier is not worth a quarter more on the raise, not that it is worth exactly nothing. With those caveats, the practical reading is that the expensive tier is close to free to offer and close to irrelevant to the total, while the tier that carries the money is the ordinary one with the printed book in it, priced at whatever a printed copy of that particular book costs.
 
