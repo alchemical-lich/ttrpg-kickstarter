@@ -8,7 +8,7 @@ I recently read [a great guest post on Patchwork Paladin](https://patchworkpalad
 
 While pretty interesting, the post focuses on a heavily selected sample of projects: the most successful mega campaigns. It left me curious about how the rest of Kickstarter's RPG projects fare. What separates the ones that get funded from the ones that don't? Does the whale pattern hold for a book raising five thousand dollars rather than five million?
 
-Briefly, what I found: the whale pattern holds up, but it describes very large campaigns and does not carry down to the rest of the category. For most funded RPG books the earning tier is the ordinary mid-priced one with the printed book in it, and the single most expensive tier collects four to six percent of a campaign's money at every size I can measure. On the funding side, a creator's track record predicts more than any attribute of the project itself. The rest of this post is how I got there, and how far the data will carry each claim.
+Briefly, what I found: the whale pattern holds up, but it describes very large campaigns and does not carry down to the rest of the category. For most funded RPG books the earning tier is the ordinary mid-priced one with the printed book in it, and the single most expensive tier collects four to six percent of a campaign's money at every size I can measure. On the funding side, a creator's track record predicts more than any attribute of the project itself.
 
 ## Getting the data
 
@@ -62,7 +62,7 @@ Let's take a closer look at ttrpgs only. On *cleaned* labels (after removing the
 *Core RPGs' share of all Kickstarter-Games funded dollars (blue, cleaned labels), with tabletop's share overall (green) for context. Both rise; the RPG line roughly doubles, and the 2024 spike toward a quarter is one $15M megaproject. (The 2022–23 dip reflects the coverage gap.)*\
 *Source: Web Robots crawl — funded dollars, RPG-classified (cleaned labels).*
 
-But "tabletop" is mostly *board games* when it comes to dollars. Line up each subcategory's share of the money against its share of the projects and you can see where the big money sits: board games take about **60% of the dollars on 44% of the projects**, while the cheap commodities (playing cards, RPG accessories) are the reverse, lots of projects and little money. Core RPGs land in between, raising roughly in proportion to their numbers.
+But "tabletop" is mostly *board games* when it comes to dollars. Line up each subcategory's share of the money against its share of the projects and you can see which ones carry the money: board games take about **60%** of the dollars on 44% of the projects, while the cheap commodities (playing cards, RPG accessories) are the reverse, lots of projects and little money. Core RPGs land in between, raising roughly in proportion to their numbers.
 
 ![Share of dollars vs share of projects, by Games subcategory](images/desc_share_dollars_vs_projects.png)
 
